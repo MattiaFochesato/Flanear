@@ -88,6 +88,7 @@
 		268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoView.swift; sourceTree = "<group>"; };
 		268050B627BAC287004CBC33 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		268050B727BAC296004CBC33 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		268050B927BAC5E5004CBC33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		269790CF27B7C7C200B0210B /* ARMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapView.swift; sourceTree = "<group>"; };
 		269790D327B7CC4B00B0210B /* FlanearWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlanearWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269790D527B7CC4E00B0210B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -256,6 +257,7 @@
 		26BC9CC227B6AFBF00CE8BBD /* Flanear */ = {
 			isa = PBXGroup;
 			children = (
+				268050B927BAC5E5004CBC33 /* Info.plist */,
 				26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */,
 				26BC9CD327B6B09A00CE8BBD /* Views */,
 				26BC9CD427B6B0A500CE8BBD /* ViewControllers */,
@@ -727,6 +729,7 @@
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flanear/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -758,6 +761,7 @@
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flanear/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
