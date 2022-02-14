@@ -11,7 +11,16 @@ import SwiftUI
 struct FlanearApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                NavigatorView()
+                    .tabItem {
+                        Label("Explore", systemImage: "map.fill")
+                    }
+                DiaryView()
+                    .tabItem {
+                        Label("Diary", systemImage: "book.closed.fill")
+                    }
+            }
         }
     }
 }
