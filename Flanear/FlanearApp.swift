@@ -16,7 +16,7 @@ struct FlanearApp: App {
                     .tabItem {
                         Label("Explore", systemImage: "map.fill")
                     }
-                DiaryView()
+                CitiesView()
                     .tabItem {
                         Label("Diary", systemImage: "book.closed.fill")
                     }

@@ -28,43 +28,27 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     @Published var destinationDistance: CLLocationDistance = 0
     @Published var destinationName: String = "San Giorgio a Cremano"
     
-    private let locationManager: CLLocationManager
+    var degreesCancellable: AnyCancellable? = nil
+    var positionCancellable: AnyCancellable? = nil
+    
     override init() {
-        self.locationManager = CLLocationManager()
         super.init()
         
-        self.locationManager.delegate = self
-        self.startLocationManager()
-    }
-    
-    //Setup CLLocationManager
-    private func startLocationManager() {
-        //Richiedi autorizzazione
-        if self.locationManager.authorizationStatus != .authorizedWhenInUse {
-            self.locationManager.requestWhenInUseAuthorization()
+        self.degreesCancellable = LocationUtils.shared.$degrees.sink { newVal in
+            self.degrees = -1 * newVal + self.bearingDegrees
         }
         
-        if CLLocationManager.headingAvailable() {
-            self.locationManager.startUpdatingLocation()
-            self.locationManager.startUpdatingHeading()
-        }
-    }
-    
-    //Bussola cambia
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        self.degrees = -1 * newHeading.magneticHeading + bearingDegrees
-    }
-    
-    //Location Change
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
+        self.positionCancellable = LocationUtils.shared.$currentLocation.sink(receiveValue: { location in
             self.currentLocation = location
+            
+            guard let location = location else { return }
+            
             self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0007, longitudeDelta: 0.0007))
             
             //Update distance data
-            self.bearingDegrees = getBearingBetween(point1: self.currentLocation!, point2: self.destinationLocation!)
+            self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: self.destinationLocation!)
             self.destinationDistance = self.currentLocation!.distance(from: self.destinationLocation!)
-        }
+        })
     }
     
     func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }

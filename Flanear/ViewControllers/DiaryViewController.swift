@@ -7,28 +7,26 @@
 
 import Foundation
 import GRDB
+import Combine
 import SwiftUI
 
 class DiaryViewController: ObservableObject {
     
+    let city: VisitedCity
     @Published var places: [VisitedPlace] = []
+    var observableCancellable: AnyCancellable?
     
-    init() {
-        self.reloadPlaces()
-    }
-    
-    private func reloadPlaces() {
-        Task.init(priority: .userInitiated) {
-            self.places = await fetchPlaces()
-        }
-    }
-    
-    private func fetchPlaces() async -> [VisitedPlace] {
-        let places = try? await AppDatabase.shared.databaseReader.read { db in
-            try VisitedPlace.fetchAll(db)
-        }
-        
-        return places ?? []
+    init(city: VisitedCity) {
+        self.city = city
+
+        self.observableCancellable = ValueObservation
+            .tracking { db in try city.places.fetchAll(db) }
+            .publisher(in: AppDatabase.shared.databaseReader)
+            .sink { error in
+                print(error)
+            } receiveValue: { updatedPlaces in
+                self.places = updatedPlaces
+            }
     }
     
     func deletePlace(place: VisitedPlace) {
@@ -51,7 +49,6 @@ class DiaryViewController: ObservableObject {
         itemPlace.favourite.toggle()
         do {
             try AppDatabase.shared.savePlace(&itemPlace)
-            self.reloadPlaces()
         }catch {
             preconditionFailure("Cannot save place")
         }
