@@ -8,15 +8,34 @@
 import SwiftUI
 
 struct PickPlaceView: View {
+    @EnvironmentObject var viewController: NavigatorViewController
+    
     var body: some View {
-        List {
-            Button {
-                print("todo")
-            } label: {
-                Text("TODO")
+        VStack {
+            if let searchResults = viewController.searchResults {
+                List {
+                    ForEach(searchResults) { item in
+                        Button {
+                            let dataToSend = ["visitNewPlace": item.title]
+                            
+                            viewController.session.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                                print(error)
+                            })
+                        } label: {
+                            Text(item.title)
+                            Text(item.subtitle)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+            }else{
+                ProgressView()
             }
-            
         }.navigationTitle("Pick Place")
+            .onAppear {
+                viewController.loadSuggestions()
+            }
     }
 }
 

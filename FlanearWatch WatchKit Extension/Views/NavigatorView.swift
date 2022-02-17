@@ -9,7 +9,8 @@ import SwiftUI
 
 struct NavigatorView: View {
     
-    @ObservedObject var viewController = NavigatorViewController()
+    //@ObservedObject var viewController = NavigatorViewController()
+    @EnvironmentObject var viewController: NavigatorViewController
     
     var body: some View {
         VStack {
@@ -18,7 +19,7 @@ struct NavigatorView: View {
             
             Spacer()
             
-            Text("San Giovanni a Teduccio")
+            Text(viewController.destinationName)
                 .font(.title3)
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)

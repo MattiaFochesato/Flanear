@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct FlanearApp: App {
+    @ObservedObject var viewController = NavigatorViewController()
+    
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
@@ -16,7 +18,7 @@ struct FlanearApp: App {
                     NavigatorView()
                     PickPlaceView()
                 }
-            }
+            }.environmentObject(viewController)
         }
 
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")
