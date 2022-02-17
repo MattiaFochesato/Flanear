@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 import CoreLocation
 import Combine
+import WatchConnectivity
 
 class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var locations = [
@@ -32,8 +33,16 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     var degreesCancellable: AnyCancellable? = nil
     var positionCancellable: AnyCancellable? = nil
     
+    var session: WCSession?
+    
     override init() {
         super.init()
+        
+        if WCSession.isSupported() {
+            session = .default
+            session?.delegate = self
+            session?.activate()
+        }
         
         self.degreesCancellable = LocationUtils.shared.$degrees.sink { newVal in
             self.degrees = -1 * newVal + self.bearingDegrees
@@ -49,6 +58,15 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
             //Update distance data
             self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: self.destinationLocation!)
             self.destinationDistance = self.currentLocation!.distance(from: self.destinationLocation!)
+            
+            if let validSession = self.session {
+                let dataToSend = ["distance": self.destinationDistance, "degrees": self.bearingDegrees]
+
+                validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                    print(error)
+                })
+            }
+            
         })
     }
     
@@ -71,6 +89,23 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
 
         return radiansToDegrees(radians: radiansBearing)
     }
+}
+
+extension NavigatorViewController: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("WC: sessionDidBecomeInactive")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("WC: sessionDidDeactivate")
+    }
+    
+    
 }
 
 struct Location: Identifiable {
