@@ -27,6 +27,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     @Published var destinationLocation: CLLocation? = CLLocation(latitude: 40.829170, longitude: 14.334190)
     @Published var destinationDistance: CLLocationDistance = 0
     @Published var destinationName: String = "San Giorgio a Cremano"
+    @Published var showSearch = false
     
     var degreesCancellable: AnyCancellable? = nil
     var positionCancellable: AnyCancellable? = nil
