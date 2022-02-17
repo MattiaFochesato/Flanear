@@ -21,6 +21,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var currentCity: VisitedCity?
     
     let searchPublisher = PassthroughSubject<[MKMapItem], Never>()
+    let searchWatchPublisher = PassthroughSubject<[MKMapItem], Never>()
     var startingPosition: CLLocation? = nil
     
     override init() {
@@ -114,10 +115,12 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     public func search(for resultType: MKLocalSearch.ResultType = .pointOfInterest,
-                         text: String) {
+                       text: String, isWatch: Bool = false) {
         print("search(text: \(text))")
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = text
+        if !text.isEmpty {
+            request.naturalLanguageQuery = text
+        }
         request.pointOfInterestFilter = .includingAll
         request.resultTypes = resultType
         request.region = MKCoordinateRegion(center: self.currentLocation!.coordinate,
@@ -130,7 +133,39 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
                 return
             }
             
-            self?.searchPublisher.send(response.mapItems)
+            if !isWatch {
+                self?.searchPublisher.send(response.mapItems)
+            }else{
+                self?.searchWatchPublisher.send(response.mapItems)
+            }
         }
     }
+}
+
+extension MKMapItem {
+    
+    func getPOIInfo() -> (String, String) {
+        
+        guard let pointOfInterestCategory = pointOfInterestCategory else {
+            return ("undefined","questionmark.circle.fill")
+        }
+        
+        switch pointOfInterestCategory {
+            case .amusementPark:
+                return ("amusementPark","t.circle")
+            case .aquarium:
+                return ("acquarium","t.circle")
+            case .beach:
+                return ("beach","t.circle")
+            case .cafe:
+                return ("cafe","t.circle")
+            case .restaurant:
+                return ("restourant","t.circle")
+            case .publicTransport:
+                return ("publicTransport", "tram.fill")
+            default:
+                return ("und: \(pointOfInterestCategory.rawValue)","t.circle")
+        }
+    }
+    
 }

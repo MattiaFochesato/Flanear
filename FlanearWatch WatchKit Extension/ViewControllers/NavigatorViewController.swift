@@ -8,9 +8,12 @@
 import Foundation
 import WatchConnectivity
 import CoreLocation
+import MapKit
 
 class NavigatorViewController: NSObject, ObservableObject, WCSessionDelegate, CLLocationManagerDelegate{
     var session: WCSession
+    
+    @Published var searchResults: [PlaceSearchItem]? = nil
     
     @Published var degrees: Double = .zero
     @Published var destinationLocation: CLLocation? = CLLocation(latitude: 40.829170, longitude: 14.334190)
@@ -43,7 +46,12 @@ class NavigatorViewController: NSObject, ObservableObject, WCSessionDelegate, CL
         DispatchQueue.main.async {
             let destinationDistance = message["distance"] as? CLLocationDistance
             let degrees = message["degrees"] as? Double
+            let destinationName = message["destinationName"] as? String
+            let searchResults = message["searchResults"] as? Data
             
+            if let destinationName = destinationName {
+                self.destinationName = destinationName
+            }
             if let destinationDistance = destinationDistance {
                 self.destinationDistance = destinationDistance
             }
@@ -54,7 +62,24 @@ class NavigatorViewController: NSObject, ObservableObject, WCSessionDelegate, CL
             }else{
                 
             }
+            if let searchResults = searchResults {
+                let decoder = JSONDecoder()
+                
+                if let decoded = try? decoder.decode([PlaceSearchItem].self, from: searchResults) {
+                    self.searchResults = decoded
+                }
+            }
         }
+    }
+    
+    func loadSuggestions() {
+        //if let validSession = self.session {
+        let dataToSend = ["loadSuggestions": "true"]
+
+        self.session.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+            print(error)
+        })
+        //}
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {

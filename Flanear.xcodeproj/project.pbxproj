@@ -31,6 +31,8 @@
 		269A9C7327BE484F0075B085 /* CompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */; };
 		269A9C7527BE48820075B085 /* CCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7427BE48820075B085 /* CCircleView.swift */; };
 		269A9C7827BE511B0075B085 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7727BE511B0075B085 /* NavigatorViewController.swift */; };
+		269A9C7A27BE61CF0075B085 /* PlaceSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */; };
+		269A9C7B27BE61F00075B085 /* PlaceSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */; };
 		26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994727BBAF9B00611E79 /* VisitedCity.swift */; };
 		26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */; };
 		26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994B27BBC54300611E79 /* PlaceSearchView.swift */; };
@@ -114,6 +116,7 @@
 		269790FE27B7D13800B0210B /* PickPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPlaceView.swift; sourceTree = "<group>"; };
 		269A9C7427BE48820075B085 /* CCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCircleView.swift; sourceTree = "<group>"; };
 		269A9C7727BE511B0075B085 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
+		269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchItem.swift; sourceTree = "<group>"; };
 		26A0994727BBAF9B00611E79 /* VisitedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedCity.swift; sourceTree = "<group>"; };
 		26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedCitiesViewController.swift; sourceTree = "<group>"; };
 		26A0994B27BBC54300611E79 /* PlaceSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchView.swift; sourceTree = "<group>"; };
@@ -205,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				268050BD27BBA2C0004CBC33 /* LocationUtils.swift */,
+				269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -483,6 +487,7 @@
 			files = (
 				269A9C7827BE511B0075B085 /* NavigatorViewController.swift in Sources */,
 				269790E527B7CC4E00B0210B /* NotificationController.swift in Sources */,
+				269A9C7B27BE61F00075B085 /* PlaceSearchItem.swift in Sources */,
 				269790E327B7CC4E00B0210B /* NavigatorView.swift in Sources */,
 				269790FF27B7D13900B0210B /* PickPlaceView.swift in Sources */,
 				269790E927B7CC4E00B0210B /* ComplicationController.swift in Sources */,
@@ -501,6 +506,7 @@
 				26BC9CC627B6AFBF00CE8BBD /* NavigatorView.swift in Sources */,
 				268050BE27BBA2C0004CBC33 /* LocationUtils.swift in Sources */,
 				268050BB27BB9DA0004CBC33 /* CitiesView.swift in Sources */,
+				269A9C7A27BE61CF0075B085 /* PlaceSearchItem.swift in Sources */,
 				268050AE27BA6C35004CBC33 /* DiaryViewController.swift in Sources */,
 				26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */,
 				26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */,

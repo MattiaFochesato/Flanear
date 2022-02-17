@@ -21,7 +21,6 @@ class PlaceSearchViewController: ObservableObject {
         }
     }*/
     
-    
     init() {
         self.cancellable = LocationUtils.shared.searchPublisher.sink { items in
             self.searchResults = items.map({
@@ -39,60 +38,6 @@ class PlaceSearchViewController: ObservableObject {
                 LocationUtils.shared.search(for: .pointOfInterest, text: searchText)
             }
             .store(in: &disposeBag)*/
-    }
-    
-}
-
-struct PlaceSearchItem: Identifiable {
-    var id = UUID()
-    var title: String
-    var subtitle: String
-    var image: String
-    var location: CLLocation?
-    var distance: CLLocationDistance
-    
-    init(_ mapItem: MKMapItem) {
-        self.title = mapItem.name ?? ""
-        //self.subtitle = mapItem.placemark.title ?? ""
-        
-        let info = mapItem.getPOIInfo()
-        self.subtitle = info.0//mapItem.pointOfInterestCategory?.rawValue ?? "-"
-        self.image = info.1
-        
-        self.location = mapItem.placemark.location
-        self.distance = 0
-        if let location = location {
-            if let curLoc = LocationUtils.shared.currentLocation {
-                self.distance = location.distance(from: curLoc)
-            }
-        }
-    }
-}
-
-extension MKMapItem {
-    
-    func getPOIInfo() -> (String, String) {
-        
-        guard let pointOfInterestCategory = pointOfInterestCategory else {
-            return ("undefined","questionmark.circle.fill")
-        }
-        
-        switch pointOfInterestCategory {
-            case .amusementPark:
-                return ("amusementPark","t.circle")
-            case .aquarium:
-                return ("acquarium","t.circle")
-            case .beach:
-                return ("beach","t.circle")
-            case .cafe:
-                return ("cafe","t.circle")
-            case .restaurant:
-                return ("restourant","t.circle")
-            case .publicTransport:
-                return ("publicTransport", "tram.fill")
-            default:
-                return ("und: \(pointOfInterestCategory.rawValue)","t.circle")
-        }
     }
     
 }

@@ -30,8 +30,10 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     @Published var destinationName: String = "San Giorgio a Cremano"
     @Published var showSearch = false
     
-    var degreesCancellable: AnyCancellable? = nil
-    var positionCancellable: AnyCancellable? = nil
+    private var destinationNameCancellable: AnyCancellable? = nil
+    private var degreesCancellable: AnyCancellable? = nil
+    private var positionCancellable: AnyCancellable? = nil
+    private var watchSearchCancellable: AnyCancellable? = nil
     
     var session: WCSession?
     
@@ -66,7 +68,39 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
                     print(error)
                 })
             }
-            
+        })
+        
+        self.watchSearchCancellable = LocationUtils.shared.searchWatchPublisher.sink(receiveValue: { searchResults in
+            if let validSession = self.session {
+                let sendableResults = searchResults.map({
+                    PlaceSearchItem($0)
+                }).filter({ p in
+                    return p.distance < 2000
+                }).sorted(by: { p1, p2 in
+                    return p1.distance < p2.distance
+                })
+                
+                let encoder = JSONEncoder()
+                if let encoded = try? encoder.encode(sendableResults) {
+                    let dataToSend = ["searchResults": encoded]
+
+                    validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                        print(error)
+                    })
+                }
+                
+                
+            }
+        })
+        
+        self.destinationNameCancellable = $destinationName.sink(receiveValue: { newDestination in
+            if let validSession = self.session {
+                let dataToSend = ["destinationName": newDestination]
+
+                validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                    print(error)
+                })
+            }
         })
     }
     
@@ -95,6 +129,20 @@ extension NavigatorViewController: WCSessionDelegate {
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            let loadSuggestions = message["loadSuggestions"] as? String
+            let visitNewPlace = message["visitNewPlace"] as? String
+            
+            if let _ = loadSuggestions {
+                LocationUtils.shared.search(text: "restaurant", isWatch: true)
+            }
+            if let placeToSearch = visitNewPlace {
+                #warning("TODO: search and go to place")
+            }
+        }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
