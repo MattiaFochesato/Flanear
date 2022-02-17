@@ -24,7 +24,7 @@ struct CompassCircleView: View {
                 .padding(.bottom, 350)
             #endif
                 .rotationEffect(Angle(degrees: degrees))
-                .animation(.linear)
+                //.animation(.linear)
             
             ZStack {
                 Circle()
@@ -38,7 +38,7 @@ struct CompassCircleView: View {
                     .trim(from: 0, to: getBarWidth())
                     .stroke(Color.blue, lineWidth: 15)
                     .rotationEffect(getRotationBar())
-                    .animation(.linear)
+                    //.animation(.linear)
                 
                 VStack {
                     Text("\(Int(distance))m")

@@ -9,6 +9,7 @@ import Foundation
 import CoreLocation
 import Combine
 import GRDB
+import MapKit
 
 class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     
@@ -19,6 +20,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var currentLocation: CLLocation?
     @Published var currentCity: VisitedCity?
     
+    let searchPublisher = PassthroughSubject<[MKMapItem], Never>()
     var startingPosition: CLLocation? = nil
     
     override init() {
@@ -71,6 +73,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
                 self.startingPosition = nil
                 return
             }
+            
             guard let locality = placemark.locality else {
                 self.startingPosition = nil
                 return
@@ -94,24 +97,6 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
             try? AppDatabase.shared.saveCity(&newCity)
             
         }
-        /*
-         City = Napoli;
-         Country = Italia;
-         CountryCode = IT;
-         FormattedAddressLines =     (
-             "Via Nuova Villa 68C",
-             "80146 Napoli",
-             Italia
-         );
-         Name = "Via Nuova Villa 68C";
-         State = Campania;
-         Street = "Via Nuova Villa 68C";
-         SubAdministrativeArea = "Citt\U00e0 Metropolitana di Napoli";
-         SubLocality = "Municipalit\U00e0 6";
-         SubThoroughfare = 68C;
-         Thoroughfare = "Via Nuova Villa";
-         ZIP = 80146;
-         */
     }
     
     func getPlacemarkFor(location: CLLocation) async -> CLPlacemark? {
@@ -126,5 +111,26 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
                 
             })
         })
+    }
+    
+    public func search(for resultType: MKLocalSearch.ResultType = .pointOfInterest,
+                         text: String) {
+        print("search(text: \(text))")
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = text
+        request.pointOfInterestFilter = .includingAll
+        request.resultTypes = resultType
+        request.region = MKCoordinateRegion(center: self.currentLocation!.coordinate,
+                                            latitudinalMeters: 2500,
+                                            longitudinalMeters: 2500)
+        let search = MKLocalSearch(request: request)
+        
+        search.start { [weak self](response, _) in
+            guard let response = response else {
+                return
+            }
+            
+            self?.searchPublisher.send(response.mapItems)
+        }
     }
 }
