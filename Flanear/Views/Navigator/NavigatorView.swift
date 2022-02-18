@@ -35,7 +35,7 @@ struct NavigatorView: View {
                     }.zIndex(1000)
                     
                 }else{
-                    Text("TODO")
+                    Text("We cannot find anything. Please check your GPS and internet connection.")
                 }
             }.sheet(isPresented: $viewController.showSearch) {
                 print("dismissed")

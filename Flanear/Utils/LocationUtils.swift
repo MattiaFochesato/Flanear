@@ -123,13 +123,28 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         request.pointOfInterestFilter = .includingAll
         request.resultTypes = resultType
-        request.region = MKCoordinateRegion(center: self.currentLocation!.coordinate,
+        guard let currentLocation = currentLocation else {
+            if !isWatch {
+                self.searchPublisher.send([])
+            }else{
+                self.searchWatchPublisher.send([])
+            }
+            return
+        }
+        
+        request.region = MKCoordinateRegion(center: currentLocation.coordinate,
                                             latitudinalMeters: 2500,
                                             longitudinalMeters: 2500)
+        
         let search = MKLocalSearch(request: request)
         
         search.start { [weak self](response, _) in
             guard let response = response else {
+                if !isWatch {
+                    self?.searchPublisher.send([])
+                }else{
+                    self?.searchWatchPublisher.send([])
+                }
                 return
             }
             

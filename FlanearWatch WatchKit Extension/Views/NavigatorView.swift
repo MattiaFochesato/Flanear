@@ -26,6 +26,7 @@ struct NavigatorView: View {
                 .foregroundColor(.white)
         }
         .navigationTitle("Flanear")
+        
     }
 }
 
