@@ -13,6 +13,8 @@ import MapKit
 class NavigatorViewController: NSObject, ObservableObject, WCSessionDelegate, CLLocationManagerDelegate{
     var session: WCSession
     
+    @Published var selectedTab: Int = 0
+    
     @Published var searchResults: [PlaceSearchItem]? = nil
     
     @Published var degrees: Double = .zero
@@ -73,13 +75,24 @@ class NavigatorViewController: NSObject, ObservableObject, WCSessionDelegate, CL
     }
     
     func loadSuggestions() {
-        //if let validSession = self.session {
+        searchResults = nil
+        
         let dataToSend = ["loadSuggestions": "true"]
 
         self.session.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
             print(error)
         })
-        //}
+    }
+    
+    func visit(place: PlaceSearchItem) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(place) {
+            let dataToSend = ["visitNewPlace": encoded]
+
+            session.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                print(error)
+            })
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
