@@ -25,9 +25,7 @@ struct PlaceSearchView: View {
                                     let generator = UISelectionFeedbackGenerator()
                                     generator.selectionChanged()
                                     
-                                    navVC.destinationLocation = item.location
-                                    navVC.destinationName = item.title
-                                    navVC.showSearch = false
+                                    navVC.gotTo(place: item)
                                 } label: {
                                     HStack {
                                         Image(systemName: item.image)

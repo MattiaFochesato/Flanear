@@ -14,9 +14,11 @@ struct FlanearApp: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
-                TabView {
+                TabView(selection: $viewController.selectedTab) {
                     NavigatorView()
+                        .tag(0)
                     PickPlaceView()
+                        .tag(1)
                 }
             }.environmentObject(viewController)
         }

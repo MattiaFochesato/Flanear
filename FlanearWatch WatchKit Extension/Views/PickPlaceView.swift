@@ -16,16 +16,19 @@ struct PickPlaceView: View {
                 List {
                     ForEach(searchResults) { item in
                         Button {
-                            let dataToSend = ["visitNewPlace": item.title]
-                            
-                            viewController.session.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
-                                print(error)
-                            })
+                            viewController.visit(place: item)
+                            viewController.selectedTab = 0
                         } label: {
-                            Text(item.title)
-                            Text(item.subtitle)
-                                .font(.footnote)
-                                .foregroundColor(.gray)
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(item.title)
+                                    Text(item.subtitle)
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
+                                Spacer()
+                                Text("\(Int(item.distance))m")
+                            }
                         }
                     }
                 }

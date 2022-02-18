@@ -46,28 +46,14 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
             session?.activate()
         }
         
-        self.degreesCancellable = LocationUtils.shared.$degrees.sink { newVal in
-            self.degrees = -1 * newVal + self.bearingDegrees
+        self.degreesCancellable = LocationUtils.shared.$degrees.sink { _ in
+            self.updateDegrees()
         }
         
         self.positionCancellable = LocationUtils.shared.$currentLocation.sink(receiveValue: { location in
             self.currentLocation = location
             
-            guard let location = location else { return }
-            
-            self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0007, longitudeDelta: 0.0007))
-            
-            //Update distance data
-            self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: self.destinationLocation!)
-            self.destinationDistance = self.currentLocation!.distance(from: self.destinationLocation!)
-            
-            if let validSession = self.session {
-                let dataToSend = ["distance": self.destinationDistance, "degrees": self.bearingDegrees]
-
-                validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
-                    print(error)
-                })
-            }
+            self.updateDistance()
         })
         
         self.watchSearchCancellable = LocationUtils.shared.searchWatchPublisher.sink(receiveValue: { searchResults in
@@ -123,6 +109,45 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
 
         return radiansToDegrees(radians: radiansBearing)
     }
+    
+    func gotTo(place: PlaceSearchItem) {
+        destinationLocation = place.location
+        destinationName = place.title
+        showSearch = false
+        
+        self.updateDistance()
+        self.updateDegrees()
+    }
+    
+    func updateDistance() {
+        guard let location = self.currentLocation else { return }
+        
+        self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0007, longitudeDelta: 0.0007))
+        
+        //Update distance data
+        self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: self.destinationLocation!)
+        self.destinationDistance = self.currentLocation!.distance(from: self.destinationLocation!)
+        
+        if let validSession = self.session {
+            let dataToSend = ["distance": self.destinationDistance, "degrees": self.bearingDegrees]
+
+            validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                print(error)
+            })
+        }
+    }
+    
+    func updateDegrees() {
+        self.degrees = -1 * LocationUtils.shared.degrees + self.bearingDegrees
+        
+        if let validSession = self.session {
+            let dataToSend = ["degrees": self.bearingDegrees]
+
+            validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                print(error)
+            })
+        }
+    }
 }
 
 extension NavigatorViewController: WCSessionDelegate {
@@ -134,13 +159,18 @@ extension NavigatorViewController: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
             let loadSuggestions = message["loadSuggestions"] as? String
-            let visitNewPlace = message["visitNewPlace"] as? String
+            let visitNewPlace = message["visitNewPlace"] as? Data
             
             if let _ = loadSuggestions {
                 LocationUtils.shared.search(text: "restaurant", isWatch: true)
             }
-            if let placeToSearch = visitNewPlace {
-                #warning("TODO: search and go to place")
+            if let visitNewPlace = visitNewPlace {
+                
+                let decoder = JSONDecoder()
+                
+                if let placeToGo = try? decoder.decode(PlaceSearchItem.self, from: visitNewPlace) {
+                    self.gotTo(place: placeToGo)
+                }
             }
         }
     }
