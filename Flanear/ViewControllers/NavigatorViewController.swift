@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 import CoreLocation
 import Combine
+import WatchConnectivity
 
 class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var locations = [
@@ -27,44 +28,66 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     @Published var destinationLocation: CLLocation? = CLLocation(latitude: 40.829170, longitude: 14.334190)
     @Published var destinationDistance: CLLocationDistance = 0
     @Published var destinationName: String = "San Giorgio a Cremano"
+    @Published var showSearch = false
     
-    private let locationManager: CLLocationManager
+    private var destinationNameCancellable: AnyCancellable? = nil
+    private var degreesCancellable: AnyCancellable? = nil
+    private var positionCancellable: AnyCancellable? = nil
+    private var watchSearchCancellable: AnyCancellable? = nil
+    
+    var session: WCSession?
+    
     override init() {
-        self.locationManager = CLLocationManager()
         super.init()
         
-        self.locationManager.delegate = self
-        self.startLocationManager()
-    }
-    
-    //Setup CLLocationManager
-    private func startLocationManager() {
-        //Richiedi autorizzazione
-        if self.locationManager.authorizationStatus != .authorizedWhenInUse {
-            self.locationManager.requestWhenInUseAuthorization()
+        if WCSession.isSupported() {
+            session = .default
+            session?.delegate = self
+            session?.activate()
         }
         
-        if CLLocationManager.headingAvailable() {
-            self.locationManager.startUpdatingLocation()
-            self.locationManager.startUpdatingHeading()
+        self.degreesCancellable = LocationUtils.shared.$degrees.sink { _ in
+            self.updateDegrees()
         }
-    }
-    
-    //Bussola cambia
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        self.degrees = -1 * newHeading.magneticHeading + bearingDegrees
-    }
-    
-    //Location Change
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
+        
+        self.positionCancellable = LocationUtils.shared.$currentLocation.sink(receiveValue: { location in
             self.currentLocation = location
-            self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0007, longitudeDelta: 0.0007))
             
-            //Update distance data
-            self.bearingDegrees = getBearingBetween(point1: self.currentLocation!, point2: self.destinationLocation!)
-            self.destinationDistance = self.currentLocation!.distance(from: self.destinationLocation!)
-        }
+            self.updateDistance()
+        })
+        
+        self.watchSearchCancellable = LocationUtils.shared.searchWatchPublisher.sink(receiveValue: { searchResults in
+            if let validSession = self.session {
+                let sendableResults = searchResults.map({
+                    PlaceSearchItem($0)
+                }).filter({ p in
+                    return p.distance < 2000
+                }).sorted(by: { p1, p2 in
+                    return p1.distance < p2.distance
+                })
+                
+                let encoder = JSONEncoder()
+                if let encoded = try? encoder.encode(sendableResults) {
+                    let dataToSend = ["searchResults": encoded]
+
+                    validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                        print(error)
+                    })
+                }
+                
+                
+            }
+        })
+        
+        self.destinationNameCancellable = $destinationName.sink(receiveValue: { newDestination in
+            if let validSession = self.session {
+                let dataToSend = ["destinationName": newDestination]
+
+                validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                    print(error)
+                })
+            }
+        })
     }
     
     func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }
@@ -86,6 +109,81 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
 
         return radiansToDegrees(radians: radiansBearing)
     }
+    
+    func gotTo(place: PlaceSearchItem) {
+        destinationLocation = place.location
+        destinationName = place.title
+        showSearch = false
+        
+        self.updateDistance()
+        self.updateDegrees()
+    }
+    
+    func updateDistance() {
+        guard let location = self.currentLocation else { return }
+        
+        self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0007, longitudeDelta: 0.0007))
+        
+        //Update distance data
+        self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: self.destinationLocation!)
+        self.destinationDistance = self.currentLocation!.distance(from: self.destinationLocation!)
+        
+        if let validSession = self.session {
+            let dataToSend = ["distance": self.destinationDistance, "degrees": self.bearingDegrees]
+
+            validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                print(error)
+            })
+        }
+    }
+    
+    func updateDegrees() {
+        self.degrees = -1 * LocationUtils.shared.degrees + self.bearingDegrees
+        
+        if let validSession = self.session {
+            let dataToSend = ["degrees": self.bearingDegrees]
+
+            validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                print(error)
+            })
+        }
+    }
+}
+
+extension NavigatorViewController: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            let loadSuggestions = message["loadSuggestions"] as? String
+            let visitNewPlace = message["visitNewPlace"] as? Data
+            
+            if let _ = loadSuggestions {
+                LocationUtils.shared.search(text: "restaurant", isWatch: true)
+            }
+            if let visitNewPlace = visitNewPlace {
+                
+                let decoder = JSONDecoder()
+                
+                if let placeToGo = try? decoder.decode(PlaceSearchItem.self, from: visitNewPlace) {
+                    self.gotTo(place: placeToGo)
+                }
+            }
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("WC: sessionDidBecomeInactive")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("WC: sessionDidDeactivate")
+    }
+    
+    
 }
 
 struct Location: Identifiable {

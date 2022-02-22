@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct DiaryView: View {
-    @ObservedObject var viewController = DiaryViewController()
+    let city: VisitedCity
     
+    @ObservedObject var viewController: DiaryViewController
+    
+    init(city: VisitedCity) {
+        self.city = city
+        self.viewController = DiaryViewController(city: city)
+    }
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             VStack {
                 List {
                     ForEach(viewController.places) { place in
@@ -50,13 +56,13 @@ struct DiaryView: View {
 
                     }
                 }.navigationTitle("Diary")
-            }
+            //}
         }
     }
 }
 
 struct DiaryView_Previews: PreviewProvider {
     static var previews: some View {
-        DiaryView()
+        DiaryView(city: VisitedCity.makeRandom())
     }
 }

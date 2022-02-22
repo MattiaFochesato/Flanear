@@ -32,17 +32,31 @@ final class AppDatabase {
     private var migrator: DatabaseMigrator {
         var migrator = DatabaseMigrator()
         
-        #if DEBUG
+        //#if DEBUG
         // Speed up development by nuking the database when migrations change
         // See https://github.com/groue/GRDB.swift/blob/master/Documentation/Migrations.md#the-erasedatabaseonschemachange-option
         migrator.eraseDatabaseOnSchemaChange = true
-        #endif
+        //#endif
         
-        migrator.registerMigration("createVisitedPlace") { db in
+        migrator.registerMigration("v1") { db in
             // Create a table
             // See https://github.com/groue/GRDB.swift#create-tables
+            
+            /* VISITED CITY */
+            try db.create(table: VisitedCity.databaseTableName, body: { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("name", .text).notNull()
+                t.column("state", .text).notNull()
+                t.column("image", .text).notNull()
+            })
+            
+            /* VISITED PLACE */
             try db.create(table: VisitedPlace.databaseTableName) { t in
                 t.autoIncrementedPrimaryKey("id")
+                t.column("cityId", .integer)
+                    .notNull()  
+                    .indexed()
+                    .references(VisitedCity.databaseTableName, onDelete: .cascade)
                 t.column("title", .text).notNull()
                 t.column("description", .text).notNull()
                 t.column("favourite", .boolean).notNull()
@@ -50,12 +64,6 @@ final class AppDatabase {
                 t.column("longitude", .double).notNull()
             }
         }
-        
-        // Migrations for future application versions will be inserted here:
-        // migrator.registerMigration(...) { db in
-        //     ...
-        // }
-        
         return migrator
     }
 }
@@ -67,7 +75,7 @@ extension AppDatabase {
     func createRandomPlacesIfEmpty() throws {
         try dbWriter.write { db in
             if try VisitedPlace.all().isEmpty(db) {
-                try createRandomPlaces(db)
+                //try createRandomPlaces(db)
             }
         }
     }
@@ -93,6 +101,17 @@ extension AppDatabase {
             try place.save(db)
         }
     }
+    
+    
+    /* VISITED CITY */
+    /// Saves (inserts or updates) a player. When the method returns, the
+    /// player is present in the database, and its id is not nil.
+    func saveCity(_ city: inout VisitedCity) throws {
+        try dbWriter.write { db in
+            try city.save(db)
+        }
+    }
+    
     
     /*/// Saves (inserts or updates) a player. When the method returns, the
     /// player is present in the database, and its id is not nil.

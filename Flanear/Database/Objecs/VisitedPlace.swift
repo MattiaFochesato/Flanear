@@ -12,6 +12,7 @@ import GRDB
 //VisitedPlace struct
 struct VisitedPlace: Identifiable, Hashable {
     var id: Int64?
+    var cityId: Int64?
     var title: String
     var description: String
     var favourite: Bool
@@ -22,6 +23,7 @@ struct VisitedPlace: Identifiable, Hashable {
 extension VisitedPlace: FetchableRecord {
     init(row: Row) {
         id = row["id"]
+        cityId = row["cityId"]
         title = row["title"]
         description = row["description"]
         favourite = row["favourite"]
@@ -44,7 +46,7 @@ extension VisitedPlace: FetchableRecord {
     
     /// Creates a new player with random name and random score
     static func makeRandom() -> VisitedPlace {
-        VisitedPlace(id: nil, title: names.randomElement()!, description: "Test Place", favourite: bools.randomElement()!, coordinate: CLLocationCoordinate2D(latitude: randomScore(), longitude: randomScore()))
+        VisitedPlace(title: names.randomElement()!, description: "Test Place", favourite: bools.randomElement()!, coordinate: CLLocationCoordinate2D(latitude: randomScore(), longitude: randomScore()))
     }
     
     /// Returns a random score
@@ -56,12 +58,18 @@ extension VisitedPlace: FetchableRecord {
 //Set the table name
 extension VisitedPlace: TableRecord {
     static let databaseTableName = "VisitedPlaces"
+    
+    static let city = belongsTo(VisitedCity.self)
+    var city: QueryInterfaceRequest<VisitedCity> {
+        request(for: VisitedPlace.city)
+    }
 }
 
 extension VisitedPlace : MutablePersistableRecord {
     /// The values persisted in the database
     func encode(to container: inout PersistenceContainer) {
         container["id"] = id
+        container["cityId"] = cityId
         container["title"] = title
         container["description"] = description
         container["favourite"] = favourite
