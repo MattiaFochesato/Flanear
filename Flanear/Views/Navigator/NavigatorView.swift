@@ -9,43 +9,55 @@ import SwiftUI
 import MapKit
 
 struct NavigatorView: View {
-    @State var tracking: MapUserTrackingMode = .follow
-    @ObservedObject var viewController = NavigatorViewController()
     
-    @State var test = ""
+    @ObservedObject var viewController = NavigatorViewController()
+    @ObservedObject var searchViewController = PlaceSearchViewController()
+    
+    @State var searchText = ""
     
     var body: some View {
         NavigationView {
-            ZStack {
-                if test.count == 0 {
-                    Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: false, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
-                        MapMarker(coordinate: location.coordinate)
-                    }//.ignoresSafeArea()
-                    .overlay(Rectangle()
-                                .foregroundColor(.clear)
-                                .background(RadialGradient(gradient: Gradient(colors: [.clear, .white]), center: .center, startRadius: 140, endRadius: 400))
-                                .allowsHitTesting(false) )
-                    .disabled(true)
-                    
-                    CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
-                    
-                    ZStack(alignment: .top) {
-                        Color.clear
-                        SearchToolbarView(showSearch:  $viewController.showSearch)
-                    }.zIndex(1000)
-                    
-                }else{
-                    Text("We cannot find anything. Please check your GPS and internet connection.")
-                }
-            }.sheet(isPresented: $viewController.showSearch) {
-                print("dismissed")
-            } content: {
-                PlaceSearchView()
-            }
-            .navigationTitle("Explore")
-            .searchable(text: $test)
+            NavigatorSearchableView()//searchText: $searchText)
+                .navigationTitle("Explore")
+                .searchable(text: $searchViewController.searchText)
         }.environmentObject(viewController)
+            .environmentObject(searchViewController)
     }
+}
+
+struct NavigatorSearchableView: View {
+    @State var tracking: MapUserTrackingMode = .follow
+    @Environment(\.isSearching) var isSearching
+    
+    @EnvironmentObject var viewController: NavigatorViewController
+    
+    //@Binding var searchText: String
+    
+    var body: some View {
+        ZStack {
+            if !isSearching {
+                Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: false, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
+                    MapMarker(coordinate: location.coordinate)
+                }//.ignoresSafeArea()
+                .overlay(Rectangle()
+                            .foregroundColor(.clear)
+                            .background(RadialGradient(gradient: Gradient(colors: [.clear, .white]), center: .center, startRadius: 140, endRadius: 400))
+                            .allowsHitTesting(false) )
+                .disabled(true)
+                
+                CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
+                
+                /*ZStack(alignment: .top) {
+                    Color.clear
+                    SearchToolbarView(showSearch:  $viewController.showSearch)
+                }.zIndex(1000)*/
+            }else{
+                PlaceSearchView()//searchText: $searchText)
+                //Text("Test")
+            }
+        }
+    }
+    
 }
 
 struct SearchToolbarView: View {

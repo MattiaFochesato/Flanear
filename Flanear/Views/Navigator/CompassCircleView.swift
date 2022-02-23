@@ -15,22 +15,22 @@ struct CompassCircleView: View {
     let isWatch = false
 #endif
     
-    @Binding var degrees: Double// = .zero
+    @Binding var degrees: Double?// = .zero
     @Binding var near: Double//= 1
     @Binding var distance: CLLocationDistance
-    @Binding var placeName: String
+    @Binding var placeName: String?
     var body: some View {
         ZStack {
-            /*Triangle()
-             .fill(Color("TextDarkBlue"))
-             .frame(width: 70, height: 50)
-             #if os(watchOS)
-             .padding(.bottom, 10)
-             #else
-             .padding(.bottom, 350)
-             #endif
-             .rotationEffect(Angle(degrees: degrees))
-             //.animation(.linear)*/
+            #if os(iOS)
+            if let degrees = degrees {
+                Triangle()
+                 .fill(Color("TextDarkBlue"))
+                 .frame(width: 70, height: 50)
+                 .padding(.bottom, 350)
+                 .rotationEffect(Angle(degrees: degrees))
+            }
+             //.animation(.linear)
+            #endif
             
             ZStack {
                 Circle()
@@ -55,7 +55,7 @@ struct CompassCircleView: View {
                         .padding([.leading, .trailing], 20)
                     
                     if !isWatch {
-                        Text(placeName)
+                        Text(placeName ?? "Not selected")
                             .font(.title2)
                             .foregroundColor(Color("TextDarkBlue"))
                     }
@@ -76,6 +76,10 @@ struct CompassCircleView: View {
     }
     
     func getRotationBar() -> Angle {
+        guard let degrees = degrees else {
+            return Angle(degrees: -90)
+        }
+
         let width = getBarWidth() / 2
         let deg = radiansToDegrees(radians: width * .pi * 2)
         

@@ -19,7 +19,7 @@ struct NavigatorView: View {
             
             Spacer()
             
-            Text(viewController.destinationName)
+            Text(viewController.destinationName ?? "Not selected")
                 .font(.title3)
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)
