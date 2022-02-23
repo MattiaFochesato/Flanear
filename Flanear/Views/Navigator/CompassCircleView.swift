@@ -63,11 +63,6 @@ struct CompassCircleView: View {
                         .minimumScaleFactor(0.6)
                         .padding([.leading, .trailing], 20)
                     
-                    /*if !isWatch {
-                        Text(placeName ?? "Not selected")
-                            .fontWeight(.black)
-                            .foregroundColor(Color("TextDarkBlue"))
-                    }*/
                 }
                 
             }
@@ -109,20 +104,6 @@ struct Triangle: Shape {
         
         return path
     }
-    
-    /*
-     arc:
-     func path(in rect: CGRect) -> Path {
-     let rotationAdjustment = Angle.degrees(90)
-     let modifiedStart = startAngle - rotationAdjustment
-     let modifiedEnd = endAngle - rotationAdjustment
-     
-     var path = Path()
-     path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: !clockwise)
-     
-     return path
-     }
-     */
 }
 
 struct CompassCircleView_Previews: PreviewProvider {

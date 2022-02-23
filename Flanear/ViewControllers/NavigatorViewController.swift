@@ -15,8 +15,6 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     @Published var locations = [
         PlaceSearchItem(title: "Developer Academy", description: "Description todo", latitude: 40.836210, longitude: 14.306480),
         PlaceSearchItem(title: "San Giorgio a Cremano", description: "Description todo", latitude: 40.829170, longitude: 14.334190),
-        /*Location(name: "San Giorgio a Cremano", coordinate: CLLocationCoordinate2D(latitude: 40.829170, longitude: 14.334190)),
-        Location(name: "Developer Academy", coordinate: CLLocationCoordinate2D(latitude: 40.836210, longitude: 14.306480))*/
         
     ]
     
@@ -85,7 +83,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
             if let validSession = self.session {
                 let dataToSend = ["destinationName": newDestination]
 
-                validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                validSession.sendMessage(dataToSend as [String : Any], replyHandler: nil, errorHandler: { error in
                     print(error)
                 })
             }

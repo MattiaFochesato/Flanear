@@ -31,13 +31,10 @@ struct NavigatorSearchableView: View {
     
     @EnvironmentObject var viewController: NavigatorViewController
     
-    //@Binding var searchText: String
-    
     var body: some View {
         ZStack {
             if !isSearching {
                 Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: viewController.destinationLocation == nil, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
-                    //MapMarker(coordinate: location.coordinate)
                     MapAnnotation(coordinate: location.location.coordinate) {
                         Button {
                             viewController.gotTo(place: location)
@@ -80,8 +77,7 @@ struct NavigatorSearchableView: View {
                      }.zIndex(1000)
                 }
             }else{
-                PlaceSearchView()//searchText: $searchText)
-                //Text("Test")
+                PlaceSearchView()
             }
         }
     }

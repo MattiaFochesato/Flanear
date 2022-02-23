@@ -9,23 +9,14 @@ import SwiftUI
 
 struct PlaceSearchView: View {
     @EnvironmentObject var viewController: PlaceSearchViewController
-    //@Binding var searchText: String
     @EnvironmentObject var navVC: NavigatorViewController
     
-    /*init(searchText: Binding<String>) {
-     self._searchText = searchText
-     self._viewController = StateObject(wrappedValue:  PlaceSearchViewController(searchText: searchText))
-     }*/
     
     @Environment(\.dismissSearch) private var dismissSearch
     
     var body: some View {
-        //NavigationView {
         VStack(alignment: .leading) {
             if viewController.searchText.count == 0 {
-                /*Text("Suggestions")
-                    .font(.title2)
-                    .padding(.leading, 12)*/
                 
                 List(navVC.locations) { item in
                     Button {
@@ -121,9 +112,8 @@ struct PlaceSearchView: View {
                     }
                 }
             }
-            //}.navigationTitle("Search")
+            
         }
-        //.searchable(text: $viewController.searchText)
         .onReceive(
             viewController.$searchText
                 .debounce(for: .seconds(1), scheduler: DispatchQueue.main)

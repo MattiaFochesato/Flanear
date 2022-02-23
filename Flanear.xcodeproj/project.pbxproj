@@ -44,8 +44,8 @@
 		26B8548527C6363600C37004 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548427C6363600C37004 /* QuartzCore.framework */; };
 		26B8548727C6363D00C37004 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548627C6363D00C37004 /* UIKit.framework */; };
 		26B8548927C6373600C37004 /* GooglePlaces.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548827C6373600C37004 /* GooglePlaces.xcframework */; };
-		26B8548B27C6377400C37004 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26B8548A27C6377400C37004 /* GooglePlaces.bundle */; };
 		26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8548C27C637FC00C37004 /* AppDelegate.swift */; };
+		26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26B8548E27C6791900C37004 /* GooglePlaces.bundle */; };
 		26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */; };
 		26BC9CC627B6AFBF00CE8BBD /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */; };
 		26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */; };
@@ -137,8 +137,8 @@
 		26B8548427C6363600C37004 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26B8548627C6363D00C37004 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		26B8548827C6373600C37004 /* GooglePlaces.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GooglePlaces.xcframework; sourceTree = "<group>"; };
-		26B8548A27C6377400C37004 /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = "GooglePlaces.xcframework/ios-arm64/GooglePlaces.framework/Resources/GooglePlaces.bundle"; sourceTree = "<group>"; };
 		26B8548C27C637FC00C37004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		26B8548E27C6791900C37004 /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = "GooglePlaces.xcframework/ios-arm64/GooglePlaces.framework/Resources/GooglePlaces.bundle"; sourceTree = "<group>"; };
 		26BC9CC027B6AFBF00CE8BBD /* Flanear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flanear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlanearApp.swift; sourceTree = "<group>"; };
 		26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
@@ -313,8 +313,6 @@
 			isa = PBXGroup;
 			children = (
 				268050B727BAC296004CBC33 /* .gitignore */,
-				26B8548827C6373600C37004 /* GooglePlaces.xcframework */,
-				26B8548A27C6377400C37004 /* GooglePlaces.bundle */,
 				268050B627BAC287004CBC33 /* README.md */,
 				26BC9CC227B6AFBF00CE8BBD /* Flanear */,
 				269790D427B7CC4B00B0210B /* FlanearWatch */,
@@ -346,6 +344,8 @@
 				268050B127BA70DE004CBC33 /* Extensions */,
 				268050BC27BBA2A5004CBC33 /* Utils */,
 				26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */,
+				26B8548827C6373600C37004 /* GooglePlaces.xcframework */,
+				26B8548E27C6791900C37004 /* GooglePlaces.bundle */,
 				26BC9CC927B6AFC000CE8BBD /* Preview Content */,
 			);
 			path = Flanear;
@@ -515,8 +515,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */,
 				26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */,
-				26B8548B27C6377400C37004 /* GooglePlaces.bundle in Resources */,
 				26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
