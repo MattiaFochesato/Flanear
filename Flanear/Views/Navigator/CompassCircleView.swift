@@ -24,7 +24,9 @@ struct CompassCircleView: View {
             #if os(iOS)
             if let degrees = degrees {
                 Triangle()
-                 .fill(Color("TextDarkBlue"))
+                
+                    
+                    .fill(Color("PaletteLightBlue"))
                  .frame(width: 70, height: 50)
                  .padding(.bottom, 350)
                  .rotationEffect(Angle(degrees: degrees))
@@ -35,28 +37,36 @@ struct CompassCircleView: View {
             ZStack {
                 Circle()
                     .stroke(Color.white, lineWidth: !isWatch ? 30 : 12)
-                    .background(
-                        LinearGradient(gradient: Gradient(colors: [.blue, .clear]), startPoint: .top, endPoint: .bottom)
+                    .background(Color("PaletteYellow").opacity(0.5))
                             .clipShape(Circle())
-                    )
+                            
+                        Circle()
+                    .stroke(.black, lineWidth: 30)
+                    .foregroundColor(.clear)
+                
+                        Circle()
+                    .stroke(.white, lineWidth: 27)
+                    .foregroundColor(.clear)
+                   
+                    
                 
                 Circle()
                     .trim(from: 0, to: getBarWidth())
-                    .stroke(Color.blue, lineWidth: !isWatch ? 15 : 8)
+                    .stroke(Color("PaletteLightBlue"), lineWidth: !isWatch ? 15 : 8)
                     .rotationEffect(getRotationBar())
                 //.animation(.linear)
                 
                 VStack {
                     Text("\(Int(distance))m")
-                        .foregroundColor(!isWatch ? Color("TextDarkBlue") : .white)
+                        .foregroundColor(!isWatch ? Color(.black) : .white)
                         .font(!isWatch ? .largeTitle : .title2)
-                        .bold()
+                        .fontWeight(.black)
                         .minimumScaleFactor(0.6)
                         .padding([.leading, .trailing], 20)
                     
                     if !isWatch {
                         Text(placeName ?? "Not selected")
-                            .font(.title2)
+                            .fontWeight(.black)
                             .foregroundColor(Color("TextDarkBlue"))
                     }
                 }
