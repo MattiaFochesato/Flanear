@@ -18,7 +18,7 @@ struct DiaryView: View {
     }
     
     var body: some View {
-        //NavigationView {
+        NavigationView {
             VStack {
                 List {
                     if viewController.places.isEmpty {
@@ -60,7 +60,7 @@ struct DiaryView: View {
                         }
                     }
                 }.navigationTitle("Diary")
-            //}
+            }
         }
     }
 }

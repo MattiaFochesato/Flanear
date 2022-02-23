@@ -12,8 +12,9 @@ struct CitiesView: View {
     
     var body: some View {
         NavigationView {
+             
             List {
-                //VStack {
+                VStack {
                     ForEach(viewController.cities) { city in
                         NavigationLink {
                             DiaryView(city: city)
@@ -22,20 +23,22 @@ struct CitiesView: View {
                         }
 
                     }
-                //}
-            }.navigationTitle("Your Cities")
-        }
+                }
+            }
+            
+        }.navigationTitle("Your Cities")
     }
-}
 
 struct CityRow: View {
     let city: VisitedCity
     
     var body: some View {
+        
         VStack {
             Text(city.name)
                 .font(.title2)
                 .bold()
+            VStack (alignment: .leading){
             if let url = URL(string: city.image) {
                 AsyncImage(url: url) { image in
                     image.resizable()
@@ -43,10 +46,15 @@ struct CityRow: View {
                 } placeholder: {
                     ProgressView()
                 }.clipShape(RoundedRectangle(cornerRadius: 12))
+                Text("20% completed")
+                    .fontWeight(.medium)
+                    .padding([.leading, .bottom])
             }else{
                 ProgressView()
             }
-        }
+            }
+            .background(.yellow)
+            .cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
     }
     
 }
@@ -57,4 +65,6 @@ struct CitiesView_Previews: PreviewProvider {
             .frame(width: 300, height: 300)
         CitiesView()
     }
+}
+}
 }
