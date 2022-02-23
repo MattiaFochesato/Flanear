@@ -15,13 +15,14 @@ class PlaceSearchViewController: ObservableObject {
     //private var disposeBag = Set<AnyCancellable>()
     private var cancellable: AnyCancellable?
     @Published var searchResults: [PlaceSearchItem]? = nil
-    @Published var searchText = ""/*{
+    @Published var searchText: String = ""/*= ""*//*{
         didSet {
             //LocationUtils.shared.search(for: .pointOfInterest, text: searchText)
         }
     }*/
     
-    init() {
+    init() {//searchText: Binding<String>) {
+        //self._searchText = searchText
         self.cancellable = LocationUtils.shared.searchPublisher.sink { items in
             self.searchResults = items.map({
                 PlaceSearchItem($0)
@@ -38,6 +39,8 @@ class PlaceSearchViewController: ObservableObject {
                 LocationUtils.shared.search(for: .pointOfInterest, text: searchText)
             }
             .store(in: &disposeBag)*/
+        
+        
     }
     
 }

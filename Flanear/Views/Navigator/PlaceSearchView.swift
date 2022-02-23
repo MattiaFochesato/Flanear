@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct PlaceSearchView: View {
-    @StateObject var viewController = PlaceSearchViewController()
-    
+    @EnvironmentObject var viewController: PlaceSearchViewController
+    //@Binding var searchText: String
     @EnvironmentObject var navVC: NavigatorViewController
     
+    /*init(searchText: Binding<String>) {
+        self._searchText = searchText
+        self._viewController = StateObject(wrappedValue:  PlaceSearchViewController(searchText: searchText))
+    }*/
+    
+    @Environment(\.dismissSearch) private var dismissSearch
+    
     var body: some View {
-        NavigationView {
+        //NavigationView {
             VStack {
                 if viewController.searchText.count == 0 {
                     Text("TODO suggestions")
@@ -26,6 +33,7 @@ struct PlaceSearchView: View {
                                     generator.selectionChanged()
                                     
                                     navVC.gotTo(place: item)
+                                    dismissSearch()
                                 } label: {
                                     HStack {
                                         Image(systemName: item.image)
@@ -49,7 +57,7 @@ struct PlaceSearchView: View {
                         }
                     }else{
                         List {
-                            ForEach((0..<10)) { _ in
+                            ForEach((0..<4)) { _ in
                                 HStack {
                                     Image(systemName: "greaterthan.circle.fill")
                                     VStack(alignment: .leading) {
@@ -62,9 +70,9 @@ struct PlaceSearchView: View {
                         }
                     }
                 }
-            }.navigationTitle("Search")
+            //}.navigationTitle("Search")
         }
-        .searchable(text: $viewController.searchText)
+        //.searchable(text: $viewController.searchText)
         .onReceive(
             viewController.$searchText
                 .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
@@ -85,6 +93,6 @@ struct PlaceSearchView: View {
 
 struct PlaceSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceSearchView()
+        PlaceSearchView()//searchText: .constant(""))
     }
 }

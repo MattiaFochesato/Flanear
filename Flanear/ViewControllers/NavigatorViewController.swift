@@ -19,15 +19,15 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     ]
     
     private var bearingDegrees: Double = .zero
-    @Published var degrees: Double = .zero
+    @Published var degrees: Double? = nil//.zero
     @Published var currentLocation: CLLocation?
     @Published var region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 38.898150, longitude: -77.034340),
             span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
         )
-    @Published var destinationLocation: CLLocation? = CLLocation(latitude: 40.829170, longitude: 14.334190)
+    @Published var destinationLocation: CLLocation? = nil//CLLocation(latitude: 40.829170, longitude: 14.334190)
     @Published var destinationDistance: CLLocationDistance = 0
-    @Published var destinationName: String = "San Giorgio a Cremano"
+    @Published var destinationName: String? = nil//"San Giorgio a Cremano"
     @Published var showSearch = false
     
     private var destinationNameCancellable: AnyCancellable? = nil
@@ -121,12 +121,13 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     
     func updateDistance() {
         guard let location = self.currentLocation else { return }
+        guard let destinationLocation = self.destinationLocation else { return }
         
         self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0007, longitudeDelta: 0.0007))
         
         //Update distance data
-        self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: self.destinationLocation!)
-        self.destinationDistance = self.currentLocation!.distance(from: self.destinationLocation!)
+        self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: destinationLocation)
+        self.destinationDistance = self.currentLocation!.distance(from: destinationLocation)
         
         if let validSession = self.session {
             let dataToSend = ["distance": self.destinationDistance, "degrees": self.bearingDegrees]
@@ -138,6 +139,11 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     }
     
     func updateDegrees() {
+        guard let _ = self.destinationLocation else {
+            self.degrees = nil
+            return
+        }
+        
         self.degrees = -1 * LocationUtils.shared.degrees + self.bearingDegrees
         
         if let validSession = self.session {
