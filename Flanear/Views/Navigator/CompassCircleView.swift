@@ -24,12 +24,11 @@ struct CompassCircleView: View {
             #if os(iOS)
             if let degrees = degrees {
                 Triangle()
-                
-                    
                     .fill(Color("PaletteLightBlue"))
                  .frame(width: 70, height: 50)
-                 .padding(.bottom, 350)
+                 .padding(.bottom, 300)
                  .rotationEffect(Angle(degrees: degrees))
+                
             }
              //.animation(.linear)
             #endif
@@ -52,7 +51,7 @@ struct CompassCircleView: View {
                 
                 Circle()
                     .trim(from: 0, to: getBarWidth())
-                    .stroke(Color("PaletteLightBlue"), lineWidth: !isWatch ? 15 : 8)
+                    .stroke(Color("PaletteLightBlue"), lineWidth: !isWatch ? 23 : 8)
                     .rotationEffect(getRotationBar())
                 //.animation(.linear)
                 
@@ -64,20 +63,20 @@ struct CompassCircleView: View {
                         .minimumScaleFactor(0.6)
                         .padding([.leading, .trailing], 20)
                     
-                    if !isWatch {
+                    /*if !isWatch {
                         Text(placeName ?? "Not selected")
                             .fontWeight(.black)
                             .foregroundColor(Color("TextDarkBlue"))
-                    }
+                    }*/
                 }
                 
             }
 #if os(iOS)
-            .frame(width: 300, height: 300, alignment: .center)
+            .frame(width: 200, height: 200, alignment: .center)
 #endif
         }
 #if os(iOS)
-        .frame(width: 300, height: 300, alignment: .center)
+        .frame(width: 200, height: 200, alignment: .center)
 #endif
     }
     

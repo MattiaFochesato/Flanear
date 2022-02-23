@@ -68,6 +68,17 @@ struct NavigatorSearchableView: View {
                         .frame(height: 200)
                         .cornerRadius(12)
                  }.zIndex(1000)*/
+                
+                if let destName = viewController.destinationName {
+                    ZStack(alignment: .bottom) {
+                        Color.clear
+                        HStack {
+                            Text(destName)
+                        }.frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .background(.white)
+                     }.zIndex(1000)
+                }
             }else{
                 PlaceSearchView()//searchText: $searchText)
                 //Text("Test")
