@@ -46,6 +46,8 @@
 		26B8548927C6373600C37004 /* GooglePlaces.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548827C6373600C37004 /* GooglePlaces.xcframework */; };
 		26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8548C27C637FC00C37004 /* AppDelegate.swift */; };
 		26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26B8548E27C6791900C37004 /* GooglePlaces.bundle */; };
+		26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */; };
+		26B854A727C69F7700C37004 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
 		26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */; };
 		26BC9CC627B6AFBF00CE8BBD /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */; };
 		26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */; };
@@ -139,6 +141,9 @@
 		26B8548827C6373600C37004 /* GooglePlaces.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GooglePlaces.xcframework; sourceTree = "<group>"; };
 		26B8548C27C637FC00C37004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26B8548E27C6791900C37004 /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = "GooglePlaces.xcframework/ios-arm64/GooglePlaces.framework/Resources/GooglePlaces.bundle"; sourceTree = "<group>"; };
+		26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		26B854A827C69F7700C37004 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		26B854AA27C69F7800C37004 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		26BC9CC027B6AFBF00CE8BBD /* Flanear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flanear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlanearApp.swift; sourceTree = "<group>"; };
 		26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				268050B227BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift */,
+				26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 				26B8548827C6373600C37004 /* GooglePlaces.xcframework */,
 				26B8548E27C6791900C37004 /* GooglePlaces.bundle */,
 				26BC9CC927B6AFC000CE8BBD /* Preview Content */,
+				26B854A927C69F7700C37004 /* Localizable.strings */,
 			);
 			path = Flanear;
 			sourceTree = "<group>";
@@ -477,6 +484,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 26BC9CB727B6AFBE00CE8BBD;
 			packageReferences = (
@@ -516,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */,
+				26B854A727C69F7700C37004 /* Localizable.strings in Resources */,
 				26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */,
 				26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */,
 			);
@@ -556,6 +565,7 @@
 				26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */,
 				268050B027BA6EBD004CBC33 /* AppDatabase.swift in Sources */,
 				26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */,
+				26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */,
 				26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */,
 				26BC9CD227B6B08200CE8BBD /* DiaryView.swift in Sources */,
 				268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */,
@@ -582,6 +592,18 @@
 			targetProxy = 269790F127B7CC4F00B0210B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		26B854A927C69F7700C37004 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26B854A827C69F7700C37004 /* en */,
+				26B854AA27C69F7800C37004 /* it */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		269790F527B7CC4F00B0210B /* Debug */ = {

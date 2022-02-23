@@ -18,7 +18,7 @@ struct NavigatorView: View {
     var body: some View {
         NavigationView {
             NavigatorSearchableView()//searchText: $searchText)
-                .navigationTitle("Explore")
+                .navigationTitle("explore")
                 .searchable(text: $searchViewController.searchText, placement: .navigationBarDrawer(displayMode: .always))
         }.environmentObject(viewController)
             .environmentObject(searchViewController)
@@ -73,8 +73,9 @@ struct NavigatorSearchableView: View {
                             Text(destName)
                         }.frame(maxWidth: .infinity)
                             .frame(height: 40)
-                            .background(.white)
+                            .background(.gray)
                      }.zIndex(1000)
+                        .padding(.bottom, 1)//Fix for TabBar color iOS 15
                 }
             }else{
                 PlaceSearchView()

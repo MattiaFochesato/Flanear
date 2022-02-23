@@ -24,8 +24,15 @@ struct CompassCircleView: View {
             #if os(iOS)
             if let degrees = degrees {
                 Triangle()
-                    .fill(Color("PaletteLightBlue"))
-                 .frame(width: 70, height: 50)
+                .stroke(style: StrokeStyle(lineWidth: 12, lineJoin: .round))
+                .fill(Color("PaletteLightBlue"))
+                 .frame(width: 60, height: 40)
+                 .padding(.bottom, 300)
+                 .rotationEffect(Angle(degrees: degrees))
+                
+                Triangle()
+                 .fill(Color("PaletteLightBlue"))
+                 .frame(width: 60, height: 40)
                  .padding(.bottom, 300)
                  .rotationEffect(Angle(degrees: degrees))
                 
@@ -101,9 +108,11 @@ struct Triangle: Shape {
         path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.closeSubpath()
         
         return path
     }
+    
 }
 
 struct CompassCircleView_Previews: PreviewProvider {

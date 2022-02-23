@@ -66,7 +66,7 @@ struct DiaryView: View {
                         }
                     }
                 }
-        }.navigationTitle("Diary")
+            }.navigationTitle(city.name)
     }
 }
 

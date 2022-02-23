@@ -1,7 +1,5 @@
-
 # Chickpeas 🍗 - Flanear
 
-  
 **Flanear** is an app created for the **MC3** by the team called **Chickpeas 🍗**.
 
 It is an app that helps Causual Walking Traveles who want to visit a new city without route constraints.

@@ -37,7 +37,7 @@ struct PlaceSearchView: View {
                                 
                             }
                             Spacer()
-                            Text("\(Int(item.distance))m")
+                            Text("\(Int(item.distance)) m")
                                 .foregroundColor(.black)
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.black)
@@ -75,10 +75,11 @@ struct PlaceSearchView: View {
                                             HStack {
                                                 Image(systemName: "exclamationmark.triangle.fill")
                                                     .foregroundColor(.orange)
-                                                Text("Warning! ")
+                                                Text("warning")
                                                     .bold()
                                                     .foregroundColor(.orange) +
-                                                Text("The place can be too far away.")
+                                                    Text(" ") +
+                                                Text("place-too-far-away")
                                             }.padding(.top, 4)
                                         }
                                     }
@@ -94,7 +95,7 @@ struct PlaceSearchView: View {
                             .padding(10)
                             .background(.primary)
                             .clipShape(Circle())
-                        Text("No results")
+                        Text("search-no-results")
                             .bold()
                     }
                 }else{

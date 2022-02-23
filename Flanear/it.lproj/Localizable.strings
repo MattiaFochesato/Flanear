@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Flanear
+
+  Created by Mattia Fochesato on 23/02/22.
+  
+*/
+
+"explore" = "Esplora";
+"your-cities" = "Città Visitate";
+
+"warning" = "Attenzione!";
+"place-too-far-away" = "Questo luogo è lontano!";
+
+"search-no-results" = "Non riesco a trovare questo luogo.\nControlla il nome inserito!";

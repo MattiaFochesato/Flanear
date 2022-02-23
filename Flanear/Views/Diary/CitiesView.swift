@@ -66,7 +66,7 @@ struct CitiesView: View {
                                 .frame(height: 200)
                         }.clipShape(RoundedRectangle(cornerRadius: 12))
                             .overlay(RoundedRectangle(cornerRadius: 12)
-                                        .stroke(.black, lineWidth: 3))
+                                        .stroke(.black, lineWidth: 2))
                         Text("20% completed")
                             .fontWeight(.medium)
                             .padding([.leading, .bottom, .top])
@@ -77,7 +77,7 @@ struct CitiesView: View {
                 .background(.yellow)
                 .cornerRadius(12)
                 .overlay(RoundedRectangle(cornerRadius: 12)
-                            .stroke(.black, lineWidth: 3))
+                            .stroke(.black, lineWidth: 2))
                 .shadow(color: Color("Shadow"), radius: 6, x: 0, y: 2)
             }.foregroundColor(.black)
             
