@@ -133,8 +133,8 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         
         request.region = MKCoordinateRegion(center: currentLocation.coordinate,
-                                            latitudinalMeters: 2500,
-                                            longitudinalMeters: 2500)
+                                            latitudinalMeters: 30000,
+                                            longitudinalMeters: 30000)
         
         let search = MKLocalSearch(request: request)
         

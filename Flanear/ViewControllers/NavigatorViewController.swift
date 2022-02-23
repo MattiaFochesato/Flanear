@@ -13,7 +13,8 @@ import WatchConnectivity
 
 class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var locations = [
-        PlaceSearchItem(title: "Developer Academy", description: "Best place", latitude: 40.836210, longitude: 14.306480)
+        PlaceSearchItem(title: "Developer Academy", description: "Description todo", latitude: 40.836210, longitude: 14.306480),
+        PlaceSearchItem(title: "San Giorgio a Cremano", description: "Description todo", latitude: 40.829170, longitude: 14.334190),
         /*Location(name: "San Giorgio a Cremano", coordinate: CLLocationCoordinate2D(latitude: 40.829170, longitude: 14.334190)),
         Location(name: "Developer Academy", coordinate: CLLocationCoordinate2D(latitude: 40.836210, longitude: 14.306480))*/
         

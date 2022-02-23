@@ -18,12 +18,18 @@ struct DiaryView: View {
     }
     
     var body: some View {
-        NavigationView {
             VStack {
-                List {
-                    if viewController.places.isEmpty {
-                        Text("Such empty")
-                    }else {
+                if viewController.places.isEmpty {
+                    Image(systemName: "map.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .background(.primary)
+                        .clipShape(Circle())
+                    Text("Such empty")
+                        .bold()
+                }else {
+                    List {
                         ForEach(viewController.places) { place in
                             NavigationLink {
                                 PlaceInfoView(place: place)
@@ -56,11 +62,10 @@ struct DiaryView: View {
                                     }
                                 }
                             }
-
+                            
                         }
                     }
                 }
-            }
         }.navigationTitle("Diary")
     }
 }

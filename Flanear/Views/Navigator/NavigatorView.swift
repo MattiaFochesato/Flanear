@@ -19,7 +19,7 @@ struct NavigatorView: View {
         NavigationView {
             NavigatorSearchableView()//searchText: $searchText)
                 .navigationTitle("Explore")
-                .searchable(text: $searchViewController.searchText)
+                .searchable(text: $searchViewController.searchText, placement: .navigationBarDrawer(displayMode: .always))
         }.environmentObject(viewController)
             .environmentObject(searchViewController)
     }
@@ -62,9 +62,11 @@ struct NavigatorSearchableView: View {
                     CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
                     
                 }
-                /*ZStack(alignment: .top) {
-                 Color.clear
-                 SearchToolbarView(showSearch:  $viewController.showSearch)
+                /*ZStack(alignment: .bottom) {
+                    Color.clear
+                    SuggestedPlacesView()
+                        .frame(height: 200)
+                        .cornerRadius(12)
                  }.zIndex(1000)*/
             }else{
                 PlaceSearchView()//searchText: $searchText)
@@ -75,32 +77,11 @@ struct NavigatorSearchableView: View {
     
 }
 
-struct SearchToolbarView: View {
-    //@Binding var text: String
-    //@State private var isEditing = false
-    
-    @Binding var showSearch: Bool
-    
+struct SuggestedPlacesView: View {
     var body: some View {
-        VStack {
-            Button {
-                self.showSearch.toggle()
-            } label: {
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.white)
-                    Text("Search")
-                        .foregroundColor(.white)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                }.frame(height: 40)
-                    .padding(.leading, 16)
-                    .background(RoundedRectangle(cornerRadius: 8)
-                                    .foregroundColor(.gray))
-            }
-            
-        }
-        .padding([.leading, .trailing], 8)
-        
+        List {
+            Text("Test")
+        }.foregroundColor(.white)
     }
 }
 
