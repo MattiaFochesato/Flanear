@@ -27,7 +27,7 @@ class PlaceSearchViewController: ObservableObject {
             self.searchResults = items.map({
                 PlaceSearchItem($0)
             }).filter({ p in
-                return p.distance < 2000
+                return p.distance < 25000
             }).sorted(by: { p1, p2 in
                 return p1.distance < p2.distance
             })

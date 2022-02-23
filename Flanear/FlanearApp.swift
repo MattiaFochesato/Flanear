@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct FlanearApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -18,7 +19,7 @@ struct FlanearApp: App {
                     }
                 CitiesView()
                     .tabItem {
-                        Label("Diary", systemImage: "book.closed.fill")
+                        Label("Your Cities", systemImage: "book.closed.fill")
                     }
             }
         }

@@ -13,8 +13,10 @@ import WatchConnectivity
 
 class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var locations = [
-        Location(name: "San Giorgio a Cremano", coordinate: CLLocationCoordinate2D(latitude: 40.829170, longitude: 14.334190)),
-        Location(name: "Developer Academy", coordinate: CLLocationCoordinate2D(latitude: 40.836210, longitude: 14.306480))
+        PlaceSearchItem(title: "Developer Academy", description: "Description todo", latitude: 40.836210, longitude: 14.306480),
+        PlaceSearchItem(title: "San Giorgio a Cremano", description: "Description todo", latitude: 40.829170, longitude: 14.334190),
+        /*Location(name: "San Giorgio a Cremano", coordinate: CLLocationCoordinate2D(latitude: 40.829170, longitude: 14.334190)),
+        Location(name: "Developer Academy", coordinate: CLLocationCoordinate2D(latitude: 40.836210, longitude: 14.306480))*/
         
     ]
     
@@ -22,8 +24,8 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     @Published var degrees: Double? = nil//.zero
     @Published var currentLocation: CLLocation?
     @Published var region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 38.898150, longitude: -77.034340),
-            span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+            center: CLLocationCoordinate2D(latitude: 40.851799, longitude: 14.268120),
+            span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
         )
     @Published var destinationLocation: CLLocation? = nil//CLLocation(latitude: 40.829170, longitude: 14.334190)
     @Published var destinationDistance: CLLocationDistance = 0

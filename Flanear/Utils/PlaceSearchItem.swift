@@ -24,6 +24,17 @@ struct PlaceSearchItem: Identifiable, Codable {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
+    init(title: String, description: String, latitude: Double, longitude: Double) {
+        self.title = title
+        self.subtitle = description
+        
+        self.image = ""
+        self.distance = 0
+        
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    
     init(_ mapItem: MKMapItem) {
         self.title = mapItem.name ?? ""
        
