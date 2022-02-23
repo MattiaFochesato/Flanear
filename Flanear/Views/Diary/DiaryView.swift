@@ -59,9 +59,9 @@ struct DiaryView: View {
 
                         }
                     }
-                }.navigationTitle("Diary")
+                }
             }
-        }
+        }.navigationTitle("Diary")
     }
 }
 

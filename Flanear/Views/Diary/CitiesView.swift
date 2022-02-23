@@ -13,20 +13,20 @@ struct CitiesView: View {
     var body: some View {
         NavigationView {
              
-            List {
+            ScrollView {
                 VStack {
                     ForEach(viewController.cities) { city in
                         NavigationLink {
                             DiaryView(city: city)
                         } label: {
                             CityRow(city: city)
+                                .padding()
                         }
 
                     }
-                }
+                }.navigationTitle("Your Cities")
             }
-            
-        }.navigationTitle("Your Cities")
+        }
     }
 
 struct CityRow: View {
@@ -46,6 +46,8 @@ struct CityRow: View {
                 } placeholder: {
                     ProgressView()
                 }.clipShape(RoundedRectangle(cornerRadius: 12))
+                    .overlay(RoundedRectangle(cornerRadius: 12)
+                                .stroke(.black, lineWidth: 3))
                 Text("20% completed")
                     .fontWeight(.medium)
                     .padding([.leading, .bottom])
@@ -54,7 +56,9 @@ struct CityRow: View {
             }
             }
             .background(.yellow)
-            .cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
+            .cornerRadius(12)
+            .overlay(RoundedRectangle(cornerRadius: 12)
+                        .stroke(.black, lineWidth: 3))
     }
     
 }

@@ -19,7 +19,7 @@ struct FlanearApp: App {
                     }
                 CitiesView()
                     .tabItem {
-                        Label("Diary", systemImage: "book.closed.fill")
+                        Label("Your Cities", systemImage: "book.closed.fill")
                     }
             }
         }
