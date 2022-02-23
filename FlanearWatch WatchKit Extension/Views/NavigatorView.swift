@@ -8,18 +8,25 @@
 import SwiftUI
 
 struct NavigatorView: View {
+    
+    //@ObservedObject var viewController = NavigatorViewController()
+    @EnvironmentObject var viewController: NavigatorViewController
+    
     var body: some View {
-        
-            //ScrollView {
-                VStack {
-                    CompassCircleView(degrees: .constant(30), near: .constant(1), distance: .constant(300), placeName: .constant("San Giovanni"))
-                        .padding()
-                    Spacer()
-                    Text("testo")
-                //}
-            }.background(.gray)
+        VStack {
+            CompassCircleView(degrees: $viewController.degrees, near: .constant(1), distance: $viewController.destinationDistance, placeName: .constant(""))
+                .padding()
             
+            Spacer()
+            
+            Text(viewController.destinationName ?? "Not selected")
+                .font(.title3)
+                .lineLimit(1)
+                .minimumScaleFactor(0.6)
+                .foregroundColor(.white)
+        }
         .navigationTitle("Flanear")
+        
     }
 }
 

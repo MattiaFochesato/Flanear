@@ -9,6 +9,7 @@ import Foundation
 import CoreLocation
 import Combine
 import GRDB
+import MapKit
 
 class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     
@@ -19,6 +20,8 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var currentLocation: CLLocation?
     @Published var currentCity: VisitedCity?
     
+    let searchPublisher = PassthroughSubject<[MKMapItem], Never>()
+    let searchWatchPublisher = PassthroughSubject<[MKMapItem], Never>()
     var startingPosition: CLLocation? = nil
     
     override init() {
@@ -71,6 +74,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
                 self.startingPosition = nil
                 return
             }
+            
             guard let locality = placemark.locality else {
                 self.startingPosition = nil
                 return
@@ -94,24 +98,6 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
             try? AppDatabase.shared.saveCity(&newCity)
             
         }
-        /*
-         City = Napoli;
-         Country = Italia;
-         CountryCode = IT;
-         FormattedAddressLines =     (
-             "Via Nuova Villa 68C",
-             "80146 Napoli",
-             Italia
-         );
-         Name = "Via Nuova Villa 68C";
-         State = Campania;
-         Street = "Via Nuova Villa 68C";
-         SubAdministrativeArea = "Citt\U00e0 Metropolitana di Napoli";
-         SubLocality = "Municipalit\U00e0 6";
-         SubThoroughfare = 68C;
-         Thoroughfare = "Via Nuova Villa";
-         ZIP = 80146;
-         */
     }
     
     func getPlacemarkFor(location: CLLocation) async -> CLPlacemark? {
@@ -127,4 +113,74 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
             })
         })
     }
+    
+    public func search(for resultType: MKLocalSearch.ResultType = .pointOfInterest,
+                       text: String, isWatch: Bool = false) {
+        print("search(text: \(text))")
+        let request = MKLocalSearch.Request()
+        if !text.isEmpty {
+            request.naturalLanguageQuery = text
+        }
+        request.pointOfInterestFilter = .includingAll
+        request.resultTypes = resultType
+        guard let currentLocation = currentLocation else {
+            if !isWatch {
+                self.searchPublisher.send([])
+            }else{
+                self.searchWatchPublisher.send([])
+            }
+            return
+        }
+        
+        request.region = MKCoordinateRegion(center: currentLocation.coordinate,
+                                            latitudinalMeters: 2500,
+                                            longitudinalMeters: 2500)
+        
+        let search = MKLocalSearch(request: request)
+        
+        search.start { [weak self](response, _) in
+            guard let response = response else {
+                if !isWatch {
+                    self?.searchPublisher.send([])
+                }else{
+                    self?.searchWatchPublisher.send([])
+                }
+                return
+            }
+            
+            if !isWatch {
+                self?.searchPublisher.send(response.mapItems)
+            }else{
+                self?.searchWatchPublisher.send(response.mapItems)
+            }
+        }
+    }
+}
+
+extension MKMapItem {
+    
+    func getPOIInfo() -> (String, String) {
+        
+        guard let pointOfInterestCategory = pointOfInterestCategory else {
+            return ("undefined","questionmark.circle.fill")
+        }
+        
+        switch pointOfInterestCategory {
+            case .amusementPark:
+                return ("amusementPark","t.circle")
+            case .aquarium:
+                return ("acquarium","t.circle")
+            case .beach:
+                return ("beach","t.circle")
+            case .cafe:
+                return ("cafe","t.circle")
+            case .restaurant:
+                return ("restourant","t.circle")
+            case .publicTransport:
+                return ("publicTransport", "tram.fill")
+            default:
+                return ("und: \(pointOfInterestCategory.rawValue)","t.circle")
+        }
+    }
+    
 }

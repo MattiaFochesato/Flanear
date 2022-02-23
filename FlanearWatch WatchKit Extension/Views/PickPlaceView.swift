@@ -8,15 +8,47 @@
 import SwiftUI
 
 struct PickPlaceView: View {
+    @EnvironmentObject var viewController: NavigatorViewController
+    
     var body: some View {
-        List {
-            Button {
-                print("todo")
-            } label: {
-                Text("TODO")
+        VStack {
+            if let searchResults = viewController.searchResults {
+                if searchResults.isEmpty {
+                    Image(systemName: "location.slash.fill")
+                        .font(.largeTitle)
+                        .padding(4)
+                        .background(Circle().foregroundColor(.blue))
+                        .padding(.bottom, 8)
+                    Text("We cannot find anything. Please check your GPS and internet connection.")
+                        .multilineTextAlignment(.center)
+                }else{
+                    List {
+                        ForEach(searchResults) { item in
+                            Button {
+                                viewController.visit(place: item)
+                                viewController.selectedTab = 0
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(item.title)
+                                        Text(item.subtitle)
+                                            .font(.footnote)
+                                            .foregroundColor(.gray)
+                                    }
+                                    Spacer()
+                                    Text("\(Int(item.distance))m")
+                                }
+                            }
+                        }
+                    }
+                }
+            }else{
+                ProgressView()
             }
-            
         }.navigationTitle("Pick Place")
+            .onAppear {
+                viewController.loadSuggestions()
+            }
     }
 }
 

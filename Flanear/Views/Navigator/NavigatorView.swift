@@ -9,67 +9,82 @@ import SwiftUI
 import MapKit
 
 struct NavigatorView: View {
-    @State var tracking: MapUserTrackingMode = .follow
+    
     @ObservedObject var viewController = NavigatorViewController()
+    @ObservedObject var searchViewController = PlaceSearchViewController()
+    
+    @State var searchText = ""
     
     var body: some View {
         NavigationView {
-        ZStack {
-            
-            Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: false, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
-                MapMarker(coordinate: location.coordinate)
-            }//.ignoresSafeArea()
-            .overlay(Rectangle()
-                        .foregroundColor(.clear)
-                        .background(RadialGradient(gradient: Gradient(colors: [.clear, .white]), center: .center, startRadius: 140, endRadius: 400))
-                        .allowsHitTesting(false) )
-            .disabled(true)
-            
-            CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
-            
-            ZStack(alignment: .top) {
-                Color.clear
-                SearchView()
-            }.zIndex(1000)
-            
-            
-        }
-    }
+            NavigatorSearchableView()//searchText: $searchText)
+                .navigationTitle("Explore")
+                .searchable(text: $searchViewController.searchText)
+        }.environmentObject(viewController)
+            .environmentObject(searchViewController)
     }
 }
 
-struct SearchView: View {
+struct NavigatorSearchableView: View {
+    @State var tracking: MapUserTrackingMode = .follow
+    @Environment(\.isSearching) var isSearching
+    
+    @EnvironmentObject var viewController: NavigatorViewController
+    
+    //@Binding var searchText: String
+    
+    var body: some View {
+        ZStack {
+            if !isSearching {
+                Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: false, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
+                    MapMarker(coordinate: location.coordinate)
+                }//.ignoresSafeArea()
+                .overlay(Rectangle()
+                            .foregroundColor(.clear)
+                            .background(RadialGradient(gradient: Gradient(colors: [.clear, .white]), center: .center, startRadius: 140, endRadius: 400))
+                            .allowsHitTesting(false) )
+                .disabled(true)
+                
+                CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
+                
+                /*ZStack(alignment: .top) {
+                    Color.clear
+                    SearchToolbarView(showSearch:  $viewController.showSearch)
+                }.zIndex(1000)*/
+            }else{
+                PlaceSearchView()//searchText: $searchText)
+                //Text("Test")
+            }
+        }
+    }
+    
+}
+
+struct SearchToolbarView: View {
+    //@Binding var text: String
+    //@State private var isEditing = false
+    
+    @Binding var showSearch: Bool
+    
     var body: some View {
         VStack {
             Button {
-                print("click")
+                self.showSearch.toggle()
             } label: {
                 HStack {
                     Image(systemName: "magnifyingglass")
-                        .foregroundColor(.white)
-                    Text("Search")
-                        .foregroundColor(.white)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                     .foregroundColor(.white)
+                     Text("Search")
+                     .foregroundColor(.white)
+                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 }.frame(height: 40)
                     .padding(.leading, 16)
                     .background(RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(.gray))
+                                    .foregroundColor(.gray))
             }
-
-            HStack {
-                Spacer()
-                NavigationLink(destination: ARMapView()) {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.white)
-                        .padding(12)
-                        .background(RoundedRectangle(cornerRadius: 8)
-                                        .foregroundColor(.gray))
-                }//.navigationBarTitle("")
-                 //   .navigationBarHidden(true)
-            }
-                
+            
         }
-            .padding([.leading, .trailing], 8)
+        .padding([.leading, .trailing], 8)
         
     }
 }

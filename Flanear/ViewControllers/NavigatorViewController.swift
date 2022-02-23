@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 import CoreLocation
 import Combine
+import WatchConnectivity
 
 class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var locations = [
@@ -18,36 +19,74 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     ]
     
     private var bearingDegrees: Double = .zero
-    @Published var degrees: Double = .zero
+    @Published var degrees: Double? = nil//.zero
     @Published var currentLocation: CLLocation?
     @Published var region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 38.898150, longitude: -77.034340),
             span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
         )
-    @Published var destinationLocation: CLLocation? = CLLocation(latitude: 40.829170, longitude: 14.334190)
+    @Published var destinationLocation: CLLocation? = nil//CLLocation(latitude: 40.829170, longitude: 14.334190)
     @Published var destinationDistance: CLLocationDistance = 0
-    @Published var destinationName: String = "San Giorgio a Cremano"
+    @Published var destinationName: String? = nil//"San Giorgio a Cremano"
+    @Published var showSearch = false
     
-    var degreesCancellable: AnyCancellable? = nil
-    var positionCancellable: AnyCancellable? = nil
+    private var destinationNameCancellable: AnyCancellable? = nil
+    private var degreesCancellable: AnyCancellable? = nil
+    private var positionCancellable: AnyCancellable? = nil
+    private var watchSearchCancellable: AnyCancellable? = nil
+    
+    var session: WCSession?
     
     override init() {
         super.init()
         
-        self.degreesCancellable = LocationUtils.shared.$degrees.sink { newVal in
-            self.degrees = -1 * newVal + self.bearingDegrees
+        if WCSession.isSupported() {
+            session = .default
+            session?.delegate = self
+            session?.activate()
+        }
+        
+        self.degreesCancellable = LocationUtils.shared.$degrees.sink { _ in
+            self.updateDegrees()
         }
         
         self.positionCancellable = LocationUtils.shared.$currentLocation.sink(receiveValue: { location in
             self.currentLocation = location
             
-            guard let location = location else { return }
-            
-            self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0007, longitudeDelta: 0.0007))
-            
-            //Update distance data
-            self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: self.destinationLocation!)
-            self.destinationDistance = self.currentLocation!.distance(from: self.destinationLocation!)
+            self.updateDistance()
+        })
+        
+        self.watchSearchCancellable = LocationUtils.shared.searchWatchPublisher.sink(receiveValue: { searchResults in
+            if let validSession = self.session {
+                let sendableResults = searchResults.map({
+                    PlaceSearchItem($0)
+                }).filter({ p in
+                    return p.distance < 2000
+                }).sorted(by: { p1, p2 in
+                    return p1.distance < p2.distance
+                })
+                
+                let encoder = JSONEncoder()
+                if let encoded = try? encoder.encode(sendableResults) {
+                    let dataToSend = ["searchResults": encoded]
+
+                    validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                        print(error)
+                    })
+                }
+                
+                
+            }
+        })
+        
+        self.destinationNameCancellable = $destinationName.sink(receiveValue: { newDestination in
+            if let validSession = self.session {
+                let dataToSend = ["destinationName": newDestination]
+
+                validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                    print(error)
+                })
+            }
         })
     }
     
@@ -70,6 +109,87 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
 
         return radiansToDegrees(radians: radiansBearing)
     }
+    
+    func gotTo(place: PlaceSearchItem) {
+        destinationLocation = place.location
+        destinationName = place.title
+        showSearch = false
+        
+        self.updateDistance()
+        self.updateDegrees()
+    }
+    
+    func updateDistance() {
+        guard let location = self.currentLocation else { return }
+        guard let destinationLocation = self.destinationLocation else { return }
+        
+        self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.0007, longitudeDelta: 0.0007))
+        
+        //Update distance data
+        self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: destinationLocation)
+        self.destinationDistance = self.currentLocation!.distance(from: destinationLocation)
+        
+        if let validSession = self.session {
+            let dataToSend = ["distance": self.destinationDistance, "degrees": self.bearingDegrees]
+
+            validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                print(error)
+            })
+        }
+    }
+    
+    func updateDegrees() {
+        guard let _ = self.destinationLocation else {
+            self.degrees = nil
+            return
+        }
+        
+        self.degrees = -1 * LocationUtils.shared.degrees + self.bearingDegrees
+        
+        if let validSession = self.session {
+            let dataToSend = ["degrees": self.bearingDegrees]
+
+            validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
+                print(error)
+            })
+        }
+    }
+}
+
+extension NavigatorViewController: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            let loadSuggestions = message["loadSuggestions"] as? String
+            let visitNewPlace = message["visitNewPlace"] as? Data
+            
+            if let _ = loadSuggestions {
+                LocationUtils.shared.search(text: "restaurant", isWatch: true)
+            }
+            if let visitNewPlace = visitNewPlace {
+                
+                let decoder = JSONDecoder()
+                
+                if let placeToGo = try? decoder.decode(PlaceSearchItem.self, from: visitNewPlace) {
+                    self.gotTo(place: placeToGo)
+                }
+            }
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("WC: sessionDidBecomeInactive")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("WC: sessionDidDeactivate")
+    }
+    
+    
 }
 
 struct Location: Identifiable {
