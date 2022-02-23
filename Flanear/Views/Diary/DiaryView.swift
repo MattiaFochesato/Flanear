@@ -18,7 +18,7 @@ struct DiaryView: View {
     }
     
     var body: some View {
-        //NavigationView {
+        NavigationView {
             VStack {
                 List {
                     ForEach(viewController.places) { place in
@@ -56,7 +56,7 @@ struct DiaryView: View {
 
                     }
                 }.navigationTitle("Diary")
-            //}
+            }
         }
     }
 }
