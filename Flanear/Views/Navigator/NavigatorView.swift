@@ -36,21 +36,36 @@ struct NavigatorSearchableView: View {
     var body: some View {
         ZStack {
             if !isSearching {
-                Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: false, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
-                    MapMarker(coordinate: location.coordinate)
+                Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: viewController.destinationLocation == nil, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
+                    //MapMarker(coordinate: location.coordinate)
+                    MapAnnotation(coordinate: location.location.coordinate) {
+                        Button {
+                            viewController.gotTo(place: location)
+                        } label: {
+                            Image(systemName: "star")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .padding(3)
+                                .background(.orange)
+                                .clipShape(Circle())
+                        }
+
+                    }
                 }//.ignoresSafeArea()
                 .overlay(Rectangle()
                             .foregroundColor(.clear)
-                            .background(RadialGradient(gradient: Gradient(colors: [.clear, .white]), center: .center, startRadius: 140, endRadius: 400))
+                            .background(viewController.destinationLocation == nil ? RadialGradient(gradient: Gradient(colors: [.clear]), center: .center, startRadius: 1000, endRadius: 1000) : RadialGradient(gradient: Gradient(colors: [.clear, .white]), center: .center, startRadius: 140, endRadius: 400))
                             .allowsHitTesting(false) )
-                .disabled(true)
+                .disabled(viewController.destinationLocation == nil ? false : true)
                 
-                CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
-                
+                if viewController.destinationLocation != nil {
+                    CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
+                    
+                }
                 /*ZStack(alignment: .top) {
-                    Color.clear
-                    SearchToolbarView(showSearch:  $viewController.showSearch)
-                }.zIndex(1000)*/
+                 Color.clear
+                 SearchToolbarView(showSearch:  $viewController.showSearch)
+                 }.zIndex(1000)*/
             }else{
                 PlaceSearchView()//searchText: $searchText)
                 //Text("Test")
@@ -73,10 +88,10 @@ struct SearchToolbarView: View {
             } label: {
                 HStack {
                     Image(systemName: "magnifyingglass")
-                     .foregroundColor(.white)
-                     Text("Search")
-                     .foregroundColor(.white)
-                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.white)
+                    Text("Search")
+                        .foregroundColor(.white)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 }.frame(height: 40)
                     .padding(.leading, 16)
                     .background(RoundedRectangle(cornerRadius: 8)
