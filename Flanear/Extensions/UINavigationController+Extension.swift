@@ -25,7 +25,7 @@ extension UINavigationController {
          navigationBar.compactAppearance = compactAppearance
          navigationBar.scrollEdgeAppearance = scrollEdgeAppearance*/
         
-        var titleFont = UIFont.preferredFont(forTextStyle: .largeTitle) /// the default large title font
+        /*var titleFont = UIFont.preferredFont(forTextStyle: .largeTitle) /// the default large title font
         titleFont = UIFont(
             descriptor:
                 titleFont.fontDescriptor
@@ -34,11 +34,11 @@ extension UINavigationController {
             ??
             titleFont.fontDescriptor, /// return the normal title if customization failed
             size: titleFont.pointSize
-        )
+        )*/
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.largeTitleTextAttributes = [.font : titleFont]
+        appearance.largeTitleTextAttributes = [.font : UIFont.systemFont(ofSize: 34, weight: .black)]
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
         

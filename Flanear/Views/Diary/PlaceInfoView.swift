@@ -54,7 +54,6 @@ struct PlaceInfoView: View {
                             .stroke(.black, lineWidth: 3))
             }
             .navigationTitle("Write Something")
-            .font(Font.custom("SF Pro Display-Black", size: 20))
         }
         .padding([.leading, .bottom, .trailing])
         
