@@ -34,7 +34,7 @@ struct CitiesView: View {
                         Divider()
                             .padding([.leading, .trailing])
                     }
-                }.navigationTitle("Your Cities")
+                }.navigationTitle("your-cities")
             }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
