@@ -24,6 +24,9 @@ struct CitiesView: View {
                         } label: {
                             CityRow(city: city)
                                 .padding()
+                                
+                        }.contextMenu {
+                            Button("Delete", action: {})
                         }
                         Divider()
                             .padding([.leading, .trailing])
