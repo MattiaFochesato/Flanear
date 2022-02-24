@@ -110,9 +110,9 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         return radiansToDegrees(radians: radiansBearing)
     }
     
-    func gotTo(place: PlaceSearchItem) {
-        destinationLocation = place.location
-        destinationName = place.title
+    func gotTo(place: PlaceSearchItem?) {
+        destinationLocation = place?.location
+        destinationName = place?.title
         showSearch = false
         
         self.updateDistance()

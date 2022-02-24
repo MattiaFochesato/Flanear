@@ -70,10 +70,24 @@ struct NavigatorSearchableView: View {
                     ZStack(alignment: .bottom) {
                         Color.clear
                         HStack {
+                            Image(systemName: "location.fill")
+                                .font(.title.bold())
                             Text(destName)
-                        }.frame(maxWidth: .infinity)
+                                .bold()
+                            Spacer()
+                            Button {
+                                viewController.gotTo(place: nil)
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .font(.title.bold())
+                                    .foregroundColor(.black)
+                            }
+
+                        }
+                        .padding([.leading, .trailing])
+                        .frame(maxWidth: .infinity)
                             .frame(height: 40)
-                            .background(.gray)
+                            .background(Color("DestinationSheetColor"))
                      }.zIndex(1000)
                         .padding(.bottom, 1)//Fix for TabBar color iOS 15
                 }
