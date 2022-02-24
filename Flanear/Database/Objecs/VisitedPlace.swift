@@ -82,3 +82,14 @@ extension VisitedPlace : MutablePersistableRecord {
         id = rowID
     }
 }
+
+extension DerivableRequest where RowDecoder == VisitedPlace {
+    /// Filters place by location
+    func filter(latitude: CLLocationDegrees) -> Self {
+        filter(Column("latitude") == latitude)
+    }
+    
+    func filter(longitude: CLLocationDegrees) -> Self {
+        filter(Column("longitude") == longitude)
+    }
+}

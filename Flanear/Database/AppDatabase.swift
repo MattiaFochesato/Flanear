@@ -6,6 +6,7 @@
 //
 
 import GRDB
+import CoreLocation
 
 /// AppDatabase lets the application access the database.
 ///
@@ -129,6 +130,19 @@ extension AppDatabase {
         }
     }
     
+    func isPlacePresent(coordinate: CLLocationCoordinate2D) throws -> Bool{
+        var result = false
+        try dbWriter.read { db in
+            let places = try VisitedPlace.all()
+                .filter(latitude: coordinate.latitude)
+                .filter(longitude: coordinate.longitude)
+                .fetchAll(db)
+            
+            result = !places.isEmpty
+        }
+        
+        return result
+    }
     
     /*/// Saves (inserts or updates) a player. When the method returns, the
     /// player is present in the database, and its id is not nil.
