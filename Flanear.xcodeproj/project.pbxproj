@@ -348,8 +348,8 @@
 		26BC9CC227B6AFBF00CE8BBD /* Flanear */ = {
 			isa = PBXGroup;
 			children = (
-				269B5F3527C7A22700F520DB /* Settings.bundle */,
 				268050B927BAC5E5004CBC33 /* Info.plist */,
+				269B5F3527C7A22700F520DB /* Settings.bundle */,
 				26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */,
 				26B8548C27C637FC00C37004 /* AppDelegate.swift */,
 				26BC9CD327B6B09A00CE8BBD /* Views */,
