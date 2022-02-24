@@ -12,3 +12,9 @@
 "place-too-far-away" = "The place can be too far away!";
 
 "search-no-results" = "We cannot find this place.\nCheck the name!";
+
+
+/* watchOS */
+"no-results" = "We cannot find anything. Please check your GPS and internet connection.";
+"pick-place" = "Pick Place";
+"no-place-selected" = "No place selected";

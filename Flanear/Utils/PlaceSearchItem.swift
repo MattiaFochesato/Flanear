@@ -36,7 +36,6 @@ struct PlaceSearchItem: Identifiable, Codable {
     
     init(_ mapItem: MKMapItem) {
         self.title = mapItem.name ?? ""
-        
         if let location = mapItem.placemark.location {
             self.latitude = location.coordinate.latitude
             self.longitude = location.coordinate.longitude

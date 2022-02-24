@@ -47,11 +47,11 @@ struct CompassCircleView: View {
                             .clipShape(Circle())
                             
                         Circle()
-                    .stroke(.black, lineWidth: 30)
+                    .stroke(.black, lineWidth: !isWatch ? 30 : 12)
                     .foregroundColor(.clear)
                 
                         Circle()
-                    .stroke(.white, lineWidth: 27)
+                    .stroke(.white, lineWidth: !isWatch ? 27 : 10)
                     .foregroundColor(.clear)
                    
                     

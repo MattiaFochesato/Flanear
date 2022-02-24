@@ -26,13 +26,15 @@
 		269790E927B7CC4E00B0210B /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269790E827B7CC4E00B0210B /* ComplicationController.swift */; };
 		269790EB27B7CC4F00B0210B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269790EA27B7CC4F00B0210B /* Assets.xcassets */; };
 		269790EE27B7CC4F00B0210B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269790ED27B7CC4F00B0210B /* Preview Assets.xcassets */; };
-		269790F327B7CC4F00B0210B /* FlanearWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 269790D327B7CC4B00B0210B /* FlanearWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		269790F327B7CC4F00B0210B /* Flanear.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 269790D327B7CC4B00B0210B /* Flanear.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		269790FF27B7D13900B0210B /* PickPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269790FE27B7D13800B0210B /* PickPlaceView.swift */; };
 		269A9C7327BE484F0075B085 /* CompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */; };
 		269A9C7527BE48820075B085 /* CCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7427BE48820075B085 /* CCircleView.swift */; };
 		269A9C7827BE511B0075B085 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7727BE511B0075B085 /* NavigatorViewController.swift */; };
 		269A9C7A27BE61CF0075B085 /* PlaceSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */; };
 		269A9C7B27BE61F00075B085 /* PlaceSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */; };
+		269B5F3027C7948E00F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
+		269B5F3127C7955000F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
 		26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994727BBAF9B00611E79 /* VisitedCity.swift */; };
 		26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */; };
 		26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994B27BBC54300611E79 /* PlaceSearchView.swift */; };
@@ -92,7 +94,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				269790F327B7CC4F00B0210B /* FlanearWatch.app in Embed Watch Content */,
+				269790F327B7CC4F00B0210B /* Flanear.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +114,7 @@
 		268050BA27BB9D9F004CBC33 /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
 		268050BD27BBA2C0004CBC33 /* LocationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtils.swift; sourceTree = "<group>"; };
 		269790CF27B7C7C200B0210B /* ARMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapView.swift; sourceTree = "<group>"; };
-		269790D327B7CC4B00B0210B /* FlanearWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlanearWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		269790D327B7CC4B00B0210B /* Flanear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flanear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269790D527B7CC4E00B0210B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		269790DB27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FlanearWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		269790E027B7CC4E00B0210B /* FlanearApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlanearApp.swift; sourceTree = "<group>"; };
@@ -332,7 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				26BC9CC027B6AFBF00CE8BBD /* Flanear.app */,
-				269790D327B7CC4B00B0210B /* FlanearWatch.app */,
+				269790D327B7CC4B00B0210B /* Flanear.app */,
 				269790DB27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex */,
 			);
 			name = Products;
@@ -414,7 +416,7 @@
 			);
 			name = FlanearWatch;
 			productName = FlanearWatch;
-			productReference = 269790D327B7CC4B00B0210B /* FlanearWatch.app */;
+			productReference = 269790D327B7CC4B00B0210B /* Flanear.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		269790DA27B7CC4E00B0210B /* FlanearWatch WatchKit Extension */ = {
@@ -507,6 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				269790D627B7CC4E00B0210B /* Assets.xcassets in Resources */,
+				269B5F3127C7955000F520DB /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				269790EE27B7CC4F00B0210B /* Preview Assets.xcassets in Resources */,
+				269B5F3027C7948E00F520DB /* Localizable.strings in Resources */,
 				269790EB27B7CC4F00B0210B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -679,12 +683,11 @@
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = FlanearWatch_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = FlanearWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mattiafochesato.Flanear;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattiafochesato.Flanear.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flanear;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -705,12 +708,11 @@
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = FlanearWatch_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = FlanearWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mattiafochesato.Flanear;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattiafochesato.Flanear.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flanear;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

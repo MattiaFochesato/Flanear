@@ -13,3 +13,8 @@
 "place-too-far-away" = "Questo luogo è lontano!";
 
 "search-no-results" = "Non riesco a trovare questo luogo.\nControlla il nome inserito!";
+
+/* watchOS */
+"no-results" = "Nessun risultato. Controlla il GPS e la connessione ad internet.";
+"pick-place" = "Seleziona Luogo";
+"no-place-selected" = "Nessun luogo selezionato";
