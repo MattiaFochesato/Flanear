@@ -24,4 +24,17 @@ class VisitedCitiesViewController: ObservableObject {
                 self.cities = updatedCities
             }
     }
+    
+    func deleteCity(city: VisitedCity) {
+        do {
+            try AppDatabase.shared.deleteCity(city: city)
+            self.cities.removeAll { c in
+                return c == city
+            }
+        } catch {
+            print("Cannot delete city \(city.name)")
+        }
+        
+        
+    }
 }

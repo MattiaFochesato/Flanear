@@ -24,9 +24,12 @@ struct CitiesView: View {
                         } label: {
                             CityRow(city: city)
                                 .padding()
-                                
                         }.contextMenu {
-                            Button("Delete", action: {})
+                            Button(role: .destructive) {
+                                viewController.deleteCity(city: city)
+                            } label: {
+                                Label("Delete \(city.name)", systemImage: "trash.fill")
+                            }
                         }
                         Divider()
                             .padding([.leading, .trailing])
@@ -35,15 +38,22 @@ struct CitiesView: View {
             }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-        .onChange(of: searchText) { searchText in
-            if !searchText.isEmpty {
-                citiesToShow = viewController.cities.filter { $0.name.contains(searchText) }
-            } else {
-                citiesToShow = viewController.cities
-            }
+        .onChange(of: searchText) { _ in
+            filterCities()
         }
+        .onChange(of: viewController.cities, perform: { _ in
+            filterCities()
+        })
         .onAppear {
-            self.citiesToShow = viewController.cities
+            filterCities()
+        }
+    }
+    
+    func filterCities() {
+        if !searchText.isEmpty {
+            citiesToShow = viewController.cities.filter { $0.name.contains(searchText) }
+        } else {
+            citiesToShow = viewController.cities
         }
     }
     
