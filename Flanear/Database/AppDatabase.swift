@@ -6,6 +6,7 @@
 //
 
 import GRDB
+import CoreLocation
 
 /// AppDatabase lets the application access the database.
 ///
@@ -71,6 +72,23 @@ final class AppDatabase {
 // MARK: - Database Access: Writes
 extension AppDatabase {
     
+    /// Delete the specified place
+    func deleteCity(city: VisitedCity) throws {
+        try dbWriter.write { db in
+            var placesId: [Int64] = []
+            let places = try city.places.fetchAll(db)
+            for place in places {
+                if let id = place.id {
+                    placesId.append(id)
+                }
+            }
+            if placesId.count != 0 {
+                _ = try self.deletePlaces(ids: placesId)
+            }
+            _ = try VisitedCity.deleteAll(db, ids: [city.id!])
+        }
+    }
+    
     /// Create random players if the database is empty.
     func createRandomPlacesIfEmpty() throws {
         try dbWriter.write { db in
@@ -112,6 +130,19 @@ extension AppDatabase {
         }
     }
     
+    func isPlacePresent(coordinate: CLLocationCoordinate2D) throws -> Bool{
+        var result = false
+        try dbWriter.read { db in
+            let places = try VisitedPlace.all()
+                .filter(latitude: coordinate.latitude)
+                .filter(longitude: coordinate.longitude)
+                .fetchAll(db)
+            
+            result = !places.isEmpty
+        }
+        
+        return result
+    }
     
     /*/// Saves (inserts or updates) a player. When the method returns, the
     /// player is present in the database, and its id is not nil.

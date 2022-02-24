@@ -14,12 +14,11 @@ struct PlaceSearchItem: Identifiable, Codable {
     var title: String
     var subtitle: String
     var image: String
-    //var location: CLLocation?
     var distance: CLLocationDistance
     
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
-
+    
     var location: CLLocation {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
@@ -37,35 +36,30 @@ struct PlaceSearchItem: Identifiable, Codable {
     
     init(_ mapItem: MKMapItem) {
         self.title = mapItem.name ?? ""
-       
-        
-        //self.location = mapItem.placemark.location
         if let location = mapItem.placemark.location {
             self.latitude = location.coordinate.latitude
             self.longitude = location.coordinate.longitude
         }
         self.distance = 0
-        #if os(watchOS)
+#if os(watchOS)
         self.subtitle = mapItem.placemark.subtitle ?? "UNKNOWN"
         self.image = ""
         self.distance = 0//TODO
-        #else
+#else
         let info = mapItem.getPOIInfo()
-        self.subtitle = info.0//mapItem.pointOfInterestCategory?.rawValue ?? "-"
+        self.subtitle = info.0
         self.image = info.1
-        //if let location = location {
-            if let curLoc = LocationUtils.shared.currentLocation {
-                self.distance = location.distance(from: curLoc)
-            }
-        //}
-        #endif
+        if let curLoc = LocationUtils.shared.currentLocation {
+            self.distance = location.distance(from: curLoc)
+        }
+        
+#endif
     }
     
     init() {
         self.title = "Item 1"
         self.subtitle = "Subtitle"
         self.image = ""
-        //self.location = CLLocation(latitude: 10, longitude: 10)
         self.distance = 300
     }
     

@@ -18,7 +18,7 @@ struct NavigatorView: View {
     var body: some View {
         NavigationView {
             NavigatorSearchableView()//searchText: $searchText)
-                .navigationTitle("Explore")
+                .navigationTitle("explore")
                 .searchable(text: $searchViewController.searchText, placement: .navigationBarDrawer(displayMode: .always))
         }.environmentObject(viewController)
             .environmentObject(searchViewController)
@@ -31,13 +31,10 @@ struct NavigatorSearchableView: View {
     
     @EnvironmentObject var viewController: NavigatorViewController
     
-    //@Binding var searchText: String
-    
     var body: some View {
         ZStack {
             if !isSearching {
                 Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: viewController.destinationLocation == nil, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
-                    //MapMarker(coordinate: location.coordinate)
                     MapAnnotation(coordinate: location.location.coordinate) {
                         Button {
                             viewController.gotTo(place: location)
@@ -68,9 +65,20 @@ struct NavigatorSearchableView: View {
                         .frame(height: 200)
                         .cornerRadius(12)
                  }.zIndex(1000)*/
+                
+                if let destName = viewController.destinationName {
+                    ZStack(alignment: .bottom) {
+                        Color.clear
+                        HStack {
+                            Text(destName)
+                        }.frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .background(.gray)
+                     }.zIndex(1000)
+                        .padding(.bottom, 1)//Fix for TabBar color iOS 15
+                }
             }else{
-                PlaceSearchView()//searchText: $searchText)
-                //Text("Test")
+                PlaceSearchView()
             }
         }
     }

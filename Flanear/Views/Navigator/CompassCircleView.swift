@@ -24,12 +24,18 @@ struct CompassCircleView: View {
             #if os(iOS)
             if let degrees = degrees {
                 Triangle()
-                
-                    
-                    .fill(Color("PaletteLightBlue"))
-                 .frame(width: 70, height: 50)
-                 .padding(.bottom, 350)
+                .stroke(style: StrokeStyle(lineWidth: 12, lineJoin: .round))
+                .fill(Color("PaletteLightBlue"))
+                 .frame(width: 60, height: 40)
+                 .padding(.bottom, 300)
                  .rotationEffect(Angle(degrees: degrees))
+                
+                Triangle()
+                 .fill(Color("PaletteLightBlue"))
+                 .frame(width: 60, height: 40)
+                 .padding(.bottom, 300)
+                 .rotationEffect(Angle(degrees: degrees))
+                
             }
              //.animation(.linear)
             #endif
@@ -41,18 +47,18 @@ struct CompassCircleView: View {
                             .clipShape(Circle())
                             
                         Circle()
-                    .stroke(.black, lineWidth: 30)
+                    .stroke(.black, lineWidth: !isWatch ? 30 : 12)
                     .foregroundColor(.clear)
                 
                         Circle()
-                    .stroke(.white, lineWidth: 27)
+                    .stroke(.white, lineWidth: !isWatch ? 27 : 10)
                     .foregroundColor(.clear)
                    
                     
                 
                 Circle()
                     .trim(from: 0, to: getBarWidth())
-                    .stroke(Color("PaletteLightBlue"), lineWidth: !isWatch ? 15 : 8)
+                    .stroke(Color("PaletteLightBlue"), lineWidth: !isWatch ? 23 : 8)
                     .rotationEffect(getRotationBar())
                 //.animation(.linear)
                 
@@ -64,20 +70,15 @@ struct CompassCircleView: View {
                         .minimumScaleFactor(0.6)
                         .padding([.leading, .trailing], 20)
                     
-                    if !isWatch {
-                        Text(placeName ?? "Not selected")
-                            .fontWeight(.black)
-                            .foregroundColor(Color("TextDarkBlue"))
-                    }
                 }
                 
             }
 #if os(iOS)
-            .frame(width: 300, height: 300, alignment: .center)
+            .frame(width: 200, height: 200, alignment: .center)
 #endif
         }
 #if os(iOS)
-        .frame(width: 300, height: 300, alignment: .center)
+        .frame(width: 200, height: 200, alignment: .center)
 #endif
     }
     
@@ -107,23 +108,11 @@ struct Triangle: Shape {
         path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.closeSubpath()
         
         return path
     }
     
-    /*
-     arc:
-     func path(in rect: CGRect) -> Path {
-     let rotationAdjustment = Angle.degrees(90)
-     let modifiedStart = startAngle - rotationAdjustment
-     let modifiedEnd = endAngle - rotationAdjustment
-     
-     var path = Path()
-     path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: !clockwise)
-     
-     return path
-     }
-     */
 }
 
 struct CompassCircleView_Previews: PreviewProvider {

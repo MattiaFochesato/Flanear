@@ -15,11 +15,11 @@ struct FlanearApp: App {
             TabView {
                 NavigatorView()
                     .tabItem {
-                        Label("Explore", systemImage: "map.fill")
+                        Label("explore", systemImage: "map.fill")
                     }
                 CitiesView()
                     .tabItem {
-                        Label("Your Cities", systemImage: "book.closed.fill")
+                        Label("your-cities", systemImage: "book.closed.fill")
                     }
             }
         }

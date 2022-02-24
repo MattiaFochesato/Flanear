@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NavigatorView: View {
     
-    //@ObservedObject var viewController = NavigatorViewController()
     @EnvironmentObject var viewController: NavigatorViewController
     
     var body: some View {
@@ -19,7 +18,7 @@ struct NavigatorView: View {
             
             Spacer()
             
-            Text(viewController.destinationName ?? "Not selected")
+            Text(viewController.destinationName ?? "no-place-selected")
                 .font(.title3)
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)

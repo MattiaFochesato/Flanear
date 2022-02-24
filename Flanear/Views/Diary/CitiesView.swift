@@ -24,23 +24,36 @@ struct CitiesView: View {
                         } label: {
                             CityRow(city: city)
                                 .padding()
+                        }.contextMenu {
+                            Button(role: .destructive) {
+                                viewController.deleteCity(city: city)
+                            } label: {
+                                Label("Delete \(city.name)", systemImage: "trash.fill")
+                            }
                         }
                         Divider()
                             .padding([.leading, .trailing])
                     }
-                }.navigationTitle("Your Cities")
+                }.navigationTitle("your-cities")
             }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-        .onChange(of: searchText) { searchText in
-            if !searchText.isEmpty {
-                citiesToShow = viewController.cities.filter { $0.name.contains(searchText) }
-            } else {
-                citiesToShow = viewController.cities
-            }
+        .onChange(of: searchText) { _ in
+            filterCities()
         }
+        .onChange(of: viewController.cities, perform: { _ in
+            filterCities()
+        })
         .onAppear {
-            self.citiesToShow = viewController.cities
+            filterCities()
+        }
+    }
+    
+    func filterCities() {
+        if !searchText.isEmpty {
+            citiesToShow = viewController.cities.filter { $0.name.contains(searchText) }
+        } else {
+            citiesToShow = viewController.cities
         }
     }
     
@@ -66,7 +79,7 @@ struct CitiesView: View {
                                 .frame(height: 200)
                         }.clipShape(RoundedRectangle(cornerRadius: 12))
                             .overlay(RoundedRectangle(cornerRadius: 12)
-                                        .stroke(.black, lineWidth: 3))
+                                        .stroke(.black, lineWidth: 2))
                         Text("20% completed")
                             .fontWeight(.medium)
                             .padding([.leading, .bottom, .top])
@@ -77,7 +90,7 @@ struct CitiesView: View {
                 .background(.yellow)
                 .cornerRadius(12)
                 .overlay(RoundedRectangle(cornerRadius: 12)
-                            .stroke(.black, lineWidth: 3))
+                            .stroke(.black, lineWidth: 2))
                 .shadow(color: Color("Shadow"), radius: 6, x: 0, y: 2)
             }.foregroundColor(.black)
             
