@@ -35,6 +35,7 @@
 		269A9C7B27BE61F00075B085 /* PlaceSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */; };
 		269B5F3027C7948E00F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
 		269B5F3127C7955000F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
+		269B5F3627C7A35E00F520DB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 269B5F3527C7A22700F520DB /* Settings.bundle */; };
 		26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994727BBAF9B00611E79 /* VisitedCity.swift */; };
 		26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */; };
 		26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994B27BBC54300611E79 /* PlaceSearchView.swift */; };
@@ -133,6 +134,7 @@
 		269B5F3227C7A17300F520DB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		269B5F3327C7A17A00F520DB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		269B5F3427C7A18100F520DB /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		269B5F3527C7A22700F520DB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		26A0994727BBAF9B00611E79 /* VisitedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedCity.swift; sourceTree = "<group>"; };
 		26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedCitiesViewController.swift; sourceTree = "<group>"; };
 		26A0994B27BBC54300611E79 /* PlaceSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchView.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 		26BC9CC227B6AFBF00CE8BBD /* Flanear */ = {
 			isa = PBXGroup;
 			children = (
+				269B5F3527C7A22700F520DB /* Settings.bundle */,
 				268050B927BAC5E5004CBC33 /* Info.plist */,
 				26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */,
 				26B8548C27C637FC00C37004 /* AppDelegate.swift */,
@@ -535,6 +538,7 @@
 			files = (
 				26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */,
 				26B854A727C69F7700C37004 /* Localizable.strings in Resources */,
+				269B5F3627C7A35E00F520DB /* Settings.bundle in Resources */,
 				26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */,
 				26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */,
 			);
