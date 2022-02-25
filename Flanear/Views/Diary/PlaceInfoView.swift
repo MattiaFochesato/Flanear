@@ -32,8 +32,6 @@ struct PlaceInfoView: View {
                     .frame(height: 250)
                     .frame(maxWidth: .infinity)
                     .disabled(true)
-                
-                
                     Text(place.title)
                         .font(.title)
                         .fontWeight(.black)
@@ -83,7 +81,7 @@ struct PlaceInfoView: View {
                             .autocapitalization(.none)
                         //.frame(width: 300, height: 250)
                         //.clipShape(RoundedRectangle(cornerRadius: 16))
-                            .padding([.leading, .trailing])
+                            .padding()
                         
                         
                     }

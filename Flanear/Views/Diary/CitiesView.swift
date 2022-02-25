@@ -94,7 +94,6 @@ struct CitiesView: View {
                             .stroke(.black, lineWidth: 2))
                 .shadow(color: .shadow, radius: 6, x: 0, y: 2)
             }.foregroundColor(.black)
-            
         }
         
         struct CitiesView_Previews: PreviewProvider {

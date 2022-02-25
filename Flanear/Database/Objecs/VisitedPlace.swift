@@ -51,7 +51,7 @@ extension VisitedPlace: FetchableRecord {
     
     /// Returns a random score
     static func randomScore() -> CLLocationDegrees {
-        10 * CLLocationDegrees.random(in: 0...100)
+        10 * CLLocationDegrees.random(in: 0...10)
     }
 }
 

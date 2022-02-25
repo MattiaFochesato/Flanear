@@ -11,6 +11,7 @@ struct DiaryView: View {
     let city: VisitedCity
     
     @ObservedObject var viewController: DiaryViewController
+    @State var searchText = ""
     
     init(city: VisitedCity) {
         self.city = city
@@ -26,7 +27,7 @@ struct DiaryView: View {
                         .padding(10)
                         .background(Color.textBlack)
                         .clipShape(Circle())
-                    Text("Such empty")
+                    Text("empty")
                         .bold()
                 }else {
                     List {
@@ -71,6 +72,7 @@ struct DiaryView: View {
                     }
                 }
             }.navigationTitle(city.name)
+            .searchable(text: $searchText)
     }
 }
 
