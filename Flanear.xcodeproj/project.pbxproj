@@ -41,6 +41,7 @@
 		26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994B27BBC54300611E79 /* PlaceSearchView.swift */; };
 		26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */; };
 		26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898A27C8CBA20032154C /* Color+Extension.swift */; };
+		26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898D27C8E6DB0032154C /* CameraView.swift */; };
 		26B8547D27C6362000C37004 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547C27C6362000C37004 /* CoreGraphics.framework */; };
 		26B8547F27C6362500C37004 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547E27C6362500C37004 /* CoreLocation.framework */; };
 		26B8548127C6362C00C37004 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548027C6362C00C37004 /* libc++.tbd */; };
@@ -141,6 +142,7 @@
 		26A0994B27BBC54300611E79 /* PlaceSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchView.swift; sourceTree = "<group>"; };
 		26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
 		26B3898A27C8CBA20032154C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		26B3898D27C8E6DB0032154C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		26B8547C27C6362000C37004 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		26B8547E27C6362500C37004 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		26B8548027C6362C00C37004 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -265,6 +267,7 @@
 		269790CE27B7C6D700B0210B /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				26B3898C27C8E6CE0032154C /* Camera */,
 				268050BA27BB9D9F004CBC33 /* CitiesView.swift */,
 				26BC9CD127B6B08200CE8BBD /* DiaryView.swift */,
 				268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */,
@@ -310,6 +313,14 @@
 				269A9C7727BE511B0075B085 /* NavigatorViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		26B3898C27C8E6CE0032154C /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				26B3898D27C8E6DB0032154C /* CameraView.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		26B8547B27C6362000C37004 /* Frameworks */ = {
@@ -589,6 +600,7 @@
 				268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */,
 				26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */,
 				269790D027B7C7C200B0210B /* ARMapView.swift in Sources */,
+				26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */,
 				268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */,
 				26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */,
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,

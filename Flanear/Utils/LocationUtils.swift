@@ -22,6 +22,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     let searchPublisher = PassthroughSubject<[MKMapItem], Never>()
     let searchWatchPublisher = PassthroughSubject<[MKMapItem], Never>()
+    let significantLocationChange = PassthroughSubject<Bool, Never>()
     var startingPosition: CLLocation? = nil
     
     override init() {
@@ -67,6 +68,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
         }else{
             self.startingPosition = location
+            self.significantLocationChange.send(true)
         }
         
         Task.init(priority: .utility) {

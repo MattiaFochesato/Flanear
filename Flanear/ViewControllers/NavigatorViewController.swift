@@ -35,6 +35,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     private var degreesCancellable: AnyCancellable? = nil
     private var positionCancellable: AnyCancellable? = nil
     private var watchSearchCancellable: AnyCancellable? = nil
+    private var significantLocationChangeCancellable: AnyCancellable? = nil
     
     var session: WCSession?
     
@@ -89,6 +90,10 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
                 })
             }
         })
+        
+        self.significantLocationChangeCancellable = LocationUtils.shared.significantLocationChange.sink(receiveValue: { _ in
+            self.loadSuggestedLocations()
+        })
     }
     
     func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }
@@ -118,6 +123,18 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         
         self.updateDistance()
         self.updateDegrees()
+        
+        guard let place = place else { return }
+        guard let currentCity = LocationUtils.shared.currentCity else { return }
+        
+        let isPlacePresent = try! AppDatabase.shared.isPlacePresent(coordinate: place.location.coordinate)
+        
+        if isPlacePresent {
+            return
+        }
+        
+        var visitedPlace = VisitedPlace(cityId: currentCity.id, title: place.title, description: place.subtitle, favourite: false, coordinate: place.location.coordinate)
+        let _ = try! AppDatabase.shared.savePlace(&visitedPlace)
     }
     
     func updateDistance() {
@@ -159,9 +176,24 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     func loadSuggestedLocations() {
         guard let location = self.currentLocation else { return }
         
+        var locs: [PlaceSearchItem] = []
         for loc in locations {
-            
+            var newLoc = loc
+            newLoc.distance = location.distance(from: loc.location)
+            locs.append(newLoc)
         }
+        
+        self.suggestedLocations = locs.filter { p in
+            #if DEBUG
+            return p.distance < 20000
+            #else
+            return p.distance < 2000
+            #endif
+        }.sorted { p1, p2 in
+            return p1.distance < p2.distance
+        }
+        
+        
     }
 }
 

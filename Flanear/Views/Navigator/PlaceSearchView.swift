@@ -18,31 +18,35 @@ struct PlaceSearchView: View {
         VStack(alignment: .leading) {
             if viewController.searchText.count == 0 {
                 
-                List(navVC.locations) { item in
-                    Button {
-                        let generator = UISelectionFeedbackGenerator()
-                        generator.selectionChanged()
-                        
-                        navVC.gotTo(place: item)
-                        dismissSearch()
-                    } label: {
-                        HStack {
-                            Image(systemName: item.image)
-                                .foregroundColor(.textBlack)
-                            VStack(alignment: .leading) {
-                                Text(item.title)
+                if let suggestedLocations = navVC.suggestedLocations {
+                    List(suggestedLocations) { item in
+                        Button {
+                            let generator = UISelectionFeedbackGenerator()
+                            generator.selectionChanged()
+                            
+                            navVC.gotTo(place: item)
+                            dismissSearch()
+                        } label: {
+                            HStack {
+                                Image(systemName: item.image)
                                     .foregroundColor(.textBlack)
-                                Text(item.subtitle)
-                                    .foregroundColor(.secondary)
-                                
+                                VStack(alignment: .leading) {
+                                    Text(item.title)
+                                        .foregroundColor(.textBlack)
+                                    Text(item.subtitle)
+                                        .foregroundColor(.secondary)
+                                    
+                                }
+                                Spacer()
+                                Text("\(Int(item.distance)) m")
+                                    .foregroundColor(.textBlack)
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.textBlack)
                             }
-                            Spacer()
-                            Text("\(Int(item.distance)) m")
-                                .foregroundColor(.textBlack)
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.textBlack)
                         }
                     }
+                }else{
+                    ProgressView("loading-suggestions")
                 }
             }else{
                 if let searchResults = viewController.searchResults {
