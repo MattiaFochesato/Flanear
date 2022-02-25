@@ -22,9 +22,9 @@ struct DiaryView: View {
                 if viewController.places.isEmpty {
                     Image(systemName: "map.fill")
                         .font(.largeTitle)
-                        .foregroundColor(.white)
+                        .foregroundColor(.textWhite)
                         .padding(10)
-                        .background(.primary)
+                        .background(Color.textBlack)
                         .clipShape(Circle())
                     Text("Such empty")
                         .bold()

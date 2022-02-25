@@ -30,7 +30,7 @@
 			<key>Key</key>
 			<string>build_preference</string>
 			<key>DefaultValue</key>
-			<string>10</string>
+			<string>1</string>
 		</dict>
 	</array>
 </dict>

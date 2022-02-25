@@ -51,7 +51,7 @@ struct NavigatorSearchableView: View {
                 }//.ignoresSafeArea()
                 .overlay(Rectangle()
                             .foregroundColor(.clear)
-                            .background(viewController.destinationLocation == nil ? RadialGradient(gradient: Gradient(colors: [.clear]), center: .center, startRadius: 1000, endRadius: 1000) : RadialGradient(gradient: Gradient(colors: [.clear, .white]), center: .center, startRadius: 140, endRadius: 400))
+                            .background(viewController.destinationLocation == nil ? RadialGradient(gradient: Gradient(colors: [.clear]), center: .center, startRadius: 1000, endRadius: 1000) : RadialGradient(gradient: Gradient(colors: [.clear, .textWhite]), center: .center, startRadius: 140, endRadius: 400))
                             .allowsHitTesting(false) )
                 .disabled(viewController.destinationLocation == nil ? false : true)
                 
@@ -80,7 +80,7 @@ struct NavigatorSearchableView: View {
                             } label: {
                                 Image(systemName: "xmark")
                                     .font(.title.bold())
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.textBlack)
                             }
 
                         }

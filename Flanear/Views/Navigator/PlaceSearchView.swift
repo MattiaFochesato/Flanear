@@ -28,19 +28,19 @@ struct PlaceSearchView: View {
                     } label: {
                         HStack {
                             Image(systemName: item.image)
-                                .foregroundColor(.black)
+                                .foregroundColor(.textBlack)
                             VStack(alignment: .leading) {
                                 Text(item.title)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.textBlack)
                                 Text(item.subtitle)
                                     .foregroundColor(.secondary)
                                 
                             }
                             Spacer()
                             Text("\(Int(item.distance)) m")
-                                .foregroundColor(.black)
+                                .foregroundColor(.textBlack)
                             Image(systemName: "chevron.right")
-                                .foregroundColor(.black)
+                                .foregroundColor(.textBlack)
                         }
                     }
                 }
@@ -59,16 +59,16 @@ struct PlaceSearchView: View {
                                     VStack(alignment: .leading) {
                                         HStack {
                                             Image(systemName: item.image)
-                                                .foregroundColor(.black)
+                                                .foregroundColor(.textBlack)
                                             VStack(alignment: .leading) {
                                                 Text(item.title)
-                                                    .foregroundColor(.black)
+                                                    .foregroundColor(.textBlack)
                                                 Text(item.subtitle)
                                                     .foregroundColor(.secondary)
                                             }
                                             Spacer()
                                             Text("\(Int(item.distance))m")
-                                                .foregroundColor(.black)
+                                                .foregroundColor(.textBlack)
                                             
                                         }
                                         if item.distance > 3000 {
@@ -84,7 +84,7 @@ struct PlaceSearchView: View {
                                         }
                                     }
                                     Image(systemName: "chevron.right")
-                                        .foregroundColor(.black)
+                                        .foregroundColor(.textBlack)
                                 }
                             }
                         }

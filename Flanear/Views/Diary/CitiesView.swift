@@ -66,6 +66,7 @@ struct CitiesView: View {
                 Text(city.name)
                     .font(.title)
                     .bold()
+                    .foregroundColor(.textBlack)
                 VStack (alignment: .leading){
                     if let url = URL(string: city.image) {
                         AsyncImage(url: url) { image in
@@ -91,7 +92,7 @@ struct CitiesView: View {
                 .cornerRadius(12)
                 .overlay(RoundedRectangle(cornerRadius: 12)
                             .stroke(.black, lineWidth: 2))
-                .shadow(color: Color("Shadow"), radius: 6, x: 0, y: 2)
+                .shadow(color: .shadow, radius: 6, x: 0, y: 2)
             }.foregroundColor(.black)
             
         }

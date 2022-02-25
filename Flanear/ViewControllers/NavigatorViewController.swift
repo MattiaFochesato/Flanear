@@ -12,11 +12,12 @@ import Combine
 import WatchConnectivity
 
 class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDelegate {
-    @Published var locations = [
+    let locations = [
         PlaceSearchItem(title: "Developer Academy", description: "Description todo", latitude: 40.836210, longitude: 14.306480),
         PlaceSearchItem(title: "San Giorgio a Cremano", description: "Description todo", latitude: 40.829170, longitude: 14.334190),
-        
     ]
+    
+    @Published var suggestedLocations: [PlaceSearchItem]? = nil
     
     private var bearingDegrees: Double = .zero
     @Published var degrees: Double? = nil//.zero
@@ -152,6 +153,14 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
             validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
                 print(error)
             })
+        }
+    }
+    
+    func loadSuggestedLocations() {
+        guard let location = self.currentLocation else { return }
+        
+        for loc in locations {
+            
         }
     }
 }
