@@ -11,6 +11,7 @@ struct DiaryView: View {
     let city: VisitedCity
     
     @ObservedObject var viewController: DiaryViewController
+    @State var searchText = ""
     
     init(city: VisitedCity) {
         self.city = city
@@ -22,51 +23,56 @@ struct DiaryView: View {
                 if viewController.places.isEmpty {
                     Image(systemName: "map.fill")
                         .font(.largeTitle)
-                        .foregroundColor(.white)
+                        .foregroundColor(.textWhite)
                         .padding(10)
-                        .background(.primary)
+                        .background(Color.textBlack)
                         .clipShape(Circle())
-                    Text("Such empty")
+                    Text("empty")
                         .bold()
                 }else {
                     List {
-                        ForEach(viewController.places) { place in
-                            NavigationLink {
-                                PlaceInfoView(place: place)
-                            } label: {
-                                HStack {
-                                    Image(systemName: place.favourite ? "star.fill" : "star")
-                                        .font(.title2)
-                                        .foregroundColor(.yellow)
-                                    VStack(alignment: .leading) {
-                                        Text(place.title)
+                        Section(header: Text("Visited Places")) {
+                            ForEach(viewController.places) { place in
+                                NavigationLink {
+                                    PlaceInfoView(place: place)
+                                } label: {
+                                    HStack {
+                                        Image(systemName: place.favourite ? "star.fill" : "star")
                                             .font(.title2)
-                                        Text(place.description)
-                                            .font(.caption)
-                                            .foregroundColor(.gray)
-                                    }.padding(.leading, 8)
-                                }
-                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                    Button {
-                                        viewController.toggleStar(place: place)
-                                    } label: {
-                                        Label("Favourite", systemImage: place.favourite ? "star.slash" : "star.fill")
-                                    }.tint(.yellow)
-                                }
-                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                    Button(role: .destructive) {
-                                        print("Deleting place")
-                                        viewController.deletePlace(place: place)
-                                    } label: {
-                                        Label("Delete", systemImage: "trash.fill")
+                                            .foregroundColor(place.favourite ? .yellow : .textBlack)
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text(place.title)
+                                                .font(.title2)
+                                            Text(place.description)
+                                                .font(.caption)
+                                                .foregroundColor(.gray)
+                                        }
+                                        .padding(.leading, 6)
+                                        .padding([.top, .bottom], 2)
+                                    }
+                                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                        Button {
+                                            viewController.toggleStar(place: place)
+                                        } label: {
+                                            Label("Favourite", systemImage: place.favourite ? "star.slash" : "star.fill")
+                                        }.tint(.yellow)
+                                    }
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                        Button(role: .destructive) {
+                                            print("Deleting place")
+                                            viewController.deletePlace(place: place)
+                                        } label: {
+                                            Label("Delete", systemImage: "trash.fill")
+                                        }
                                     }
                                 }
+                                
                             }
-                            
                         }
                     }
                 }
             }.navigationTitle(city.name)
+            .searchable(text: $searchText)
     }
 }
 

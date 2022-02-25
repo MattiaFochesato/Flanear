@@ -7,8 +7,10 @@
 */
 "explore" = "Explore";
 "your-cities" = "Your Cities";
+"place-info" = "Place Info";
 
 "warning" = "Warning!";
+"loading-suggestions" = "Loading suggestions...";
 "place-too-far-away" = "The place can be too far away!";
 
 "search-no-results" = "We cannot find this place.\nCheck the name!";

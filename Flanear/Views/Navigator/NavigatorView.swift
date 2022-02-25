@@ -51,7 +51,7 @@ struct NavigatorSearchableView: View {
                 }//.ignoresSafeArea()
                 .overlay(Rectangle()
                             .foregroundColor(.clear)
-                            .background(viewController.destinationLocation == nil ? RadialGradient(gradient: Gradient(colors: [.clear]), center: .center, startRadius: 1000, endRadius: 1000) : RadialGradient(gradient: Gradient(colors: [.clear, .white]), center: .center, startRadius: 140, endRadius: 400))
+                            .background(viewController.destinationLocation == nil ? RadialGradient(gradient: Gradient(colors: [.clear]), center: .center, startRadius: 1000, endRadius: 1000) : RadialGradient(gradient: Gradient(colors: [.clear, .textWhite]), center: .center, startRadius: 140, endRadius: 400))
                             .allowsHitTesting(false) )
                 .disabled(viewController.destinationLocation == nil ? false : true)
                 
@@ -70,10 +70,24 @@ struct NavigatorSearchableView: View {
                     ZStack(alignment: .bottom) {
                         Color.clear
                         HStack {
+                            Image(systemName: "location.fill")
+                                .font(.title.bold())
                             Text(destName)
-                        }.frame(maxWidth: .infinity)
+                                .bold()
+                            Spacer()
+                            Button {
+                                viewController.gotTo(place: nil)
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .font(.title.bold())
+                                    .foregroundColor(.textBlack)
+                            }
+
+                        }
+                        .padding([.leading, .trailing])
+                        .frame(maxWidth: .infinity)
                             .frame(height: 40)
-                            .background(.gray)
+                            .background(Color("DestinationSheetColor"))
                      }.zIndex(1000)
                         .padding(.bottom, 1)//Fix for TabBar color iOS 15
                 }

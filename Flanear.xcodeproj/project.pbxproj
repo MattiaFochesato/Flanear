@@ -35,10 +35,13 @@
 		269A9C7B27BE61F00075B085 /* PlaceSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */; };
 		269B5F3027C7948E00F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
 		269B5F3127C7955000F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
+		269B5F3627C7A35E00F520DB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 269B5F3527C7A22700F520DB /* Settings.bundle */; };
 		26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994727BBAF9B00611E79 /* VisitedCity.swift */; };
 		26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */; };
 		26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994B27BBC54300611E79 /* PlaceSearchView.swift */; };
 		26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */; };
+		26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898A27C8CBA20032154C /* Color+Extension.swift */; };
+		26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898D27C8E6DB0032154C /* CameraView.swift */; };
 		26B8547D27C6362000C37004 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547C27C6362000C37004 /* CoreGraphics.framework */; };
 		26B8547F27C6362500C37004 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547E27C6362500C37004 /* CoreLocation.framework */; };
 		26B8548127C6362C00C37004 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548027C6362C00C37004 /* libc++.tbd */; };
@@ -130,10 +133,16 @@
 		269A9C7427BE48820075B085 /* CCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCircleView.swift; sourceTree = "<group>"; };
 		269A9C7727BE511B0075B085 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchItem.swift; sourceTree = "<group>"; };
+		269B5F3227C7A17300F520DB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		269B5F3327C7A17A00F520DB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		269B5F3427C7A18100F520DB /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		269B5F3527C7A22700F520DB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		26A0994727BBAF9B00611E79 /* VisitedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedCity.swift; sourceTree = "<group>"; };
 		26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedCitiesViewController.swift; sourceTree = "<group>"; };
 		26A0994B27BBC54300611E79 /* PlaceSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchView.swift; sourceTree = "<group>"; };
 		26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
+		26B3898A27C8CBA20032154C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		26B3898D27C8E6DB0032154C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		26B8547C27C6362000C37004 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		26B8547E27C6362500C37004 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		26B8548027C6362C00C37004 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -233,6 +242,7 @@
 			children = (
 				268050B227BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift */,
 				26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */,
+				26B3898A27C8CBA20032154C /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,6 +267,7 @@
 		269790CE27B7C6D700B0210B /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				26B3898C27C8E6CE0032154C /* Camera */,
 				268050BA27BB9D9F004CBC33 /* CitiesView.swift */,
 				26BC9CD127B6B08200CE8BBD /* DiaryView.swift */,
 				268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */,
@@ -302,6 +313,14 @@
 				269A9C7727BE511B0075B085 /* NavigatorViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		26B3898C27C8E6CE0032154C /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				26B3898D27C8E6DB0032154C /* CameraView.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		26B8547B27C6362000C37004 /* Frameworks */ = {
@@ -355,6 +374,7 @@
 				26B8548827C6373600C37004 /* GooglePlaces.xcframework */,
 				26B8548E27C6791900C37004 /* GooglePlaces.bundle */,
 				26BC9CC927B6AFC000CE8BBD /* Preview Content */,
+				269B5F3527C7A22700F520DB /* Settings.bundle */,
 				26B854A927C69F7700C37004 /* Localizable.strings */,
 			);
 			path = Flanear;
@@ -487,6 +507,9 @@
 				en,
 				Base,
 				it,
+				ru,
+				es,
+				uk,
 			);
 			mainGroup = 26BC9CB727B6AFBE00CE8BBD;
 			packageReferences = (
@@ -529,6 +552,7 @@
 			files = (
 				26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */,
 				26B854A727C69F7700C37004 /* Localizable.strings in Resources */,
+				269B5F3627C7A35E00F520DB /* Settings.bundle in Resources */,
 				26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */,
 				26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */,
 			);
@@ -567,6 +591,7 @@
 				26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */,
 				26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */,
 				26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */,
+				26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */,
 				268050B027BA6EBD004CBC33 /* AppDatabase.swift in Sources */,
 				26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */,
 				26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */,
@@ -575,6 +600,7 @@
 				268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */,
 				26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */,
 				269790D027B7C7C200B0210B /* ARMapView.swift in Sources */,
+				26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */,
 				268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */,
 				26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */,
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,
@@ -603,6 +629,9 @@
 			children = (
 				26B854A827C69F7700C37004 /* en */,
 				26B854AA27C69F7800C37004 /* it */,
+				269B5F3227C7A17300F520DB /* ru */,
+				269B5F3327C7A17A00F520DB /* es */,
+				269B5F3427C7A18100F520DB /* uk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -637,7 +666,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -668,7 +697,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -693,7 +722,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -718,7 +747,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -861,6 +890,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -871,7 +901,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -898,6 +928,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -908,7 +939,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
