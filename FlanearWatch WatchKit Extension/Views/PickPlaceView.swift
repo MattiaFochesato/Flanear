@@ -19,7 +19,7 @@ struct PickPlaceView: View {
                         .padding(4)
                         .background(Circle().foregroundColor(.blue))
                         .padding(.bottom, 8)
-                    Text("We cannot find anything. Please check your GPS and internet connection.")
+                    Text("no-results")
                         .multilineTextAlignment(.center)
                 }else{
                     List {
@@ -45,7 +45,7 @@ struct PickPlaceView: View {
             }else{
                 ProgressView()
             }
-        }.navigationTitle("Pick Place")
+        }.navigationTitle(Text("pick-place"))
             .onAppear {
                 viewController.loadSuggestions()
             }

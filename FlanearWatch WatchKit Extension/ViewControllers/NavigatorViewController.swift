@@ -17,10 +17,10 @@ class NavigatorViewController: NSObject, ObservableObject, WCSessionDelegate, CL
     
     @Published var searchResults: [PlaceSearchItem]? = nil
     
-    @Published var degrees: Double = .zero
-    @Published var destinationLocation: CLLocation? = CLLocation(latitude: 40.829170, longitude: 14.334190)
+    @Published var degrees: Double? = .zero
+    @Published var destinationLocation: CLLocation? = nil//CLLocation(latitude: 40.829170, longitude: 14.334190)
     @Published var destinationDistance: CLLocationDistance = 0
-    @Published var destinationName: String = "San Giorgio a Cremano"
+    @Published var destinationName: String? = nil//"San Giorgio a Cremano"
     
     private let locationManager: CLLocationManager
     private var headingAvailable = false

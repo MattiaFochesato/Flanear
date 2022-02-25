@@ -8,63 +8,113 @@
 import SwiftUI
 
 struct PlaceSearchView: View {
-    @StateObject var viewController = PlaceSearchViewController()
-    
+    @EnvironmentObject var viewController: PlaceSearchViewController
     @EnvironmentObject var navVC: NavigatorViewController
     
+    
+    @Environment(\.dismissSearch) private var dismissSearch
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                if viewController.searchText.count == 0 {
-                    Text("TODO suggestions")
-                }else{
-                    if let searchResults = viewController.searchResults {
-                        if !searchResults.isEmpty {
-                            List(searchResults) { item in
-                                Button {
-                                    let generator = UISelectionFeedbackGenerator()
-                                    generator.selectionChanged()
-                                    
-                                    navVC.gotTo(place: item)
-                                } label: {
-                                    HStack {
-                                        Image(systemName: item.image)
-                                            .foregroundColor(.black)
-                                        VStack(alignment: .leading) {
-                                            Text(item.title)
-                                                .foregroundColor(.black)
-                                            Text(item.subtitle)
-                                                .foregroundColor(.secondary)
-                                        }
-                                        Spacer()
-                                        Text("\(Int(item.distance))m")
-                                            .foregroundColor(.black)
-                                        Image(systemName: "chevron.right")
-                                            .foregroundColor(.black)
-                                    }
-                                }
+        VStack(alignment: .leading) {
+            if viewController.searchText.count == 0 {
+                
+                List(navVC.locations) { item in
+                    Button {
+                        let generator = UISelectionFeedbackGenerator()
+                        generator.selectionChanged()
+                        
+                        navVC.gotTo(place: item)
+                        dismissSearch()
+                    } label: {
+                        HStack {
+                            Image(systemName: item.image)
+                                .foregroundColor(.black)
+                            VStack(alignment: .leading) {
+                                Text(item.title)
+                                    .foregroundColor(.black)
+                                Text(item.subtitle)
+                                    .foregroundColor(.secondary)
+                                
                             }
-                        }else{
-                            Text("no results")
-                        }
-                    }else{
-                        List {
-                            ForEach((0..<10)) { _ in
-                                HStack {
-                                    Image(systemName: "greaterthan.circle.fill")
-                                    VStack(alignment: .leading) {
-                                        Text(randomString(length: 10))
-                                        Text(randomString(length: 6))
-                                            .foregroundColor(.secondary)
-                                    }
-                                }.redacted(reason: .placeholder)
-                            }
+                            Spacer()
+                            Text("\(Int(item.distance)) m")
+                                .foregroundColor(.black)
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.black)
                         }
                     }
                 }
-            }.navigationTitle("Search")
+            }else{
+                if let searchResults = viewController.searchResults {
+                    if !searchResults.isEmpty {
+                        List(searchResults) { item in
+                            Button {
+                                let generator = UISelectionFeedbackGenerator()
+                                generator.selectionChanged()
+                                
+                                navVC.gotTo(place: item)
+                                dismissSearch()
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Image(systemName: item.image)
+                                                .foregroundColor(.black)
+                                            VStack(alignment: .leading) {
+                                                Text(item.title)
+                                                    .foregroundColor(.black)
+                                                Text(item.subtitle)
+                                                    .foregroundColor(.secondary)
+                                            }
+                                            Spacer()
+                                            Text("\(Int(item.distance))m")
+                                                .foregroundColor(.black)
+                                            
+                                        }
+                                        if item.distance > 3000 {
+                                            HStack {
+                                                Image(systemName: "exclamationmark.triangle.fill")
+                                                    .foregroundColor(.orange)
+                                                Text("warning")
+                                                    .bold()
+                                                    .foregroundColor(.orange) +
+                                                    Text(" ") +
+                                                Text("place-too-far-away")
+                                            }.padding(.top, 4)
+                                        }
+                                    }
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.black)
+                                }
+                            }
+                        }
+                    }else{
+                        Image(systemName: "map.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(.primary)
+                            .clipShape(Circle())
+                        Text("search-no-results")
+                            .bold()
+                    }
+                }else{
+                    List {
+                        ForEach((0..<4)) { _ in
+                            HStack {
+                                Image(systemName: "greaterthan.circle.fill")
+                                VStack(alignment: .leading) {
+                                    Text(randomString(length: 10))
+                                    Text(randomString(length: 6))
+                                        .foregroundColor(.secondary)
+                                }
+                            }.redacted(reason: .placeholder)
+                        }
+                    }
+                }
+            }
+            
         }
-        .searchable(text: $viewController.searchText)
         .onReceive(
             viewController.$searchText
                 .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
@@ -78,13 +128,13 @@ struct PlaceSearchView: View {
     }
     
     func randomString(length: Int) -> String {
-      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
     }
 }
 
 struct PlaceSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceSearchView()
+        PlaceSearchView()//searchText: .constant(""))
     }
 }

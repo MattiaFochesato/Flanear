@@ -15,59 +15,70 @@ struct CompassCircleView: View {
     let isWatch = false
 #endif
     
-    @Binding var degrees: Double// = .zero
+    @Binding var degrees: Double?// = .zero
     @Binding var near: Double//= 1
     @Binding var distance: CLLocationDistance
-    @Binding var placeName: String
+    @Binding var placeName: String?
     var body: some View {
         ZStack {
-            /*Triangle()
-             .fill(Color("TextDarkBlue"))
-             .frame(width: 70, height: 50)
-             #if os(watchOS)
-             .padding(.bottom, 10)
-             #else
-             .padding(.bottom, 350)
-             #endif
-             .rotationEffect(Angle(degrees: degrees))
-             //.animation(.linear)*/
+            #if os(iOS)
+            if let degrees = degrees {
+                Triangle()
+                .stroke(style: StrokeStyle(lineWidth: 12, lineJoin: .round))
+                .fill(Color("PaletteLightBlue"))
+                 .frame(width: 60, height: 40)
+                 .padding(.bottom, 300)
+                 .rotationEffect(Angle(degrees: degrees))
+                
+                Triangle()
+                 .fill(Color("PaletteLightBlue"))
+                 .frame(width: 60, height: 40)
+                 .padding(.bottom, 300)
+                 .rotationEffect(Angle(degrees: degrees))
+                
+            }
+             //.animation(.linear)
+            #endif
             
             ZStack {
                 Circle()
                     .stroke(Color.white, lineWidth: !isWatch ? 30 : 12)
-                    .background(
-                        LinearGradient(gradient: Gradient(colors: [.blue, .clear]), startPoint: .top, endPoint: .bottom)
+                    .background(Color("PaletteYellow").opacity(0.5))
                             .clipShape(Circle())
-                    )
+                            
+                        Circle()
+                    .stroke(.black, lineWidth: !isWatch ? 30 : 12)
+                    .foregroundColor(.clear)
+                
+                        Circle()
+                    .stroke(.white, lineWidth: !isWatch ? 27 : 10)
+                    .foregroundColor(.clear)
+                   
+                    
                 
                 Circle()
                     .trim(from: 0, to: getBarWidth())
-                    .stroke(Color.blue, lineWidth: !isWatch ? 15 : 8)
+                    .stroke(Color("PaletteLightBlue"), lineWidth: !isWatch ? 23 : 8)
                     .rotationEffect(getRotationBar())
                 //.animation(.linear)
                 
                 VStack {
                     Text("\(Int(distance))m")
-                        .foregroundColor(!isWatch ? Color("TextDarkBlue") : .white)
+                        .foregroundColor(!isWatch ? Color(.black) : .white)
                         .font(!isWatch ? .largeTitle : .title2)
-                        .bold()
+                        .fontWeight(.black)
                         .minimumScaleFactor(0.6)
                         .padding([.leading, .trailing], 20)
                     
-                    if !isWatch {
-                        Text(placeName)
-                            .font(.title2)
-                            .foregroundColor(Color("TextDarkBlue"))
-                    }
                 }
                 
             }
 #if os(iOS)
-            .frame(width: 300, height: 300, alignment: .center)
+            .frame(width: 200, height: 200, alignment: .center)
 #endif
         }
 #if os(iOS)
-        .frame(width: 300, height: 300, alignment: .center)
+        .frame(width: 200, height: 200, alignment: .center)
 #endif
     }
     
@@ -76,6 +87,10 @@ struct CompassCircleView: View {
     }
     
     func getRotationBar() -> Angle {
+        guard let degrees = degrees else {
+            return Angle(degrees: -90)
+        }
+
         let width = getBarWidth() / 2
         let deg = radiansToDegrees(radians: width * .pi * 2)
         
@@ -93,23 +108,11 @@ struct Triangle: Shape {
         path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.closeSubpath()
         
         return path
     }
     
-    /*
-     arc:
-     func path(in rect: CGRect) -> Path {
-     let rotationAdjustment = Angle.degrees(90)
-     let modifiedStart = startAngle - rotationAdjustment
-     let modifiedEnd = endAngle - rotationAdjustment
-     
-     var path = Path()
-     path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: !clockwise)
-     
-     return path
-     }
-     */
 }
 
 struct CompassCircleView_Previews: PreviewProvider {

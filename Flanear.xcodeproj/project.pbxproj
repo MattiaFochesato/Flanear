@@ -26,17 +26,30 @@
 		269790E927B7CC4E00B0210B /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269790E827B7CC4E00B0210B /* ComplicationController.swift */; };
 		269790EB27B7CC4F00B0210B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269790EA27B7CC4F00B0210B /* Assets.xcassets */; };
 		269790EE27B7CC4F00B0210B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269790ED27B7CC4F00B0210B /* Preview Assets.xcassets */; };
-		269790F327B7CC4F00B0210B /* FlanearWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 269790D327B7CC4B00B0210B /* FlanearWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		269790F327B7CC4F00B0210B /* Flanear.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 269790D327B7CC4B00B0210B /* Flanear.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		269790FF27B7D13900B0210B /* PickPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269790FE27B7D13800B0210B /* PickPlaceView.swift */; };
 		269A9C7327BE484F0075B085 /* CompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */; };
 		269A9C7527BE48820075B085 /* CCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7427BE48820075B085 /* CCircleView.swift */; };
 		269A9C7827BE511B0075B085 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7727BE511B0075B085 /* NavigatorViewController.swift */; };
 		269A9C7A27BE61CF0075B085 /* PlaceSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */; };
 		269A9C7B27BE61F00075B085 /* PlaceSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */; };
+		269B5F3027C7948E00F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
+		269B5F3127C7955000F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
 		26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994727BBAF9B00611E79 /* VisitedCity.swift */; };
 		26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */; };
 		26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994B27BBC54300611E79 /* PlaceSearchView.swift */; };
 		26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */; };
+		26B8547D27C6362000C37004 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547C27C6362000C37004 /* CoreGraphics.framework */; };
+		26B8547F27C6362500C37004 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547E27C6362500C37004 /* CoreLocation.framework */; };
+		26B8548127C6362C00C37004 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548027C6362C00C37004 /* libc++.tbd */; };
+		26B8548327C6363200C37004 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548227C6363200C37004 /* libz.tbd */; };
+		26B8548527C6363600C37004 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548427C6363600C37004 /* QuartzCore.framework */; };
+		26B8548727C6363D00C37004 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548627C6363D00C37004 /* UIKit.framework */; };
+		26B8548927C6373600C37004 /* GooglePlaces.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548827C6373600C37004 /* GooglePlaces.xcframework */; };
+		26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8548C27C637FC00C37004 /* AppDelegate.swift */; };
+		26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26B8548E27C6791900C37004 /* GooglePlaces.bundle */; };
+		26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */; };
+		26B854A727C69F7700C37004 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
 		26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */; };
 		26BC9CC627B6AFBF00CE8BBD /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */; };
 		26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */; };
@@ -81,7 +94,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				269790F327B7CC4F00B0210B /* FlanearWatch.app in Embed Watch Content */,
+				269790F327B7CC4F00B0210B /* Flanear.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,7 +114,7 @@
 		268050BA27BB9D9F004CBC33 /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
 		268050BD27BBA2C0004CBC33 /* LocationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtils.swift; sourceTree = "<group>"; };
 		269790CF27B7C7C200B0210B /* ARMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapView.swift; sourceTree = "<group>"; };
-		269790D327B7CC4B00B0210B /* FlanearWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlanearWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		269790D327B7CC4B00B0210B /* Flanear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flanear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269790D527B7CC4E00B0210B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		269790DB27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FlanearWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		269790E027B7CC4E00B0210B /* FlanearApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlanearApp.swift; sourceTree = "<group>"; };
@@ -121,6 +134,18 @@
 		26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedCitiesViewController.swift; sourceTree = "<group>"; };
 		26A0994B27BBC54300611E79 /* PlaceSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchView.swift; sourceTree = "<group>"; };
 		26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
+		26B8547C27C6362000C37004 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		26B8547E27C6362500C37004 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		26B8548027C6362C00C37004 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		26B8548227C6363200C37004 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		26B8548427C6363600C37004 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		26B8548627C6363D00C37004 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		26B8548827C6373600C37004 /* GooglePlaces.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GooglePlaces.xcframework; sourceTree = "<group>"; };
+		26B8548C27C637FC00C37004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		26B8548E27C6791900C37004 /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = "GooglePlaces.xcframework/ios-arm64/GooglePlaces.framework/Resources/GooglePlaces.bundle"; sourceTree = "<group>"; };
+		26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		26B854A827C69F7700C37004 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		26B854AA27C69F7800C37004 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		26BC9CC027B6AFBF00CE8BBD /* Flanear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flanear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlanearApp.swift; sourceTree = "<group>"; };
 		26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
@@ -143,6 +168,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B8548727C6363D00C37004 /* UIKit.framework in Frameworks */,
+				26B8548527C6363600C37004 /* QuartzCore.framework in Frameworks */,
+				26B8548327C6363200C37004 /* libz.tbd in Frameworks */,
+				26B8548127C6362C00C37004 /* libc++.tbd in Frameworks */,
+				26B8548927C6373600C37004 /* GooglePlaces.xcframework in Frameworks */,
+				26B8547F27C6362500C37004 /* CoreLocation.framework in Frameworks */,
+				26B8547D27C6362000C37004 /* CoreGraphics.framework in Frameworks */,
 				268050A727BA5A84004CBC33 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				268050B227BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift */,
+				26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -271,6 +304,19 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		26B8547B27C6362000C37004 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26B8548627C6363D00C37004 /* UIKit.framework */,
+				26B8548427C6363600C37004 /* QuartzCore.framework */,
+				26B8548227C6363200C37004 /* libz.tbd */,
+				26B8548027C6362C00C37004 /* libc++.tbd */,
+				26B8547E27C6362500C37004 /* CoreLocation.framework */,
+				26B8547C27C6362000C37004 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		26BC9CB727B6AFBE00CE8BBD = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +326,7 @@
 				269790D427B7CC4B00B0210B /* FlanearWatch */,
 				269790DF27B7CC4E00B0210B /* FlanearWatch WatchKit Extension */,
 				26BC9CC127B6AFBF00CE8BBD /* Products */,
+				26B8547B27C6362000C37004 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -287,7 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				26BC9CC027B6AFBF00CE8BBD /* Flanear.app */,
-				269790D327B7CC4B00B0210B /* FlanearWatch.app */,
+				269790D327B7CC4B00B0210B /* Flanear.app */,
 				269790DB27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex */,
 			);
 			name = Products;
@@ -298,13 +345,17 @@
 			children = (
 				268050B927BAC5E5004CBC33 /* Info.plist */,
 				26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */,
+				26B8548C27C637FC00C37004 /* AppDelegate.swift */,
 				26BC9CD327B6B09A00CE8BBD /* Views */,
 				26BC9CD427B6B0A500CE8BBD /* ViewControllers */,
 				268050A127BA57DF004CBC33 /* Database */,
 				268050B127BA70DE004CBC33 /* Extensions */,
 				268050BC27BBA2A5004CBC33 /* Utils */,
 				26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */,
+				26B8548827C6373600C37004 /* GooglePlaces.xcframework */,
+				26B8548E27C6791900C37004 /* GooglePlaces.bundle */,
 				26BC9CC927B6AFC000CE8BBD /* Preview Content */,
+				26B854A927C69F7700C37004 /* Localizable.strings */,
 			);
 			path = Flanear;
 			sourceTree = "<group>";
@@ -365,7 +416,7 @@
 			);
 			name = FlanearWatch;
 			productName = FlanearWatch;
-			productReference = 269790D327B7CC4B00B0210B /* FlanearWatch.app */;
+			productReference = 269790D327B7CC4B00B0210B /* Flanear.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		269790DA27B7CC4E00B0210B /* FlanearWatch WatchKit Extension */ = {
@@ -435,6 +486,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 26BC9CB727B6AFBE00CE8BBD;
 			packageReferences = (
@@ -457,6 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				269790D627B7CC4E00B0210B /* Assets.xcassets in Resources */,
+				269B5F3127C7955000F520DB /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				269790EE27B7CC4F00B0210B /* Preview Assets.xcassets in Resources */,
+				269B5F3027C7948E00F520DB /* Localizable.strings in Resources */,
 				269790EB27B7CC4F00B0210B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +527,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */,
+				26B854A727C69F7700C37004 /* Localizable.strings in Resources */,
 				26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */,
 				26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */,
 			);
@@ -513,12 +569,14 @@
 				26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */,
 				268050B027BA6EBD004CBC33 /* AppDatabase.swift in Sources */,
 				26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */,
+				26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */,
 				26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */,
 				26BC9CD227B6B08200CE8BBD /* DiaryView.swift in Sources */,
 				268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */,
 				26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */,
 				269790D027B7C7C200B0210B /* ARMapView.swift in Sources */,
 				268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */,
+				26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */,
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,
 				26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */,
 			);
@@ -538,6 +596,18 @@
 			targetProxy = 269790F127B7CC4F00B0210B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		26B854A927C69F7700C37004 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26B854A827C69F7700C37004 /* en */,
+				26B854AA27C69F7800C37004 /* it */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		269790F527B7CC4F00B0210B /* Debug */ = {
@@ -613,12 +683,11 @@
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = FlanearWatch_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = FlanearWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mattiafochesato.Flanear;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattiafochesato.Flanear.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flanear;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -639,12 +708,11 @@
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = FlanearWatch_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = FlanearWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mattiafochesato.Flanear;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattiafochesato.Flanear.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flanear;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -780,6 +848,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Flanear/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Flanear/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
@@ -794,6 +866,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattiafochesato.Flanear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -812,6 +885,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Flanear/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Flanear/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
@@ -826,6 +903,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattiafochesato.Flanear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -18,46 +18,55 @@ struct DiaryView: View {
     }
     
     var body: some View {
-        //NavigationView {
             VStack {
-                List {
-                    ForEach(viewController.places) { place in
-                        NavigationLink {
-                            PlaceInfoView(place: place)
-                        } label: {
-                            HStack {
-                                Image(systemName: place.favourite ? "star.fill" : "star")
-                                    .font(.title2)
-                                    .foregroundColor(.yellow)
-                                VStack(alignment: .leading) {
-                                    Text(place.title)
+                if viewController.places.isEmpty {
+                    Image(systemName: "map.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .background(.primary)
+                        .clipShape(Circle())
+                    Text("Such empty")
+                        .bold()
+                }else {
+                    List {
+                        ForEach(viewController.places) { place in
+                            NavigationLink {
+                                PlaceInfoView(place: place)
+                            } label: {
+                                HStack {
+                                    Image(systemName: place.favourite ? "star.fill" : "star")
                                         .font(.title2)
-                                    Text(place.description)
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                }.padding(.leading, 8)
-                            }
-                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                Button {
-                                    viewController.toggleStar(place: place)
-                                } label: {
-                                    Label("Favourite", systemImage: place.favourite ? "star.slash" : "star.fill")
-                                }.tint(.yellow)
-                            }
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    print("Deleting place")
-                                    viewController.deletePlace(place: place)
-                                } label: {
-                                    Label("Delete", systemImage: "trash.fill")
+                                        .foregroundColor(.yellow)
+                                    VStack(alignment: .leading) {
+                                        Text(place.title)
+                                            .font(.title2)
+                                        Text(place.description)
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    }.padding(.leading, 8)
+                                }
+                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                    Button {
+                                        viewController.toggleStar(place: place)
+                                    } label: {
+                                        Label("Favourite", systemImage: place.favourite ? "star.slash" : "star.fill")
+                                    }.tint(.yellow)
+                                }
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button(role: .destructive) {
+                                        print("Deleting place")
+                                        viewController.deletePlace(place: place)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash.fill")
+                                    }
                                 }
                             }
+                            
                         }
-
                     }
-                }.navigationTitle("Diary")
-            //}
-        }
+                }
+            }.navigationTitle(city.name)
     }
 }
 
