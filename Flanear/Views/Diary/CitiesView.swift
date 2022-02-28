@@ -20,7 +20,7 @@ struct CitiesView: View {
                 VStack {
                     ForEach(citiesToShow) { city in
                         NavigationLink {
-                            DiaryView(city: city)
+                            PlacesView(city: city)
                         } label: {
                             CityRow(city: city)
                                 .padding()
