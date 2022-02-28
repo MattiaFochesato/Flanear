@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DiaryView: View {
+struct PlacesView: View {
     let city: VisitedCity
     
     @ObservedObject var viewController: DiaryViewController
@@ -76,8 +76,8 @@ struct DiaryView: View {
     }
 }
 
-struct DiaryView_Previews: PreviewProvider {
+struct PlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        DiaryView(city: VisitedCity.makeRandom())
+        PlacesView(city: VisitedCity.makeRandom())
     }
 }
