@@ -7,6 +7,7 @@
 
 import GRDB
 import CoreLocation
+import SwiftUI
 
 /// AppDatabase lets the application access the database.
 ///
@@ -55,7 +56,7 @@ final class AppDatabase {
             try db.create(table: VisitedPlace.databaseTableName) { t in
                 t.autoIncrementedPrimaryKey("id")
                 t.column("cityId", .integer)
-                    .notNull()  
+                    .notNull()
                     .indexed()
                     .references(VisitedCity.databaseTableName, onDelete: .cascade)
                 t.column("title", .text).notNull()
@@ -63,6 +64,18 @@ final class AppDatabase {
                 t.column("favourite", .boolean).notNull()
                 t.column("latitude", .double).notNull()
                 t.column("longitude", .double).notNull()
+            }
+        }
+        
+        migrator.registerMigration("addedPictures") { db in
+            /* PICTURES */
+            try db.create(table: Picture.databaseTableName) { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("placeId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references(VisitedPlace.databaseTableName, onDelete: .cascade)
+                t.column("data", .blob).notNull()
             }
         }
         return migrator
@@ -142,6 +155,24 @@ extension AppDatabase {
         }
         
         return result
+    }
+    
+    func add(image: UIImage, to place: VisitedPlace) throws {
+        guard let imageData = image.pngData() else {
+            return
+        }
+        
+        var picture = Picture(placeId: place.id, data: imageData)
+        try dbWriter.write { db in
+            try picture.save(db)
+        }
+    }
+    
+    /// Delete the specified picture
+    func delete(picture: Picture) throws {
+        try dbWriter.write { db in
+            _ = try Picture.deleteAll(db, ids: [picture.id!])
+        }
     }
     
     /*/// Saves (inserts or updates) a player. When the method returns, the

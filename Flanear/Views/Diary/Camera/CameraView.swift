@@ -7,14 +7,42 @@
 
 import SwiftUI
 
-struct CameraView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct CameraView: UIViewControllerRepresentable {
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        @Binding var isCoordinatorShown: Bool
+        @Binding var imageInCoordinator: UIImage?
+        init(isShown: Binding<Bool>, image: Binding<UIImage?>) {
+            _isCoordinatorShown = isShown
+            _imageInCoordinator = image
+        }
+        func imagePickerController(_ picker: UIImagePickerController,
+                                   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+            imageInCoordinator = unwrapImage.fixedOrientation()//Image(uiImage: unwrapImage)
+            isCoordinatorShown = false
+        }
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            isCoordinatorShown = false
+        }
     }
-}
-
-struct CameraView_Previews: PreviewProvider {
-    static var previews: some View {
-        CameraView()
+    
+    @Binding var isShown: Bool
+    @Binding var image: UIImage?
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(isShown: $isShown, image: $image)
     }
+    
+    func makeUIViewController(context: UIViewControllerRepresentableContext<CameraView>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        picker.sourceType = .camera
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController,
+                                context: UIViewControllerRepresentableContext<CameraView>) {
+        
+    }
+    
 }

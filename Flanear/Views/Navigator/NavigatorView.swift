@@ -17,7 +17,7 @@ struct NavigatorView: View {
     
     var body: some View {
         NavigationView {
-            NavigatorSearchableView()//searchText: $searchText)
+            NavigatorSearchableView()
                 .navigationTitle("explore")
                 .searchable(text: $searchViewController.searchText, placement: .navigationBarDrawer(displayMode: .always))
         }.environmentObject(viewController)
@@ -35,21 +35,6 @@ struct NavigatorSearchableView: View {
         VStack(spacing: 0) {
             ZStack {
                 if !isSearching {
-                    /*Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: viewController.destinationLocation == nil, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
-                     MapAnnotation(coordinate: location.location.coordinate) {
-                     Button {
-                     viewController.gotTo(place: location)
-                     } label: {
-                     Image(systemName: "star")
-                     .font(.title2)
-                     .foregroundColor(.white)
-                     .padding(3)
-                     .background(.orange)
-                     .clipShape(Circle())
-                     }
-                     
-                     }
-                     }//.ignoresSafeArea()*/
                     MapView()
                         .overlay(Rectangle()
                                     .foregroundColor(.clear)
@@ -61,13 +46,6 @@ struct NavigatorSearchableView: View {
                         CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
                         
                     }
-                    /*ZStack(alignment: .bottom) {
-                     Color.clear
-                     SuggestedPlacesView()
-                     .frame(height: 200)
-                     .cornerRadius(12)
-                     }.zIndex(1000)*/
-                    
                     
                 }else{
                     PlaceSearchView()
@@ -75,8 +53,6 @@ struct NavigatorSearchableView: View {
             }
             if let destName = viewController.destinationName {
                 if !isSearching {
-                    //ZStack(alignment: .bottom) {
-                    //Color.clear
                     Divider()
                     HStack {
                         Image(systemName: "location.fill")
@@ -97,11 +73,7 @@ struct NavigatorSearchableView: View {
                     
                     .frame(maxWidth: .infinity)
                     .padding([.top, .bottom], 6)
-                    //.frame(height: 40)
                     .background(Color("DestinationSheetColor"))
-                    //}//.zIndex(1000)
-                    //.padding(.bottom, 1)//Fix for TabBar color iOS 15
-                    
                     Divider()
                 }
             }

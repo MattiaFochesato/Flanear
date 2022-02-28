@@ -63,6 +63,11 @@ extension VisitedPlace: TableRecord {
     var city: QueryInterfaceRequest<VisitedCity> {
         request(for: VisitedPlace.city)
     }
+    
+    static let pictures = hasMany(Picture.self)
+    var pictures: QueryInterfaceRequest<Picture> {
+        request(for: VisitedPlace.pictures)
+    }
 }
 
 extension VisitedPlace : MutablePersistableRecord {
