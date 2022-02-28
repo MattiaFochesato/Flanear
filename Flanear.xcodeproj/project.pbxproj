@@ -42,6 +42,10 @@
 		26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */; };
 		26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898A27C8CBA20032154C /* Color+Extension.swift */; };
 		26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898D27C8E6DB0032154C /* CameraView.swift */; };
+		26B3899027CCB6C60032154C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898F27CCB6C60032154C /* MapView.swift */; };
+		26B3899227CCC1D80032154C /* MapAnnotationView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B3899127CCC1D80032154C /* MapAnnotationView2.xib */; };
+		26B3899427CCC2BE0032154C /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899327CCC2BE0032154C /* MapAnnotationView.swift */; };
+		26B3899727CCC3850032154C /* MapAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B3899627CCC3850032154C /* MapAnnotationView.xib */; };
 		26B8547D27C6362000C37004 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547C27C6362000C37004 /* CoreGraphics.framework */; };
 		26B8547F27C6362500C37004 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547E27C6362500C37004 /* CoreLocation.framework */; };
 		26B8548127C6362C00C37004 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548027C6362C00C37004 /* libc++.tbd */; };
@@ -143,6 +147,10 @@
 		26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
 		26B3898A27C8CBA20032154C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		26B3898D27C8E6DB0032154C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		26B3898F27CCB6C60032154C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		26B3899127CCC1D80032154C /* MapAnnotationView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapAnnotationView2.xib; sourceTree = "<group>"; };
+		26B3899327CCC2BE0032154C /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
+		26B3899627CCC3850032154C /* MapAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapAnnotationView.xib; sourceTree = "<group>"; };
 		26B8547C27C6362000C37004 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		26B8547E27C6362500C37004 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		26B8548027C6362C00C37004 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -323,6 +331,17 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
+		26B3899527CCC2C50032154C /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				26B3898F27CCB6C60032154C /* MapView.swift */,
+				26B3899127CCC1D80032154C /* MapAnnotationView2.xib */,
+				26B3899627CCC3850032154C /* MapAnnotationView.xib */,
+				26B3899327CCC2BE0032154C /* MapAnnotationView.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		26B8547B27C6362000C37004 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +431,7 @@
 		26BC9CD927B6B73100CE8BBD /* Navigator */ = {
 			isa = PBXGroup;
 			children = (
+				26B3899527CCC2C50032154C /* MapView */,
 				26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */,
 				26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */,
 				26A0994B27BBC54300611E79 /* PlaceSearchView.swift */,
@@ -554,6 +574,8 @@
 				26B854A727C69F7700C37004 /* Localizable.strings in Resources */,
 				269B5F3627C7A35E00F520DB /* Settings.bundle in Resources */,
 				26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */,
+				26B3899727CCC3850032154C /* MapAnnotationView.xib in Resources */,
+				26B3899227CCC1D80032154C /* MapAnnotationView2.xib in Resources */,
 				26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				268050B327BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift in Sources */,
+				26B3899027CCB6C60032154C /* MapView.swift in Sources */,
 				26BC9CC627B6AFBF00CE8BBD /* NavigatorView.swift in Sources */,
 				268050BE27BBA2C0004CBC33 /* LocationUtils.swift in Sources */,
 				268050BB27BB9DA0004CBC33 /* CitiesView.swift in Sources */,
@@ -601,6 +624,7 @@
 				26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */,
 				269790D027B7C7C200B0210B /* ARMapView.swift in Sources */,
 				26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */,
+				26B3899427CCC2BE0032154C /* MapAnnotationView.swift in Sources */,
 				268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */,
 				26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */,
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,
@@ -884,6 +908,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Flanear/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -922,6 +948,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Flanear/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
