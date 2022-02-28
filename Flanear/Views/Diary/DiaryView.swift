@@ -50,20 +50,20 @@ struct DiaryView: View {
                                         .padding(.leading, 6)
                                         .padding([.top, .bottom], 2)
                                     }
-                                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                        Button {
-                                            viewController.toggleStar(place: place)
-                                        } label: {
-                                            Label("Favourite", systemImage: place.favourite ? "star.slash" : "star.fill")
-                                        }.tint(.yellow)
-                                    }
-                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                        Button(role: .destructive) {
-                                            print("Deleting place")
-                                            viewController.deletePlace(place: place)
-                                        } label: {
-                                            Label("Delete", systemImage: "trash.fill")
-                                        }
+                                    
+                                }.swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                    Button {
+                                        viewController.toggleStar(place: place)
+                                    } label: {
+                                        Label("Favourite", systemImage: place.favourite ? "star.slash" : "star.fill")
+                                    }.tint(.yellow)
+                                }
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button(role: .destructive) {
+                                        print("Deleting place")
+                                        viewController.deletePlace(place: place)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash.fill")
                                     }
                                 }
                                 

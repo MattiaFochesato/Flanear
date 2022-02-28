@@ -57,10 +57,6 @@ struct PlaceInfoView: View {
                                     .scaledToFill()
                                     .frame(width: 200.0, height: 200.0)
                                     .cornerRadius(22)
-                                    .overlay(RoundedRectangle(cornerRadius: 22)
-                                                .stroke(Color.textBlack, lineWidth: 2)
-                                                .padding(1))
-                                    .padding(8)
                                     .contextMenu {
                                         Button(role: .destructive) {
                                             viewController.delete(picture: picture)
@@ -68,6 +64,10 @@ struct PlaceInfoView: View {
                                             Label("Delete picture", systemImage: "trash.fill")
                                         }
                                     }
+                                    .overlay(RoundedRectangle(cornerRadius: 22)
+                                                .stroke(Color.textBlack, lineWidth: 2)
+                                                .padding(1))
+                                    .padding(8)
                             }
                             Button {
                                 showCameraSheet = true
@@ -94,8 +94,6 @@ struct PlaceInfoView: View {
                         //.frame(width: 300, height: 250)
                         //.clipShape(RoundedRectangle(cornerRadius: 16))
                             .padding()
-                        
-                        
                     }
                     //.cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
                     //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
