@@ -16,8 +16,13 @@ struct PlaceInfoView: View {
     @State private var region: MKCoordinateRegion
     @State var showCameraSheet = false
     
+    @State var newImage: UIImage? = nil
+    
+    @ObservedObject var viewController: PlaceInfoViewController
+    
     init(place: VisitedPlace) {
         self.place = place
+        self.viewController = PlaceInfoViewController(place: place)
         
         region = MKCoordinateRegion(center: place.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     }
@@ -44,9 +49,10 @@ struct PlaceInfoView: View {
                         .multilineTextAlignment(.leading)
                         .padding([.leading, .trailing])
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
-                            ForEach(0..<1) { i in
-                                Image("monastero-santa-chiara-porticato-esterno")
+                        HStack(spacing: 0) {
+                            
+                            ForEach(viewController.pictures) { picture in
+                                Image(uiImage: picture.image)
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 200.0, height: 200.0)
@@ -54,10 +60,16 @@ struct PlaceInfoView: View {
                                     .overlay(RoundedRectangle(cornerRadius: 22)
                                                 .stroke(Color.textBlack, lineWidth: 2)
                                                 .padding(1))
-                                    .padding(i == 0 ? 8 : 0)
+                                    .padding(8)
+                                    .contextMenu {
+                                        Button(role: .destructive) {
+                                            viewController.delete(picture: picture)
+                                        } label: {
+                                            Label("Delete picture", systemImage: "trash.fill")
+                                        }
+                                    }
                             }
                             Button {
-                                print("Open Camera")
                                 showCameraSheet = true
                             } label: {
                                 Image(systemName: "plus")
@@ -97,7 +109,12 @@ struct PlaceInfoView: View {
         .sheet(isPresented: $showCameraSheet) {
             //dismiss
         } content: {
-            CameraView()
+            CameraView(isShown: $showCameraSheet, image: $newImage)
+        }.onChange(of: newImage) { newValue in
+            print("received new image")
+            if let newValue = newValue {
+                try? AppDatabase.shared.add(image: newValue, to: place)
+            }
         }
 
     }

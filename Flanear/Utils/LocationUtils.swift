@@ -27,6 +27,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     override init() {
         self.locationManager = CLLocationManager()
+        self.locationManager.allowsBackgroundLocationUpdates = true
         super.init()
         
         self.locationManager.delegate = self
@@ -36,8 +37,8 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     //Setup CLLocationManager
     private func startLocationManager() {
         //Richiedi autorizzazione
-        if self.locationManager.authorizationStatus != .authorizedWhenInUse {
-            self.locationManager.requestWhenInUseAuthorization()
+        if self.locationManager.authorizationStatus != .authorizedAlways {
+            self.locationManager.requestAlwaysAuthorization()
         }
         
         if CLLocationManager.headingAvailable() {
