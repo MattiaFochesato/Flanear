@@ -5,16 +5,24 @@
   Created by Mattia Fochesato on 23/02/22.
   
 */
-"explore" = "Explore";
-"your-cities" = "Your Cities";
 
-"warning" = "Warning!";
-"place-too-far-away" = "The place can be too far away!";
+"explore" = "Досліджувати";
+"your-cities" = "Ваші міста";
+"visited-places" = "Відвідані місця";
+"place-info" = "Інформація про місця";
 
-"search-no-results" = "We cannot find this place.\nCheck the name!";
+"delete" = "Видалити";
+"warning" = "Увага!";
+"suggestions" = "Пропозиції";
+"loading-suggestions" = "Завантаження пропозицій...";
+"search-results" = "Результати пошуку";
+"place-too-far-away" = "Місце може бути занадто далеко!";
 
+"search-no-results" = "Ми не можемо знайти це місце.\nПеревірте назву!";
+
+"completed %@" = "Виконано на %@ !";
 
 /* watchOS */
-"no-results" = "We cannot find anything. Please check your GPS and internet connection.";
-"pick-place" = "Pick Place";
-"no-place-selected" = "No place selected";
+"no-results" = "Ми нічого не можемо знайти. Перевірте свій GPS та Інтернет-з’єднання.";
+"pick-place" = "Виберіть розташування";
+"no-place-selected" = "Місце не вибрано";

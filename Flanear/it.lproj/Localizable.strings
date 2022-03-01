@@ -7,14 +7,22 @@
 */
 
 "explore" = "Esplora";
-"your-cities" = "Città Visitate";
+"your-cities" = "Le tue città";
+"visited-places" = "Posti Visitati";
+"place-info" = "Informazioni";
 
+"delete" = "Elimina";
 "warning" = "Attenzione!";
-"place-too-far-away" = "Questo luogo è lontano!";
+"suggestions" = "Suggerimenti";
+"loading-suggestions" = "Scarico Suggerimenti...";
+"search-results" = "Cerca risultati";
+"place-too-far-away" = "Il posto potrebbe essere troppo lontano!";
 
-"search-no-results" = "Non riesco a trovare questo luogo.\nControlla il nome inserito!";
+"search-no-results" = "Non riusciamo a trovare questo posto.\nControlla il nome!";
+
+"completed %@" = "%@ Completato!";
 
 /* watchOS */
-"no-results" = "Nessun risultato. Controlla il GPS e la connessione ad internet.";
-"pick-place" = "Seleziona Luogo";
-"no-place-selected" = "Nessun luogo selezionato";
+"no-results" = "Non riusciamo a trovare nulla. Per favore, controlla il GPS e la connessione internet.";
+"pick-place" = "Seleziona un Luogo";
+"no-place-selected" = "Nessun posto selezionato”;
