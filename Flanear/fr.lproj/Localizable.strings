@@ -6,23 +6,23 @@
   
 */
 
-"explore" = "Explorer";
-"your-cities" = "Vos villes";
-"visited-places" = "Lieux visités";
-"place-info" = "Informations sur les lieux";
+"explore" = " Explore ";
+"your-cities" = " Vos villes ";
+"visited-places" = " Lieux visités ";
+"place-info" = " Informations sur les lieux ";
 
-"delete" = "Supprimer";
-"warning" = "Attention !";
-"suggestions" = "Suggestions";
-"loading-suggestions" = "Chargement des suggestions...";
-"search-results" = "Résultats de la recherche";
-"place-too-far-away" = "L ' endroit peut être trop éloigné !";
+"delete" = " Supprimer ";
+"warning" = " Attention ! ";
+"suggestions" = " Suggestions ";
+"loading-suggestions" = " Chargement des suggestions… ";
+"search-results" = " Résultats de la recherche ";
+"place-too-far-away" = " L'endroit peut être trop éloigné ! ";
 
-"search-no-results" = "Nous ne pouvons pas trouver ce lieu.\nVérifiez le nom !";
+"search-no-results" = " Nous ne pouvons pas trouver ce lieu.\nVérifiez le nom ! ";
 
-"completed %@" = "Complété à %@ !";
+"completed %@" = " Complété à %@ !";
 
 /* watchOS */
-"no-results" = "Nous ne trouvons rien. Veuillez vérifier votre GPS et votre connexion Internet.";
-"pick-place" = "Choisir le lieu";
-"no-place-selected" = "Aucun lieu sélectionné";
+"no-results" = " Nous ne trouvons rien. Veuillez vérifier votre GPS et votre connexion Internet.";
+"pick-place" = " Choisir un lieu ";
+"no-place-selected" = "Aucun lieu sélectionné ";
