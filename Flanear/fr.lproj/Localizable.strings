@@ -12,13 +12,13 @@
 "place-info" = "Informations sur les lieux";
 
 "delete" = "Supprimer";
-"warning" = "Attention!";
+"warning" = "Attention !";
 "suggestions" = "Suggestions";
 "loading-suggestions" = "Chargement des suggestions...";
 "search-results" = "Résultats de la recherche";
-"place-too-far-away" = "L'endroit peut être trop éloigné!";
+"place-too-far-away" = "L ' endroit peut être trop éloigné !";
 
-"search-no-results" = "Nous ne pouvons pas trouver ce lieu.\nVérifiez le nom!";
+"search-no-results" = "Nous ne pouvons pas trouver ce lieu.\nVérifiez le nom !";
 
 "completed %@" = "Complété à %@ !";
 
