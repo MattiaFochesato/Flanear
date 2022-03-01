@@ -12,10 +12,10 @@ import Combine
 import WatchConnectivity
 
 class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDelegate {
-    let locations = [
+    /*let locations = [
         PlaceSearchItem(title: "Developer Academy", description: "Description todo", latitude: 40.836210, longitude: 14.306480),
         PlaceSearchItem(title: "San Giorgio a Cremano", description: "Description todo", latitude: 40.829170, longitude: 14.334190),
-    ]
+    ]*/
     
     @Published var suggestedLocations: [PlaceSearchItem]? = nil
     
@@ -177,9 +177,10 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         guard let location = self.currentLocation else { return }
         
         var locs: [PlaceSearchItem] = []
-        for loc in locations {
-            var newLoc = loc
-            newLoc.distance = location.distance(from: loc.location)
+        for loc in MapView.LANDMARKS {
+            var newLoc = loc.getPlaceSearchItem()
+            newLoc.image = loc.type.rawValue
+            newLoc.distance = location.distance(from: newLoc.location)
             locs.append(newLoc)
         }
         

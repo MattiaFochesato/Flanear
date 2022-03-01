@@ -42,7 +42,7 @@ class PlaceInfoViewController: ObservableObject {
                 return p.id == picture.id
             }
         } catch {
-            print("Cannot delete picture \(picture.id)")
+            print("Cannot delete picture id: \(picture.id ?? -1)")
         }
         
         
