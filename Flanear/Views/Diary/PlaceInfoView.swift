@@ -93,7 +93,7 @@ struct PlaceInfoView: View {
                                     .overlay(RoundedRectangle(cornerRadius: 22)
                                                 .stroke(Color.textBlack, lineWidth: 2)
                                                 .padding(1))
-                            }
+                            }.padding(.leading, viewController.pictures.isEmpty ? 8 : 0)
 
                         }
                     }

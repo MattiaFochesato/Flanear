@@ -15,12 +15,21 @@
 "warning" = "Attenzione!";
 "suggestions" = "Suggerimenti";
 "loading-suggestions" = "Scarico Suggerimenti...";
-"search-results" = "Cerca risultati";
+"search-results" = "Risultati di ricerca";
 "place-too-far-away" = "Il posto potrebbe essere troppo lontano!";
+"no-place-visited-in %@" = "Non hai visitato nessun luogo a %@";
 
 "search-no-results" = "Non riusciamo a trovare questo posto.\nControlla il nome!";
 
 "completed %@" = "%@ Completato!";
+
+/* Place type */
+"archeology" = "Archeologia";
+"interests" = "Punto di interesse";
+"museum" = "Museo";
+"park" = "Parco";
+"theater" = "Teatro";
+"castle" = "Castello";
 
 /* watchOS */
 "no-results" = "Non riusciamo a trovare nulla. Per favore, controlla il GPS e la connessione internet.";
