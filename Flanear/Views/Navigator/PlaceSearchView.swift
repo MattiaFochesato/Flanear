@@ -69,7 +69,7 @@ struct PlaceSearchView: View {
                                         HStack {
                                             VStack(alignment: .leading) {
                                                 HStack {
-                                                    Image(systemName: item.image)
+                                                    Image("interests")
                                                         .resizable()
                                                         .foregroundColor(.textBlack)
                                                         .frame(width: 30, height: 30)
