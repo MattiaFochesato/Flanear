@@ -40,7 +40,7 @@ final class AppDatabase {
         migrator.eraseDatabaseOnSchemaChange = true
         //#endif
         
-        migrator.registerMigration("v1") { db in
+        migrator.registerMigration("firstMigration") { db in
             // Create a table
             // See https://github.com/groue/GRDB.swift#create-tables
             
@@ -60,14 +60,13 @@ final class AppDatabase {
                     .indexed()
                     .references(VisitedCity.databaseTableName, onDelete: .cascade)
                 t.column("title", .text).notNull()
-                t.column("description", .text).notNull()
+                t.column("description", .text)
+                t.column("thoughts", .text)
                 t.column("favourite", .boolean).notNull()
                 t.column("latitude", .double).notNull()
                 t.column("longitude", .double).notNull()
             }
-        }
-        
-        migrator.registerMigration("addedPictures") { db in
+
             /* PICTURES */
             try db.create(table: Picture.databaseTableName) { t in
                 t.autoIncrementedPrimaryKey("id")
@@ -88,7 +87,8 @@ extension AppDatabase {
     /// Delete the specified place
     func deleteCity(city: VisitedCity) throws {
         try dbWriter.write { db in
-            var placesId: [Int64] = []
+            //Places will be removed automagically
+            /*var placesId: [Int64] = []
             let places = try city.places.fetchAll(db)
             for place in places {
                 if let id = place.id {
@@ -97,7 +97,7 @@ extension AppDatabase {
             }
             if placesId.count != 0 {
                 _ = try self.deletePlaces(ids: placesId)
-            }
+            }*/
             _ = try VisitedCity.deleteAll(db, ids: [city.id!])
         }
     }

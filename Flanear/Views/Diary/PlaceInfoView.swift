@@ -21,11 +21,16 @@ struct PlaceInfoView: View {
     
     @ObservedObject var viewController: PlaceInfoViewController
     
+    
     init(place: VisitedPlace) {
         self.place = place
         self.viewController = PlaceInfoViewController(place: place)
         
         region = MKCoordinateRegion(center: place.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        if place.thoughts != " " {
+            self.thoughts = place.thoughts
+        }
     }
     
     
@@ -98,6 +103,7 @@ struct PlaceInfoView: View {
                             .cornerRadius(12)
                             .lineSpacing(20)
                             .autocapitalization(.none)
+                            
                         //.frame(width: 300, height: 250)
                         //.clipShape(RoundedRectangle(cornerRadius: 16))
                             .padding()
@@ -121,7 +127,11 @@ struct PlaceInfoView: View {
             if let newValue = newValue {
                 try? AppDatabase.shared.add(image: newValue, to: place)
             }
-        }
+        }.onChange(of: thoughts, perform: { newThoughts in
+            var placeToSave = place
+            placeToSave.thoughts = newThoughts
+            try? AppDatabase.shared.savePlace(&placeToSave)
+        })
         .sheet(isPresented: Binding(get: {
             self.showPictureSheet != -1
         }, set: {

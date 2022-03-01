@@ -27,7 +27,7 @@ struct PlacesView: View {
                         .padding(10)
                         .background(Color.textBlack)
                         .clipShape(Circle())
-                    Text("empty")
+                    Text("no-place-visited-in \(city.name)")
                         .bold()
                 }else {
                     List {

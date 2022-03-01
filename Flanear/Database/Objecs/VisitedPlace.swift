@@ -15,6 +15,7 @@ struct VisitedPlace: Identifiable, Hashable {
     var cityId: Int64?
     var title: String
     var description: String
+    var thoughts: String
     var favourite: Bool
     var coordinate: CLLocationCoordinate2D
 }
@@ -26,6 +27,7 @@ extension VisitedPlace: FetchableRecord {
         cityId = row["cityId"]
         title = row["title"]
         description = row["description"]
+        thoughts = row["thoughts"]
         favourite = row["favourite"]
         coordinate = CLLocationCoordinate2D(
             latitude: row["latitude"],
@@ -46,7 +48,7 @@ extension VisitedPlace: FetchableRecord {
     
     /// Creates a new player with random name and random score
     static func makeRandom() -> VisitedPlace {
-        VisitedPlace(title: names.randomElement()!, description: "Test Place", favourite: bools.randomElement()!, coordinate: CLLocationCoordinate2D(latitude: randomScore(), longitude: randomScore()))
+        VisitedPlace(title: names.randomElement()!, description: "Test Place",thoughts: "Very good place!", favourite: bools.randomElement()!, coordinate: CLLocationCoordinate2D(latitude: randomScore(), longitude: randomScore()))
     }
     
     /// Returns a random score
@@ -77,6 +79,7 @@ extension VisitedPlace : MutablePersistableRecord {
         container["cityId"] = cityId
         container["title"] = title
         container["description"] = description
+        container["thoughts"] = thoughts
         container["favourite"] = favourite
         container["latitude"] = coordinate.latitude
         container["longitude"] = coordinate.longitude

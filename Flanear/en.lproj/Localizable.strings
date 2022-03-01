@@ -17,6 +17,7 @@
 "loading-suggestions" = "Loading suggestions...";
 "search-results" = "Search results";
 "place-too-far-away" = "The place can be too far away!";
+"no-place-visited-in %@" = "You have visited no places in %@";
 
 "search-no-results" = "We cannot find this place.\nCheck the name!";
 
