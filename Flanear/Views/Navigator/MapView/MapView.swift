@@ -92,6 +92,8 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
         /*guard let mapView = mapView else {
             return
         }*/
+        mapView.showsUserLocation = (viewController.destinationName == nil)
+        
         if viewController.destinationName == nil && !forceUpdate {
             return
         }
@@ -113,7 +115,12 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("didSelect annotation")
-        mapView.deselectAnnotation(view.annotation!, animated: true)
+        mapView.deselectAnnotation(view.annotation!, animated: false)
+        
+        guard let _ = view.annotation as? LandmarkAnnotation else {
+            print("not our annotation")
+            return
+        }
         
         viewController.gotTo(place: PlaceSearchItem(title: view.annotation!.title! ?? "-", description: view.annotation!.subtitle! ?? "-", latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude))
         

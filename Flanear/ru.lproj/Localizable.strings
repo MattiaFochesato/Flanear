@@ -5,16 +5,24 @@
   Created by Mattia Fochesato on 23/02/22.
   
 */
-"explore" = "Explore";
-"your-cities" = "Your Cities";
 
-"warning" = "Warning!";
-"place-too-far-away" = "The place can be too far away!";
+"explore" = "Проводить исследования";
+"your-cities" = "Ваши города";
+"visited-places" = "Посещенные места";
+"place-info" = "Информация о местах";
 
-"search-no-results" = "We cannot find this place.\nCheck the name!";
+"delete" = "Удалить";
+"warning" = "Внимание!";
+"suggestions" = "Предложения";
+"loading-suggestions" = "Загрузка предложений...";
+"search-results" = "Результаты поиска";
+"place-too-far-away" = "Место может быть слишком далеко!";
 
+"search-no-results" = "Мы не можем найти это место.\nПроверьте имя";
+
+"completed %@" = "%@ завершено!";
 
 /* watchOS */
-"no-results" = "We cannot find anything. Please check your GPS and internet connection.";
-"pick-place" = "Pick Place";
-"no-place-selected" = "No place selected";
+"no-results" = "Мы ничего не можем найти. Проверьте подключение к GPS и Интернету.";
+"pick-place" = "Выбрать место";
+"no-place-selected" = "Место не выбрано";

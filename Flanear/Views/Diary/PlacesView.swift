@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DiaryView: View {
+struct PlacesView: View {
     let city: VisitedCity
     
     @ObservedObject var viewController: DiaryViewController
@@ -27,11 +27,11 @@ struct DiaryView: View {
                         .padding(10)
                         .background(Color.textBlack)
                         .clipShape(Circle())
-                    Text("empty")
+                    Text("no-place-visited-in \(city.name)")
                         .bold()
                 }else {
                     List {
-                        Section(header: Text("Visited Places")) {
+                        Section(header: Text("visited-places")) {
                             ForEach(viewController.places) { place in
                                 NavigationLink {
                                     PlaceInfoView(place: place)
@@ -55,7 +55,7 @@ struct DiaryView: View {
                                     Button {
                                         viewController.toggleStar(place: place)
                                     } label: {
-                                        Label("Favourite", systemImage: place.favourite ? "star.slash" : "star.fill")
+                                        Label("", systemImage: place.favourite ? "star.slash" : "star.fill")
                                     }.tint(.yellow)
                                 }
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -63,7 +63,7 @@ struct DiaryView: View {
                                         print("Deleting place")
                                         viewController.deletePlace(place: place)
                                     } label: {
-                                        Label("Delete", systemImage: "trash.fill")
+                                        Label("", systemImage: "trash.fill")
                                     }
                                 }
                                 
@@ -76,8 +76,8 @@ struct DiaryView: View {
     }
 }
 
-struct DiaryView_Previews: PreviewProvider {
+struct PlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        DiaryView(city: VisitedCity.makeRandom())
+        PlacesView(city: VisitedCity.makeRandom())
     }
 }

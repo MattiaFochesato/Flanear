@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  Flanear
+
+  Created by Mattia Fochesato on 23/02/22.
+  
+*/
+
+"explore" = " Explore ";
+"your-cities" = " Vos villes ";
+"visited-places" = " Lieux visités ";
+"place-info" = " Informations sur les lieux ";
+
+"delete" = " Supprimer ";
+"warning" = " Attention ! ";
+"suggestions" = " Suggestions ";
+"loading-suggestions" = " Chargement des suggestions… ";
+"search-results" = " Résultats de la recherche ";
+"place-too-far-away" = " L'endroit peut être trop éloigné ! ";
+
+"search-no-results" = " Nous ne pouvons pas trouver ce lieu.\nVérifiez le nom ! ";
+
+"completed %@" = " Complété à %@ !";
+
+/* watchOS */
+"no-results" = " Nous ne trouvons rien. Veuillez vérifier votre GPS et votre connexion Internet.";
+"pick-place" = " Choisir un lieu ";
+"no-place-selected" = "Aucun lieu sélectionné ";

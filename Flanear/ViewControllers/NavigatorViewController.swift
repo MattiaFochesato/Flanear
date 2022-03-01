@@ -133,7 +133,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
             return
         }
         
-        var visitedPlace = VisitedPlace(cityId: currentCity.id, title: place.title, description: place.subtitle, favourite: false, coordinate: place.location.coordinate)
+        var visitedPlace = VisitedPlace(cityId: currentCity.id, title: place.title, description: place.subtitle, thoughts: " ", favourite: false, coordinate: place.location.coordinate)
         let _ = try! AppDatabase.shared.savePlace(&visitedPlace)
     }
     

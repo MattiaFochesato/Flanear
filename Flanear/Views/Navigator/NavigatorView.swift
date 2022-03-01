@@ -43,7 +43,7 @@ struct NavigatorSearchableView: View {
                         .disabled(viewController.destinationLocation == nil ? false : true)
                     
                     if viewController.destinationLocation != nil {
-                        CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
+                        CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName, arrived: .constant(false))
                         
                     }
                     
