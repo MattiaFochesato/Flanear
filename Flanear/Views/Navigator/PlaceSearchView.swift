@@ -18,99 +18,118 @@ struct PlaceSearchView: View {
         VStack(alignment: .leading) {
             if viewController.searchText.count == 0 {
                 
-                List(navVC.locations) { item in
-                    Button {
-                        let generator = UISelectionFeedbackGenerator()
-                        generator.selectionChanged()
-                        
-                        navVC.gotTo(place: item)
-                        dismissSearch()
-                    } label: {
-                        HStack {
-                            Image(systemName: item.image)
-                                .foregroundColor(.black)
-                            VStack(alignment: .leading) {
-                                Text(item.title)
-                                    .foregroundColor(.black)
-                                Text(item.subtitle)
-                                    .foregroundColor(.secondary)
-                                
+                if let suggestedLocations = navVC.suggestedLocations {
+                    List {
+                        Section(header: Text("suggestions")) {
+                            ForEach(suggestedLocations) { item in
+                                Button {
+                                    let generator = UISelectionFeedbackGenerator()
+                                    generator.selectionChanged()
+                                    
+                                    navVC.gotTo(place: item)
+                                    dismissSearch()
+                                } label: {
+                                    HStack {
+                                        Image(systemName: item.image)
+                                            .foregroundColor(.textBlack)
+                                        VStack(alignment: .leading) {
+                                            Text(item.title)
+                                                .foregroundColor(.textBlack)
+                                            Text(item.subtitle)
+                                                .foregroundColor(.secondary)
+                                            
+                                        }
+                                        Spacer()
+                                        Text("\(Int(item.distance)) m")
+                                            .foregroundColor(.textBlack)
+                                        Image(systemName: "chevron.right")
+                                            .foregroundColor(.textBlack)
+                                    }
+                                }.padding([.top, .bottom], 4)
                             }
-                            Spacer()
-                            Text("\(Int(item.distance)) m")
-                                .foregroundColor(.black)
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.black)
                         }
-                    }
+                    }.listStyle(InsetGroupedListStyle())
+                }else{
+                    ProgressView("loading-suggestions")
                 }
             }else{
                 if let searchResults = viewController.searchResults {
                     if !searchResults.isEmpty {
-                        List(searchResults) { item in
-                            Button {
-                                let generator = UISelectionFeedbackGenerator()
-                                generator.selectionChanged()
-                                
-                                navVC.gotTo(place: item)
-                                dismissSearch()
-                            } label: {
-                                HStack {
-                                    VStack(alignment: .leading) {
+                        List {
+                            Section(header: Text("search-results")) {
+                                ForEach(searchResults) { item in
+                                    Button {
+                                        let generator = UISelectionFeedbackGenerator()
+                                        generator.selectionChanged()
+                                        
+                                        navVC.gotTo(place: item)
+                                        dismissSearch()
+                                    } label: {
                                         HStack {
-                                            Image(systemName: item.image)
-                                                .foregroundColor(.black)
                                             VStack(alignment: .leading) {
-                                                Text(item.title)
-                                                    .foregroundColor(.black)
-                                                Text(item.subtitle)
-                                                    .foregroundColor(.secondary)
+                                                HStack {
+                                                    Image(systemName: item.image)
+                                                        .foregroundColor(.textBlack)
+                                                    VStack(alignment: .leading) {
+                                                        Text(item.title)
+                                                            .foregroundColor(.textBlack)
+                                                        Text(item.subtitle)
+                                                            .foregroundColor(.secondary)
+                                                    }
+                                                    Spacer()
+                                                    Text("\(Int(item.distance))m")
+                                                        .foregroundColor(.textBlack)
+                                                    
+                                                }
+                                                if item.distance > 3000 {
+                                                    HStack {
+                                                        Image(systemName: "exclamationmark.triangle.fill")
+                                                            .foregroundColor(.orange)
+                                                        Text("warning")
+                                                            .bold()
+                                                            .foregroundColor(.orange) +
+                                                        Text(" ") +
+                                                        Text("place-too-far-away")
+                                                    }.padding(.top, 4)
+                                                }
                                             }
-                                            Spacer()
-                                            Text("\(Int(item.distance))m")
-                                                .foregroundColor(.black)
-                                            
+                                            Image(systemName: "chevron.right")
+                                                .foregroundColor(.textBlack)
                                         }
-                                        if item.distance > 3000 {
-                                            HStack {
-                                                Image(systemName: "exclamationmark.triangle.fill")
-                                                    .foregroundColor(.orange)
-                                                Text("warning")
-                                                    .bold()
-                                                    .foregroundColor(.orange) +
-                                                    Text(" ") +
-                                                Text("place-too-far-away")
-                                            }.padding(.top, 4)
-                                        }
-                                    }
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.black)
+                                    }.padding([.top, .bottom], (item.distance > 3000 ? 0 : 4))
                                 }
                             }
-                        }
+                        }.listStyle(InsetGroupedListStyle())
                     }else{
-                        Image(systemName: "map.fill")
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(.primary)
-                            .clipShape(Circle())
-                        Text("search-no-results")
-                            .bold()
+                        VStack(alignment: .center) {
+                            Image(systemName: "map.fill")
+                                .font(.largeTitle)
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .background(.primary)
+                                .clipShape(Circle())
+                                .padding(.bottom)
+                            Text("search-no-results")
+                                .bold()
+                                .multilineTextAlignment(.center)
+                        }
                     }
                 }else{
                     List {
-                        ForEach((0..<4)) { _ in
-                            HStack {
-                                Image(systemName: "greaterthan.circle.fill")
-                                VStack(alignment: .leading) {
-                                    Text(randomString(length: 10))
-                                    Text(randomString(length: 6))
-                                        .foregroundColor(.secondary)
-                                }
-                            }.redacted(reason: .placeholder)
+                        Section(header: Text("search-results")) {
+                            ForEach((0..<4)) { _ in
+                                HStack {
+                                    Image(systemName: "greaterthan.circle.fill")
+                                    VStack(alignment: .leading) {
+                                        Text(randomString(length: 10))
+                                        Text(randomString(length: 6))
+                                            .foregroundColor(.secondary)
+                                    }
+                                }.padding([.top, .bottom], 4)
+                                .redacted(reason: .placeholder)
+                            }
                         }
-                    }
+                    }.listStyle(InsetGroupedListStyle())
                 }
             }
             

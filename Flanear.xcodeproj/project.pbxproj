@@ -35,10 +35,21 @@
 		269A9C7B27BE61F00075B085 /* PlaceSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */; };
 		269B5F3027C7948E00F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
 		269B5F3127C7955000F520DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
+		269B5F3627C7A35E00F520DB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 269B5F3527C7A22700F520DB /* Settings.bundle */; };
 		26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994727BBAF9B00611E79 /* VisitedCity.swift */; };
 		26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */; };
 		26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994B27BBC54300611E79 /* PlaceSearchView.swift */; };
 		26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */; };
+		26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898A27C8CBA20032154C /* Color+Extension.swift */; };
+		26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898D27C8E6DB0032154C /* CameraView.swift */; };
+		26B3899027CCB6C60032154C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898F27CCB6C60032154C /* MapView.swift */; };
+		26B3899427CCC2BE0032154C /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899327CCC2BE0032154C /* MapAnnotationView.swift */; };
+		26B3899727CCC3850032154C /* MapAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B3899627CCC3850032154C /* MapAnnotationView.xib */; };
+		26B3899927CCE6560032154C /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899827CCE6560032154C /* Picture.swift */; };
+		26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */; };
+		26B3899D27CCEE4B0032154C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */; };
+		26B821D427CD23A700E752F7 /* PicturePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B821D327CD23A700E752F7 /* PicturePreviewView.swift */; };
+		26B821D627CD25A700E752F7 /* PagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B821D527CD25A700E752F7 /* PagerView.swift */; };
 		26B8547D27C6362000C37004 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547C27C6362000C37004 /* CoreGraphics.framework */; };
 		26B8547F27C6362500C37004 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547E27C6362500C37004 /* CoreLocation.framework */; };
 		26B8548127C6362C00C37004 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548027C6362C00C37004 /* libc++.tbd */; };
@@ -54,7 +65,7 @@
 		26BC9CC627B6AFBF00CE8BBD /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */; };
 		26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */; };
 		26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9CCA27B6AFC000CE8BBD /* Preview Assets.xcassets */; };
-		26BC9CD227B6B08200CE8BBD /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD127B6B08200CE8BBD /* DiaryView.swift */; };
+		26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD127B6B08200CE8BBD /* PlacesView.swift */; };
 		26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */; };
 		26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */; };
 /* End PBXBuildFile section */
@@ -130,10 +141,26 @@
 		269A9C7427BE48820075B085 /* CCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCircleView.swift; sourceTree = "<group>"; };
 		269A9C7727BE511B0075B085 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchItem.swift; sourceTree = "<group>"; };
+		269B5F3227C7A17300F520DB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		269B5F3327C7A17A00F520DB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		269B5F3427C7A18100F520DB /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		269B5F3527C7A22700F520DB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		26A0994727BBAF9B00611E79 /* VisitedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedCity.swift; sourceTree = "<group>"; };
 		26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedCitiesViewController.swift; sourceTree = "<group>"; };
 		26A0994B27BBC54300611E79 /* PlaceSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchView.swift; sourceTree = "<group>"; };
 		26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
+		26B3898A27C8CBA20032154C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		26B3898D27C8E6DB0032154C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		26B3898F27CCB6C60032154C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		26B3899327CCC2BE0032154C /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
+		26B3899627CCC3850032154C /* MapAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapAnnotationView.xib; sourceTree = "<group>"; };
+		26B3899827CCE6560032154C /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoViewController.swift; sourceTree = "<group>"; };
+		26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		26B821D327CD23A700E752F7 /* PicturePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePreviewView.swift; sourceTree = "<group>"; };
+		26B821D527CD25A700E752F7 /* PagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerView.swift; sourceTree = "<group>"; };
+		26B821D727CE223F00E752F7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		26B821D827CE224500E752F7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		26B8547C27C6362000C37004 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		26B8547E27C6362500C37004 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		26B8548027C6362C00C37004 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -151,7 +178,7 @@
 		26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
 		26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26BC9CCA27B6AFC000CE8BBD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		26BC9CD127B6B08200CE8BBD /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		26BC9CD127B6B08200CE8BBD /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
 		26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassCircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,6 +251,7 @@
 			children = (
 				26A0994727BBAF9B00611E79 /* VisitedCity.swift */,
 				268050AB27BA6670004CBC33 /* VisitedPlace.swift */,
+				26B3899827CCE6560032154C /* Picture.swift */,
 			);
 			path = Objecs;
 			sourceTree = "<group>";
@@ -233,6 +261,8 @@
 			children = (
 				268050B227BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift */,
 				26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */,
+				26B3898A27C8CBA20032154C /* Color+Extension.swift */,
+				26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,8 +287,9 @@
 		269790CE27B7C6D700B0210B /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				26B3898C27C8E6CE0032154C /* Camera */,
 				268050BA27BB9D9F004CBC33 /* CitiesView.swift */,
-				26BC9CD127B6B08200CE8BBD /* DiaryView.swift */,
+				26BC9CD127B6B08200CE8BBD /* PlacesView.swift */,
 				268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */,
 			);
 			path = Diary;
@@ -302,6 +333,26 @@
 				269A9C7727BE511B0075B085 /* NavigatorViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		26B3898C27C8E6CE0032154C /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				26B3898D27C8E6DB0032154C /* CameraView.swift */,
+				26B821D327CD23A700E752F7 /* PicturePreviewView.swift */,
+				26B821D527CD25A700E752F7 /* PagerView.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		26B3899527CCC2C50032154C /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				26B3898F27CCB6C60032154C /* MapView.swift */,
+				26B3899627CCC3850032154C /* MapAnnotationView.xib */,
+				26B3899327CCC2BE0032154C /* MapAnnotationView.swift */,
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		26B8547B27C6362000C37004 /* Frameworks */ = {
@@ -355,6 +406,7 @@
 				26B8548827C6373600C37004 /* GooglePlaces.xcframework */,
 				26B8548E27C6791900C37004 /* GooglePlaces.bundle */,
 				26BC9CC927B6AFC000CE8BBD /* Preview Content */,
+				269B5F3527C7A22700F520DB /* Settings.bundle */,
 				26B854A927C69F7700C37004 /* Localizable.strings */,
 			);
 			path = Flanear;
@@ -384,6 +436,7 @@
 				26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */,
 				268050AD27BA6C35004CBC33 /* DiaryViewController.swift */,
 				26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */,
+				26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */,
 				26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */,
 			);
 			path = ViewControllers;
@@ -392,6 +445,7 @@
 		26BC9CD927B6B73100CE8BBD /* Navigator */ = {
 			isa = PBXGroup;
 			children = (
+				26B3899527CCC2C50032154C /* MapView */,
 				26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */,
 				26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */,
 				26A0994B27BBC54300611E79 /* PlaceSearchView.swift */,
@@ -487,6 +541,11 @@
 				en,
 				Base,
 				it,
+				ru,
+				es,
+				uk,
+				de,
+				fr,
 			);
 			mainGroup = 26BC9CB727B6AFBE00CE8BBD;
 			packageReferences = (
@@ -529,7 +588,9 @@
 			files = (
 				26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */,
 				26B854A727C69F7700C37004 /* Localizable.strings in Resources */,
+				269B5F3627C7A35E00F520DB /* Settings.bundle in Resources */,
 				26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */,
+				26B3899727CCC3850032154C /* MapAnnotationView.xib in Resources */,
 				26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,26 +620,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				268050B327BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift in Sources */,
+				26B3899027CCB6C60032154C /* MapView.swift in Sources */,
 				26BC9CC627B6AFBF00CE8BBD /* NavigatorView.swift in Sources */,
 				268050BE27BBA2C0004CBC33 /* LocationUtils.swift in Sources */,
 				268050BB27BB9DA0004CBC33 /* CitiesView.swift in Sources */,
 				269A9C7A27BE61CF0075B085 /* PlaceSearchItem.swift in Sources */,
 				268050AE27BA6C35004CBC33 /* DiaryViewController.swift in Sources */,
 				26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */,
+				26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */,
 				26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */,
 				26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */,
+				26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */,
 				268050B027BA6EBD004CBC33 /* AppDatabase.swift in Sources */,
 				26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */,
 				26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */,
+				26B3899D27CCEE4B0032154C /* UIImage+Extension.swift in Sources */,
 				26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */,
-				26BC9CD227B6B08200CE8BBD /* DiaryView.swift in Sources */,
+				26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */,
 				268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */,
 				26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */,
 				269790D027B7C7C200B0210B /* ARMapView.swift in Sources */,
+				26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */,
+				26B3899927CCE6560032154C /* Picture.swift in Sources */,
+				26B3899427CCC2BE0032154C /* MapAnnotationView.swift in Sources */,
 				268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */,
 				26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */,
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,
 				26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */,
+				26B821D627CD25A700E752F7 /* PagerView.swift in Sources */,
+				26B821D427CD23A700E752F7 /* PicturePreviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +673,11 @@
 			children = (
 				26B854A827C69F7700C37004 /* en */,
 				26B854AA27C69F7800C37004 /* it */,
+				269B5F3227C7A17300F520DB /* ru */,
+				269B5F3327C7A17A00F520DB /* es */,
+				269B5F3427C7A18100F520DB /* uk */,
+				26B821D727CE223F00E752F7 /* de */,
+				26B821D827CE224500E752F7 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -637,7 +712,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -668,7 +743,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -693,7 +768,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -718,7 +793,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -854,13 +929,16 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Flanear/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to capture pictures of your visited places!";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -871,7 +949,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -891,13 +969,16 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Flanear/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to capture pictures of your visited places!";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -908,7 +989,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

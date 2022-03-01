@@ -22,10 +22,12 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     let searchPublisher = PassthroughSubject<[MKMapItem], Never>()
     let searchWatchPublisher = PassthroughSubject<[MKMapItem], Never>()
+    let significantLocationChange = PassthroughSubject<Bool, Never>()
     var startingPosition: CLLocation? = nil
     
     override init() {
         self.locationManager = CLLocationManager()
+        self.locationManager.allowsBackgroundLocationUpdates = true
         super.init()
         
         self.locationManager.delegate = self
@@ -35,8 +37,8 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     //Setup CLLocationManager
     private func startLocationManager() {
         //Richiedi autorizzazione
-        if self.locationManager.authorizationStatus != .authorizedWhenInUse {
-            self.locationManager.requestWhenInUseAuthorization()
+        if self.locationManager.authorizationStatus != .authorizedAlways {
+            self.locationManager.requestAlwaysAuthorization()
         }
         
         if CLLocationManager.headingAvailable() {
@@ -67,6 +69,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
         }else{
             self.startingPosition = location
+            self.significantLocationChange.send(true)
         }
         
         Task.init(priority: .utility) {

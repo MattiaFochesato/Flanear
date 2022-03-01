@@ -6,58 +6,140 @@
 //
 
 import SwiftUI
+import CoreLocation
+import MapKit
 
 struct PlaceInfoView: View {
+    var place: VisitedPlace
+    
+    @State var thoughts: String = "hint-write-your-thoughts"
+    @State private var region: MKCoordinateRegion
+    @State var showCameraSheet = false
+    @State var showPictureSheet = -1
+    
+    @State var newImage: UIImage? = nil
+    
+    @ObservedObject var viewController: PlaceInfoViewController
+    
+    
     init(place: VisitedPlace) {
         self.place = place
-          /* UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "SF Pro Display-Black", size: 20)!]*/
+        self.viewController = PlaceInfoViewController(place: place)
+        
+        region = MKCoordinateRegion(center: place.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        if place.thoughts != " " {
+            self.thoughts = place.thoughts
+        }
     }
     
-    var place: VisitedPlace
+    
     var body: some View {
-        
-        NavigationView {
+        ScrollView {
             VStack(alignment: .leading) {
-                Text("Monastero di Santa Chiara")
-                    .font(.title)
-                    .fontWeight(.black)
-                    .multilineTextAlignment(.leading)
-                Text("Church")
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.leading)
-                ScrollView(.horizontal) {
-                    HStack(spacing: 10) {
-                        ForEach(0..<10) {_ in
-                        Image("monastero-santa-chiara-porticato-esterno")
-                            .resizable()
-                            .frame(width: 200.0, height: 200.0)
-                            .cornerRadius(/*@START_MENU_TOKEN@*/22.0/*@END_MENU_TOKEN@*/)
-                            .overlay(RoundedRectangle(cornerRadius: 21)
-                                        .stroke(.black, lineWidth: 2))
+                Map(coordinateRegion: $region, annotationItems: [self.place]) { item in
+                    MapPin(coordinate: item.coordinate)
+                }
+                    .frame(height: 250)
+                    .frame(maxWidth: .infinity)
+                    .disabled(true)
+                    Text(place.title)
+                        .font(.title)
+                        .fontWeight(.black)
+                        .multilineTextAlignment(.leading)
+                        .padding([.leading, .trailing])
+                    Text(place.description)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .fontWeight(.medium)
+                        .multilineTextAlignment(.leading)
+                        .padding([.leading, .trailing])
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 0) {
+                            
+                            ForEach(viewController.pictures) { picture in
+                                Button {
+                                    showPictureSheet = 0
+                                } label: {
+                                    Image(uiImage: picture.image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 200.0, height: 200.0)
+                                        .cornerRadius(22)
+                                        .contextMenu {
+                                            Button(role: .destructive) {
+                                                viewController.delete(picture: picture)
+                                            } label: {
+                                                Label("delete", systemImage: "trash.fill")
+                                            }
+                                        }
+                                        .overlay(RoundedRectangle(cornerRadius: 22)
+                                                    .stroke(Color.textBlack, lineWidth: 2)
+                                                    .padding(1))
+                                        .padding(8)
+                                }
+
+
+                            }
+                            Button {
+                                showCameraSheet = true
+                            } label: {
+                                Image(systemName: "plus")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.black)
+                                    .frame(width: 200.0, height: 200.0)
+                                    .background(Color(red: 0.898, green: 0.898, blue: 0.918, opacity: 1.0))
+                                    .cornerRadius(22)
+                                    .overlay(RoundedRectangle(cornerRadius: 22)
+                                                .stroke(Color.textBlack, lineWidth: 2)
+                                                .padding(1))
+                            }
+
                         }
                     }
-                }
-                Section() {
-                TextEditor(text: .constant("write your thoughts!"))
-                                .cornerRadius(12)
-                                .lineSpacing(20)
-                                .autocapitalization(.none)
-                                //.frame(width: 300, height: 250)
-                                //.clipShape(RoundedRectangle(cornerRadius: 16))
-                                .padding()
+                    Section() {
+                        TextEditor(text: $thoughts)
+                            .accessibilityHint("hint-write-your-thoughts")
+                            .cornerRadius(12)
+                            .lineSpacing(20)
+                            .autocapitalization(.none)
+                            
+                        //.frame(width: 300, height: 250)
+                        //.clipShape(RoundedRectangle(cornerRadius: 16))
+                            .padding()
+                    }
+                    //.cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
+                    //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                    .overlay(RoundedRectangle(cornerRadius: 12)
+                                .stroke(.black, lineWidth: 3))
                     
-                }
-                //.cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
-                //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
-                .overlay(RoundedRectangle(cornerRadius: 12)
-                            .stroke(.black, lineWidth: 3))
+                
             }
-            .navigationTitle("Write Something")
         }
-        .padding([.leading, .bottom, .trailing])
-        
-        
+        .navigationTitle(Text("place-info"))
+        .sheet(isPresented: $showCameraSheet) {
+            //dismiss
+        } content: {
+            CameraView(isShown: $showCameraSheet, image: $newImage)
+                .background(.black)
+        }.onChange(of: newImage) { newValue in
+            print("received new image")
+            if let newValue = newValue {
+                try? AppDatabase.shared.add(image: newValue, to: place)
+            }
+        }.onChange(of: thoughts, perform: { newThoughts in
+            var placeToSave = place
+            placeToSave.thoughts = newThoughts
+            try? AppDatabase.shared.savePlace(&placeToSave)
+        })
+        .sheet(isPresented: Binding(get: {
+            self.showPictureSheet != -1
+        }, set: {
+            self.showPictureSheet = ($0 ? 0 : -1)
+        })) {
+            PicturePreviewView(pictures: viewController.pictures, showIndex: $showPictureSheet)
+        }
+
     }
 }
 struct PlaceInfoView_Previews: PreviewProvider {

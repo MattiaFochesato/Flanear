@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  Flanear
+
+  Created by Mattia Fochesato on 23/02/22.
+  
+*/
+
+"explore" = "Проводить исследования";
+"your-cities" = "Ваши города";
+"visited-places" = "Посещенные места";
+"place-info" = "Информация о местах";
+
+"delete" = "Удалить";
+"warning" = "Внимание!";
+"suggestions" = "Предложения";
+"loading-suggestions" = "Загрузка предложений...";
+"search-results" = "Результаты поиска";
+"place-too-far-away" = "Место может быть слишком далеко!";
+
+"search-no-results" = "Мы не можем найти это место.\nПроверьте имя";
+
+"completed %@" = "%@ завершено!";
+
+/* watchOS */
+"no-results" = "Мы ничего не можем найти. Проверьте подключение к GPS и Интернету.";
+"pick-place" = "Выбрать место";
+"no-place-selected" = "Место не выбрано";

@@ -17,7 +17,7 @@ struct NavigatorView: View {
     
     var body: some View {
         NavigationView {
-            NavigatorSearchableView()//searchText: $searchText)
+            NavigatorSearchableView()
                 .navigationTitle("explore")
                 .searchable(text: $searchViewController.searchText, placement: .navigationBarDrawer(displayMode: .always))
         }.environmentObject(viewController)
@@ -32,53 +32,50 @@ struct NavigatorSearchableView: View {
     @EnvironmentObject var viewController: NavigatorViewController
     
     var body: some View {
-        ZStack {
-            if !isSearching {
-                Map(coordinateRegion: $viewController.region, interactionModes: .all, showsUserLocation: viewController.destinationLocation == nil, userTrackingMode: $tracking, annotationItems: viewController.locations) { location in
-                    MapAnnotation(coordinate: location.location.coordinate) {
-                        Button {
-                            viewController.gotTo(place: location)
-                        } label: {
-                            Image(systemName: "star")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                .padding(3)
-                                .background(.orange)
-                                .clipShape(Circle())
-                        }
-
-                    }
-                }//.ignoresSafeArea()
-                .overlay(Rectangle()
-                            .foregroundColor(.clear)
-                            .background(viewController.destinationLocation == nil ? RadialGradient(gradient: Gradient(colors: [.clear]), center: .center, startRadius: 1000, endRadius: 1000) : RadialGradient(gradient: Gradient(colors: [.clear, .white]), center: .center, startRadius: 140, endRadius: 400))
-                            .allowsHitTesting(false) )
-                .disabled(viewController.destinationLocation == nil ? false : true)
-                
-                if viewController.destinationLocation != nil {
-                    CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName)
+        VStack(spacing: 0) {
+            ZStack {
+                if !isSearching {
+                    MapView()
+                        .overlay(Rectangle()
+                                    .foregroundColor(.clear)
+                                    .background(viewController.destinationLocation == nil ? RadialGradient(gradient: Gradient(colors: [.clear]), center: .center, startRadius: 1000, endRadius: 1000) : RadialGradient(gradient: Gradient(colors: [.clear, .textWhite]), center: .center, startRadius: 140, endRadius: 400))
+                                    .allowsHitTesting(false) )
+                        .disabled(viewController.destinationLocation == nil ? false : true)
                     
+                    if viewController.destinationLocation != nil {
+                        CompassCircleView(degrees: $viewController.degrees, near: .constant(0), distance: $viewController.destinationDistance, placeName: $viewController.destinationName, arrived: .constant(false))
+                        
+                    }
+                    
+                }else{
+                    PlaceSearchView()
                 }
-                /*ZStack(alignment: .bottom) {
-                    Color.clear
-                    SuggestedPlacesView()
-                        .frame(height: 200)
-                        .cornerRadius(12)
-                 }.zIndex(1000)*/
-                
-                if let destName = viewController.destinationName {
-                    ZStack(alignment: .bottom) {
-                        Color.clear
-                        HStack {
-                            Text(destName)
-                        }.frame(maxWidth: .infinity)
-                            .frame(height: 40)
-                            .background(.gray)
-                     }.zIndex(1000)
-                        .padding(.bottom, 1)//Fix for TabBar color iOS 15
+            }
+            if let destName = viewController.destinationName {
+                if !isSearching {
+                    Divider()
+                    HStack {
+                        Image(systemName: "location.fill")
+                            .font(.title.bold())
+                        Text(destName)
+                            .bold()
+                        Spacer()
+                        Button {
+                            viewController.gotTo(place: nil)
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.title.bold())
+                                .foregroundColor(.textBlack)
+                        }
+                        
+                    }
+                    .padding([.leading, .trailing])
+                    
+                    .frame(maxWidth: .infinity)
+                    .padding([.top, .bottom], 6)
+                    .background(Color("DestinationSheetColor"))
+                    Divider()
                 }
-            }else{
-                PlaceSearchView()
             }
         }
     }

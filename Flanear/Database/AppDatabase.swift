@@ -7,6 +7,7 @@
 
 import GRDB
 import CoreLocation
+import SwiftUI
 
 /// AppDatabase lets the application access the database.
 ///
@@ -39,7 +40,7 @@ final class AppDatabase {
         migrator.eraseDatabaseOnSchemaChange = true
         //#endif
         
-        migrator.registerMigration("v1") { db in
+        migrator.registerMigration("firstMigration") { db in
             // Create a table
             // See https://github.com/groue/GRDB.swift#create-tables
             
@@ -55,14 +56,25 @@ final class AppDatabase {
             try db.create(table: VisitedPlace.databaseTableName) { t in
                 t.autoIncrementedPrimaryKey("id")
                 t.column("cityId", .integer)
-                    .notNull()  
+                    .notNull()
                     .indexed()
                     .references(VisitedCity.databaseTableName, onDelete: .cascade)
                 t.column("title", .text).notNull()
-                t.column("description", .text).notNull()
+                t.column("description", .text)
+                t.column("thoughts", .text)
                 t.column("favourite", .boolean).notNull()
                 t.column("latitude", .double).notNull()
                 t.column("longitude", .double).notNull()
+            }
+
+            /* PICTURES */
+            try db.create(table: Picture.databaseTableName) { t in
+                t.autoIncrementedPrimaryKey("id")
+                t.column("placeId", .integer)
+                    .notNull()
+                    .indexed()
+                    .references(VisitedPlace.databaseTableName, onDelete: .cascade)
+                t.column("data", .blob).notNull()
             }
         }
         return migrator
@@ -75,7 +87,8 @@ extension AppDatabase {
     /// Delete the specified place
     func deleteCity(city: VisitedCity) throws {
         try dbWriter.write { db in
-            var placesId: [Int64] = []
+            //Places will be removed automagically
+            /*var placesId: [Int64] = []
             let places = try city.places.fetchAll(db)
             for place in places {
                 if let id = place.id {
@@ -84,7 +97,7 @@ extension AppDatabase {
             }
             if placesId.count != 0 {
                 _ = try self.deletePlaces(ids: placesId)
-            }
+            }*/
             _ = try VisitedCity.deleteAll(db, ids: [city.id!])
         }
     }
@@ -142,6 +155,24 @@ extension AppDatabase {
         }
         
         return result
+    }
+    
+    func add(image: UIImage, to place: VisitedPlace) throws {
+        guard let imageData = image.pngData() else {
+            return
+        }
+        
+        var picture = Picture(placeId: place.id, data: imageData)
+        try dbWriter.write { db in
+            try picture.save(db)
+        }
+    }
+    
+    /// Delete the specified picture
+    func delete(picture: Picture) throws {
+        try dbWriter.write { db in
+            _ = try Picture.deleteAll(db, ids: [picture.id!])
+        }
     }
     
     /*/// Saves (inserts or updates) a player. When the method returns, the
