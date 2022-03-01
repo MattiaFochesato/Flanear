@@ -96,7 +96,7 @@ struct PlaceSearchView: View {
                                             Image(systemName: "chevron.right")
                                                 .foregroundColor(.textBlack)
                                         }
-                                    }.padding([.top, .bottom], 4)
+                                    }.padding([.top, .bottom], (item.distance > 3000 ? 0 : 4))
                                 }
                             }
                         }.listStyle(InsetGroupedListStyle())
