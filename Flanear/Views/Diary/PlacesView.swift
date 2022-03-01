@@ -31,7 +31,7 @@ struct PlacesView: View {
                         .bold()
                 }else {
                     List {
-                        Section(header: Text("Visited Places")) {
+                        Section(header: Text("visited-places")) {
                             ForEach(viewController.places) { place in
                                 NavigationLink {
                                     PlaceInfoView(place: place)
@@ -55,7 +55,7 @@ struct PlacesView: View {
                                     Button {
                                         viewController.toggleStar(place: place)
                                     } label: {
-                                        Label("Favourite", systemImage: place.favourite ? "star.slash" : "star.fill")
+                                        Label("", systemImage: place.favourite ? "star.slash" : "star.fill")
                                     }.tint(.yellow)
                                 }
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -63,7 +63,7 @@ struct PlacesView: View {
                                         print("Deleting place")
                                         viewController.deletePlace(place: place)
                                     } label: {
-                                        Label("Delete", systemImage: "trash.fill")
+                                        Label("", systemImage: "trash.fill")
                                     }
                                 }
                                 

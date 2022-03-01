@@ -28,7 +28,7 @@ struct CitiesView: View {
                             Button(role: .destructive) {
                                 viewController.deleteCity(city: city)
                             } label: {
-                                Label("Delete \(city.name)", systemImage: "trash.fill")
+                                Label("delete", systemImage: "trash.fill")
                             }
                         }
                         Divider()
@@ -81,7 +81,7 @@ struct CitiesView: View {
                         }.clipShape(RoundedRectangle(cornerRadius: 12))
                             .overlay(RoundedRectangle(cornerRadius: 12)
                                         .stroke(.black, lineWidth: 2))
-                        Text("20% completed")
+                        Text("completed \("20")")
                             .fontWeight(.medium)
                             .padding([.leading, .bottom, .top])
                     }else{

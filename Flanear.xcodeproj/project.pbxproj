@@ -48,6 +48,8 @@
 		26B3899927CCE6560032154C /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899827CCE6560032154C /* Picture.swift */; };
 		26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */; };
 		26B3899D27CCEE4B0032154C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */; };
+		26B821D427CD23A700E752F7 /* PicturePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B821D327CD23A700E752F7 /* PicturePreviewView.swift */; };
+		26B821D627CD25A700E752F7 /* PagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B821D527CD25A700E752F7 /* PagerView.swift */; };
 		26B8547D27C6362000C37004 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547C27C6362000C37004 /* CoreGraphics.framework */; };
 		26B8547F27C6362500C37004 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547E27C6362500C37004 /* CoreLocation.framework */; };
 		26B8548127C6362C00C37004 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548027C6362C00C37004 /* libc++.tbd */; };
@@ -63,7 +65,7 @@
 		26BC9CC627B6AFBF00CE8BBD /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */; };
 		26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */; };
 		26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9CCA27B6AFC000CE8BBD /* Preview Assets.xcassets */; };
-		26BC9CD227B6B08200CE8BBD /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD127B6B08200CE8BBD /* DiaryView.swift */; };
+		26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD127B6B08200CE8BBD /* PlacesView.swift */; };
 		26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */; };
 		26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */; };
 /* End PBXBuildFile section */
@@ -155,6 +157,8 @@
 		26B3899827CCE6560032154C /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoViewController.swift; sourceTree = "<group>"; };
 		26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		26B821D327CD23A700E752F7 /* PicturePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePreviewView.swift; sourceTree = "<group>"; };
+		26B821D527CD25A700E752F7 /* PagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerView.swift; sourceTree = "<group>"; };
 		26B8547C27C6362000C37004 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		26B8547E27C6362500C37004 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		26B8548027C6362C00C37004 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -172,7 +176,7 @@
 		26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
 		26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26BC9CCA27B6AFC000CE8BBD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		26BC9CD127B6B08200CE8BBD /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		26BC9CD127B6B08200CE8BBD /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
 		26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassCircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -283,7 +287,7 @@
 			children = (
 				26B3898C27C8E6CE0032154C /* Camera */,
 				268050BA27BB9D9F004CBC33 /* CitiesView.swift */,
-				26BC9CD127B6B08200CE8BBD /* DiaryView.swift */,
+				26BC9CD127B6B08200CE8BBD /* PlacesView.swift */,
 				268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */,
 			);
 			path = Diary;
@@ -333,6 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				26B3898D27C8E6DB0032154C /* CameraView.swift */,
+				26B821D327CD23A700E752F7 /* PicturePreviewView.swift */,
+				26B821D527CD25A700E752F7 /* PagerView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -626,7 +632,7 @@
 				26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */,
 				26B3899D27CCEE4B0032154C /* UIImage+Extension.swift in Sources */,
 				26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */,
-				26BC9CD227B6B08200CE8BBD /* DiaryView.swift in Sources */,
+				26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */,
 				268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */,
 				26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */,
 				269790D027B7C7C200B0210B /* ARMapView.swift in Sources */,
@@ -637,6 +643,8 @@
 				26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */,
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,
 				26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */,
+				26B821D627CD25A700E752F7 /* PagerView.swift in Sources */,
+				26B821D427CD23A700E752F7 /* PicturePreviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,7 +923,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Flanear/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to capture pictures of your visited places!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
@@ -955,7 +963,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Flanear/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to provide you an amazing AR experience!";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to capture pictures of your visited places!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need access to your position to show you the map and the directions";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need access to your position to show you the map and the directions";

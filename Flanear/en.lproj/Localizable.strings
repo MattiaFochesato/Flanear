@@ -5,16 +5,22 @@
   Created by Mattia Fochesato on 23/02/22.
   
 */
+
 "explore" = "Explore";
 "your-cities" = "Your Cities";
+"visited-places" = "Visited Places";
 "place-info" = "Place Info";
 
+"delete" = "Delete";
 "warning" = "Warning!";
+"suggestions" = "Suggestions";
 "loading-suggestions" = "Loading suggestions...";
+"search-results" = "Search results";
 "place-too-far-away" = "The place can be too far away!";
 
 "search-no-results" = "We cannot find this place.\nCheck the name!";
 
+"completed %@" = "%@ completed!";
 
 /* watchOS */
 "no-results" = "We cannot find anything. Please check your GPS and internet connection.";

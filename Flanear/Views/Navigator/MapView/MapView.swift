@@ -92,6 +92,8 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
         /*guard let mapView = mapView else {
             return
         }*/
+        mapView.showsUserLocation = (viewController.destinationName == nil)
+        
         if viewController.destinationName == nil && !forceUpdate {
             return
         }

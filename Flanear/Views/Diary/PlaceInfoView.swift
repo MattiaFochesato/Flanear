@@ -15,6 +15,7 @@ struct PlaceInfoView: View {
     @State var thoughts: String = "hint-write-your-thoughts"
     @State private var region: MKCoordinateRegion
     @State var showCameraSheet = false
+    @State var showPictureSheet = -1
     
     @State var newImage: UIImage? = nil
     
@@ -52,22 +53,28 @@ struct PlaceInfoView: View {
                         HStack(spacing: 0) {
                             
                             ForEach(viewController.pictures) { picture in
-                                Image(uiImage: picture.image)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 200.0, height: 200.0)
-                                    .cornerRadius(22)
-                                    .contextMenu {
-                                        Button(role: .destructive) {
-                                            viewController.delete(picture: picture)
-                                        } label: {
-                                            Label("Delete picture", systemImage: "trash.fill")
+                                Button {
+                                    showPictureSheet = 0
+                                } label: {
+                                    Image(uiImage: picture.image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 200.0, height: 200.0)
+                                        .cornerRadius(22)
+                                        .contextMenu {
+                                            Button(role: .destructive) {
+                                                viewController.delete(picture: picture)
+                                            } label: {
+                                                Label("delete", systemImage: "trash.fill")
+                                            }
                                         }
-                                    }
-                                    .overlay(RoundedRectangle(cornerRadius: 22)
-                                                .stroke(Color.textBlack, lineWidth: 2)
-                                                .padding(1))
-                                    .padding(8)
+                                        .overlay(RoundedRectangle(cornerRadius: 22)
+                                                    .stroke(Color.textBlack, lineWidth: 2)
+                                                    .padding(1))
+                                        .padding(8)
+                                }
+
+
                             }
                             Button {
                                 showCameraSheet = true
@@ -103,16 +110,24 @@ struct PlaceInfoView: View {
                 
             }
         }
-        .navigationTitle("place-info")
+        .navigationTitle(Text("place-info"))
         .sheet(isPresented: $showCameraSheet) {
             //dismiss
         } content: {
             CameraView(isShown: $showCameraSheet, image: $newImage)
+                .background(.black)
         }.onChange(of: newImage) { newValue in
             print("received new image")
             if let newValue = newValue {
                 try? AppDatabase.shared.add(image: newValue, to: place)
             }
+        }
+        .sheet(isPresented: Binding(get: {
+            self.showPictureSheet != -1
+        }, set: {
+            self.showPictureSheet = ($0 ? 0 : -1)
+        })) {
+            PicturePreviewView(pictures: viewController.pictures, showIndex: $showPictureSheet)
         }
 
     }
