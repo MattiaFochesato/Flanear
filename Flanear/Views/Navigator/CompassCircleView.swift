@@ -160,6 +160,9 @@ struct CompassCircleView: View {
             if val < 0.10 {
                 return 0.10
             }
+            if self.startingDistance == 0 || self.placeName == nil || val == .nan {
+                return 0.0
+            }
             return val
         }
         
