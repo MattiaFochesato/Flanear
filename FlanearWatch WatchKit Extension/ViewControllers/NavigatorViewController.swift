@@ -20,6 +20,7 @@ class NavigatorViewController: NSObject, ObservableObject, WCSessionDelegate, CL
     @Published var degrees: Double? = .zero
     @Published var destinationLocation: CLLocation? = nil//CLLocation(latitude: 40.829170, longitude: 14.334190)
     @Published var destinationDistance: CLLocationDistance = 0
+    @Published var startingDistance: CLLocationDistance = 0
     @Published var destinationName: String? = nil//"San Giorgio a Cremano"
     
     private let locationManager: CLLocationManager

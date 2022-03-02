@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ Boilerplate to implement the native camera picker in SwiftUI
+ */
 struct CameraView: UIViewControllerRepresentable {
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         @Binding var isCoordinatorShown: Bool

@@ -23,6 +23,14 @@
 
 "completed %@" = "%@ completed!";
 
+/* Place type */
+"archeology" = "Archeology";
+"interests" = "Interests";
+"museum" = "Museum";
+"park" = "Park";
+"theater" = "Theater";
+"castle" = "Castle";
+
 /* watchOS */
 "no-results" = "We cannot find anything. Please check your GPS and internet connection.";
 "pick-place" = "Pick Place";

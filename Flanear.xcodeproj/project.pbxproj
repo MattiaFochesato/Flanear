@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2663D9E027CFB2BB00F7E61C /* MKMapItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663D9DF27CFB2BB00F7E61C /* MKMapItem+Extension.swift */; };
 		268050A727BA5A84004CBC33 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 268050A627BA5A84004CBC33 /* GRDB */; };
 		268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050A827BA5AE7004CBC33 /* Persistence.swift */; };
 		268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050AB27BA6670004CBC33 /* VisitedPlace.swift */; };
-		268050AE27BA6C35004CBC33 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050AD27BA6C35004CBC33 /* DiaryViewController.swift */; };
+		268050AE27BA6C35004CBC33 /* VisitedPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050AD27BA6C35004CBC33 /* VisitedPlacesViewController.swift */; };
 		268050B027BA6EBD004CBC33 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050AF27BA6EBD004CBC33 /* AppDatabase.swift */; };
 		268050B327BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050B227BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift */; };
 		268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */; };
 		268050BB27BB9DA0004CBC33 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050BA27BB9D9F004CBC33 /* CitiesView.swift */; };
 		268050BE27BBA2C0004CBC33 /* LocationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050BD27BBA2C0004CBC33 /* LocationUtils.swift */; };
-		269790D027B7C7C200B0210B /* ARMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269790CF27B7C7C200B0210B /* ARMapView.swift */; };
 		269790D627B7CC4E00B0210B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269790D527B7CC4E00B0210B /* Assets.xcassets */; };
 		269790DC27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 269790DB27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		269790E127B7CC4E00B0210B /* FlanearApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269790E027B7CC4E00B0210B /* FlanearApp.swift */; };
@@ -43,8 +43,6 @@
 		26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898A27C8CBA20032154C /* Color+Extension.swift */; };
 		26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898D27C8E6DB0032154C /* CameraView.swift */; };
 		26B3899027CCB6C60032154C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898F27CCB6C60032154C /* MapView.swift */; };
-		26B3899427CCC2BE0032154C /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899327CCC2BE0032154C /* MapAnnotationView.swift */; };
-		26B3899727CCC3850032154C /* MapAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B3899627CCC3850032154C /* MapAnnotationView.xib */; };
 		26B3899927CCE6560032154C /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899827CCE6560032154C /* Picture.swift */; };
 		26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */; };
 		26B3899D27CCEE4B0032154C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */; };
@@ -113,9 +111,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2663D9DF27CFB2BB00F7E61C /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
+		2663D9E127CFBD7500F7E61C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		267CF0FB27CF74A80050F55F /* SanGiovanni Veloce.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SanGiovanni Veloce.gpx"; sourceTree = "<group>"; };
 		268050A827BA5AE7004CBC33 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		268050AB27BA6670004CBC33 /* VisitedPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlace.swift; sourceTree = "<group>"; };
-		268050AD27BA6C35004CBC33 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		268050AD27BA6C35004CBC33 /* VisitedPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlacesViewController.swift; sourceTree = "<group>"; };
 		268050AF27BA6EBD004CBC33 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		268050B227BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoView.swift; sourceTree = "<group>"; };
@@ -124,7 +125,6 @@
 		268050B927BAC5E5004CBC33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		268050BA27BB9D9F004CBC33 /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
 		268050BD27BBA2C0004CBC33 /* LocationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtils.swift; sourceTree = "<group>"; };
-		269790CF27B7C7C200B0210B /* ARMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapView.swift; sourceTree = "<group>"; };
 		269790D327B7CC4B00B0210B /* Flanear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flanear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269790D527B7CC4E00B0210B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		269790DB27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FlanearWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,8 +152,6 @@
 		26B3898A27C8CBA20032154C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		26B3898D27C8E6DB0032154C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		26B3898F27CCB6C60032154C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		26B3899327CCC2BE0032154C /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
-		26B3899627CCC3850032154C /* MapAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapAnnotationView.xib; sourceTree = "<group>"; };
 		26B3899827CCE6560032154C /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoViewController.swift; sourceTree = "<group>"; };
 		26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -263,6 +261,7 @@
 				26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */,
 				26B3898A27C8CBA20032154C /* Color+Extension.swift */,
 				26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */,
+				2663D9DF27CFB2BB00F7E61C /* MKMapItem+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -274,14 +273,6 @@
 				269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		269790CD27B7C6D200B0210B /* AR */ = {
-			isa = PBXGroup;
-			children = (
-				269790CF27B7C7C200B0210B /* ARMapView.swift */,
-			);
-			path = AR;
 			sourceTree = "<group>";
 		};
 		269790CE27B7C6D700B0210B /* Diary */ = {
@@ -345,16 +336,6 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
-		26B3899527CCC2C50032154C /* MapView */ = {
-			isa = PBXGroup;
-			children = (
-				26B3898F27CCB6C60032154C /* MapView.swift */,
-				26B3899627CCC3850032154C /* MapAnnotationView.xib */,
-				26B3899327CCC2BE0032154C /* MapAnnotationView.swift */,
-			);
-			path = MapView;
-			sourceTree = "<group>";
-		};
 		26B8547B27C6362000C37004 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,8 +352,10 @@
 		26BC9CB727B6AFBE00CE8BBD = {
 			isa = PBXGroup;
 			children = (
+				267CF0FB27CF74A80050F55F /* SanGiovanni Veloce.gpx */,
 				268050B727BAC296004CBC33 /* .gitignore */,
 				268050B627BAC287004CBC33 /* README.md */,
+				2663D9E127CFBD7500F7E61C /* LICENSE.md */,
 				26BC9CC227B6AFBF00CE8BBD /* Flanear */,
 				269790D427B7CC4B00B0210B /* FlanearWatch */,
 				269790DF27B7CC4E00B0210B /* FlanearWatch WatchKit Extension */,
@@ -423,7 +406,6 @@
 		26BC9CD327B6B09A00CE8BBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				269790CD27B7C6D200B0210B /* AR */,
 				269790CE27B7C6D700B0210B /* Diary */,
 				26BC9CD927B6B73100CE8BBD /* Navigator */,
 			);
@@ -434,8 +416,8 @@
 			isa = PBXGroup;
 			children = (
 				26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */,
-				268050AD27BA6C35004CBC33 /* DiaryViewController.swift */,
 				26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */,
+				268050AD27BA6C35004CBC33 /* VisitedPlacesViewController.swift */,
 				26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */,
 				26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */,
 			);
@@ -445,8 +427,8 @@
 		26BC9CD927B6B73100CE8BBD /* Navigator */ = {
 			isa = PBXGroup;
 			children = (
-				26B3899527CCC2C50032154C /* MapView */,
 				26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */,
+				26B3898F27CCB6C60032154C /* MapView.swift */,
 				26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */,
 				26A0994B27BBC54300611E79 /* PlaceSearchView.swift */,
 			);
@@ -590,7 +572,6 @@
 				26B854A727C69F7700C37004 /* Localizable.strings in Resources */,
 				269B5F3627C7A35E00F520DB /* Settings.bundle in Resources */,
 				26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */,
-				26B3899727CCC3850032154C /* MapAnnotationView.xib in Resources */,
 				26BC9CC827B6AFC000CE8BBD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,7 +606,8 @@
 				268050BE27BBA2C0004CBC33 /* LocationUtils.swift in Sources */,
 				268050BB27BB9DA0004CBC33 /* CitiesView.swift in Sources */,
 				269A9C7A27BE61CF0075B085 /* PlaceSearchItem.swift in Sources */,
-				268050AE27BA6C35004CBC33 /* DiaryViewController.swift in Sources */,
+				268050AE27BA6C35004CBC33 /* VisitedPlacesViewController.swift in Sources */,
+				2663D9E027CFB2BB00F7E61C /* MKMapItem+Extension.swift in Sources */,
 				26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */,
 				26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */,
 				26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */,
@@ -639,10 +621,8 @@
 				26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */,
 				268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */,
 				26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */,
-				269790D027B7C7C200B0210B /* ARMapView.swift in Sources */,
 				26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */,
 				26B3899927CCE6560032154C /* Picture.swift in Sources */,
-				26B3899427CCC2BE0032154C /* MapAnnotationView.swift in Sources */,
 				268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */,
 				26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */,
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,

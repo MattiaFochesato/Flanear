@@ -9,15 +9,15 @@ import Foundation
 import CoreLocation
 import GRDB
 
-//Picture struct
+/** Picture struct */
 struct Picture: Identifiable, Hashable {
     var id: Int64?
     var placeId: Int64?
     var data: Data
 }
 
-//Set the SQL rows
 extension Picture: FetchableRecord {
+    /// Set the SQL rows
     init(row: Row) {
         id = row["id"]
         placeId = row["placeId"]
@@ -25,10 +25,11 @@ extension Picture: FetchableRecord {
     }
 }
 
-//Set the table name
 extension Picture: TableRecord {
+    /// Table name
     static let databaseTableName = "Pictures"
     
+    /// Set relations
     static let place = belongsTo(VisitedPlace.self)
     var place: QueryInterfaceRequest<VisitedPlace> {
         request(for: Picture.place)
@@ -43,7 +44,7 @@ extension Picture : MutablePersistableRecord {
         container["data"] = data
     }
     
-    // Update auto-incremented id upon successful insertion
+    /// Update auto-incremented id upon successful insertion
     mutating func didInsert(with rowID: Int64, for column: String?) {
         id = rowID
     }

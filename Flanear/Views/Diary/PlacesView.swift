@@ -10,12 +10,12 @@ import SwiftUI
 struct PlacesView: View {
     let city: VisitedCity
     
-    @ObservedObject var viewController: DiaryViewController
+    @ObservedObject var viewController: VisitedPlacesViewController
     @State var searchText = ""
     
     init(city: VisitedCity) {
         self.city = city
-        self.viewController = DiaryViewController(city: city)
+        self.viewController = VisitedPlacesViewController(city: city)
     }
     
     var body: some View {

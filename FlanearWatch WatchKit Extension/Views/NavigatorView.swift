@@ -13,7 +13,7 @@ struct NavigatorView: View {
     
     var body: some View {
         VStack {
-            CompassCircleView(degrees: $viewController.degrees, near: .constant(1), distance: $viewController.destinationDistance, placeName: .constant(""), arrived: .constant(false))
+            CompassCircleView(degrees: $viewController.degrees, startingDistance: $viewController.startingDistance, distance: $viewController.destinationDistance, placeName: .constant(""), arrived: .constant(false), openCamera: .constant(false))
                 .padding()
             
             Spacer()

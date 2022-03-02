@@ -30,14 +30,15 @@ struct PlaceSearchView: View {
                                     dismissSearch()
                                 } label: {
                                     HStack {
-                                        Image(systemName: item.image)
+                                        Image(item.image)
+                                            .resizable()
                                             .foregroundColor(.textBlack)
+                                            .frame(width: 30, height: 30)
                                         VStack(alignment: .leading) {
                                             Text(item.title)
                                                 .foregroundColor(.textBlack)
-                                            Text(item.subtitle)
+                                            Text(NSLocalizedString(item.subtitle, comment: ""))
                                                 .foregroundColor(.secondary)
-                                            
                                         }
                                         Spacer()
                                         Text("\(Int(item.distance)) m")
@@ -68,8 +69,10 @@ struct PlaceSearchView: View {
                                         HStack {
                                             VStack(alignment: .leading) {
                                                 HStack {
-                                                    Image(systemName: item.image)
+                                                    Image("interests")
+                                                        .resizable()
                                                         .foregroundColor(.textBlack)
+                                                        .frame(width: 30, height: 30)
                                                     VStack(alignment: .leading) {
                                                         Text(item.title)
                                                             .foregroundColor(.textBlack)
@@ -120,6 +123,9 @@ struct PlaceSearchView: View {
                             ForEach((0..<4)) { _ in
                                 HStack {
                                     Image(systemName: "greaterthan.circle.fill")
+                                        .resizable()
+                                        .foregroundColor(.textBlack)
+                                        .frame(width: 30, height: 30)
                                     VStack(alignment: .leading) {
                                         Text(randomString(length: 10))
                                         Text(randomString(length: 6))
