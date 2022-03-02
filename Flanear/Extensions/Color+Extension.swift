@@ -9,10 +9,8 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    
+    /** Set custom colors */
     static let textBlack = Color("TextBlack")
     static let textWhite = Color("TextWhite")
     static let shadow = Color("Shadow")
-    
-    
 }

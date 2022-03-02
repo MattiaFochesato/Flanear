@@ -128,11 +128,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
         request.pointOfInterestFilter = .includingAll
         request.resultTypes = resultType
         guard let currentLocation = currentLocation else {
-            if !isWatch {
-                self.searchPublisher.send([])
-            }else{
-                self.searchWatchPublisher.send([])
-            }
+            self.sendToPublisher([], isWatch: isWatch)
             return
         }
         
@@ -144,19 +140,19 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         search.start { [weak self](response, _) in
             guard let response = response else {
-                if !isWatch {
-                    self?.searchPublisher.send([])
-                }else{
-                    self?.searchWatchPublisher.send([])
-                }
+                self?.sendToPublisher([], isWatch: isWatch)
                 return
             }
             
-            if !isWatch {
-                self?.searchPublisher.send(response.mapItems)
-            }else{
-                self?.searchWatchPublisher.send(response.mapItems)
-            }
+            self?.sendToPublisher(response.mapItems, isWatch: isWatch)
+        }
+    }
+    
+    func sendToPublisher(_ value: [MKMapItem], isWatch: Bool = false) {
+        if !isWatch {
+            self.searchPublisher.send(value)
+        }else{
+            self.searchWatchPublisher.send(value)
         }
     }
 }
