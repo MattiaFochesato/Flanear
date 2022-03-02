@@ -19,6 +19,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var degrees: Double = .zero
     @Published var currentLocation: CLLocation?
     @Published var currentCity: VisitedCity?
+    @Published var currentPlace: VisitedPlace?
     
     let searchPublisher = PassthroughSubject<[MKMapItem], Never>()
     let searchWatchPublisher = PassthroughSubject<[MKMapItem], Never>()

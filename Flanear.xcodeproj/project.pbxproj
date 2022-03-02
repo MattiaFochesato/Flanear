@@ -113,6 +113,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		267CF0FB27CF74A80050F55F /* SanGiovanni Veloce.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SanGiovanni Veloce.gpx"; sourceTree = "<group>"; };
 		268050A827BA5AE7004CBC33 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		268050AB27BA6670004CBC33 /* VisitedPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlace.swift; sourceTree = "<group>"; };
 		268050AD27BA6C35004CBC33 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
@@ -371,6 +372,7 @@
 		26BC9CB727B6AFBE00CE8BBD = {
 			isa = PBXGroup;
 			children = (
+				267CF0FB27CF74A80050F55F /* SanGiovanni Veloce.gpx */,
 				268050B727BAC296004CBC33 /* .gitignore */,
 				268050B627BAC287004CBC33 /* README.md */,
 				26BC9CC227B6AFBF00CE8BBD /* Flanear */,

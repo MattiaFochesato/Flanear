@@ -143,15 +143,15 @@ extension AppDatabase {
         }
     }
     
-    func isPlacePresent(coordinate: CLLocationCoordinate2D) throws -> Bool{
-        var result = false
+    func isPlacePresent(coordinate: CLLocationCoordinate2D) throws -> VisitedPlace? {
+        var result: VisitedPlace? = nil
         try dbWriter.read { db in
             let places = try VisitedPlace.all()
                 .filter(latitude: coordinate.latitude)
                 .filter(longitude: coordinate.longitude)
                 .fetchAll(db)
             
-            result = !places.isEmpty
+            result = places.first
         }
         
         return result

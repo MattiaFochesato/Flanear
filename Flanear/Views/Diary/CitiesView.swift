@@ -15,7 +15,7 @@ struct CitiesView: View {
     @State var citiesToShow: [VisitedCity] = []
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             ScrollView {
                 VStack {
                     ForEach(citiesToShow) { city in
@@ -36,7 +36,7 @@ struct CitiesView: View {
                     }
                 }.navigationTitle("your-cities")
             }
-        }
+        //}
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onChange(of: searchText) { _ in
             filterCities()

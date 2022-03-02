@@ -12,7 +12,8 @@ struct FlanearApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            TabView {
+            NavigatorView()
+            /*TabView {
                 NavigatorView()
                     .tabItem {
                         Label("explore", systemImage: "map.fill")
@@ -21,7 +22,7 @@ struct FlanearApp: App {
                     .tabItem {
                         Label("your-cities", systemImage: "book.closed.fill")
                     }
-            }
+            }*/
         }
     }
 }

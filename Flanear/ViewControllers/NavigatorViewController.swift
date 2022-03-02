@@ -28,8 +28,10 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         )
     @Published var destinationLocation: CLLocation? = nil//CLLocation(latitude: 40.829170, longitude: 14.334190)
     @Published var destinationDistance: CLLocationDistance = 0
+    @Published var startingDistance: CLLocationDistance = 0
     @Published var destinationName: String? = nil//"San Giorgio a Cremano"
     @Published var showSearch = false
+    @Published var isArrived = false
     
     private var destinationNameCancellable: AnyCancellable? = nil
     private var degreesCancellable: AnyCancellable? = nil
@@ -117,24 +119,30 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     }
     
     func gotTo(place: PlaceSearchItem?) {
+        LocationUtils.shared.currentPlace = nil
         destinationLocation = place?.location
         destinationName = place?.title
         showSearch = false
+        isArrived = false
         
         self.updateDistance()
         self.updateDegrees()
+        
+        self.startingDistance = destinationDistance
         
         guard let place = place else { return }
         guard let currentCity = LocationUtils.shared.currentCity else { return }
         
         let isPlacePresent = try! AppDatabase.shared.isPlacePresent(coordinate: place.location.coordinate)
         
-        if isPlacePresent {
+        if let place = isPlacePresent {
+            LocationUtils.shared.currentPlace = place
             return
         }
         
         var visitedPlace = VisitedPlace(cityId: currentCity.id, title: place.title, description: place.subtitle, thoughts: " ", favourite: false, coordinate: place.location.coordinate)
-        let _ = try! AppDatabase.shared.savePlace(&visitedPlace)
+        let _ = try? AppDatabase.shared.savePlace(&visitedPlace)
+        LocationUtils.shared.currentPlace = visitedPlace
     }
     
     func updateDistance() {
@@ -146,6 +154,14 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         //Update distance data
         self.bearingDegrees = self.getBearingBetween(point1: self.currentLocation!, point2: destinationLocation)
         self.destinationDistance = self.currentLocation!.distance(from: destinationLocation)
+        
+        if self.destinationDistance > self.startingDistance {
+            self.startingDistance = self.destinationDistance
+        }
+        
+        if self.destinationDistance <= 15 {
+            self.isArrived = true
+        }
         
         if let validSession = self.session {
             let dataToSend = ["distance": self.destinationDistance, "degrees": self.bearingDegrees]
