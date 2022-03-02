@@ -7,11 +7,14 @@
 
 import SwiftUI
 
+/*
+ View that shows you the list of cities that you have visited
+ */
 struct CitiesView: View {
     @ObservedObject var viewController = VisitedCitiesViewController()
     
+    //Filter variables
     @State var searchText = ""
-    
     @State var citiesToShow: [VisitedCity] = []
     
     var body: some View {
@@ -49,6 +52,9 @@ struct CitiesView: View {
         }
     }
     
+    /**
+     Function to call when you need to update the list of cities to show.
+     */
     func filterCities() {
         if !searchText.isEmpty {
             citiesToShow = viewController.cities.filter { $0.name.contains(searchText) }
@@ -81,7 +87,7 @@ struct CitiesView: View {
                         }.clipShape(RoundedRectangle(cornerRadius: 12))
                             .overlay(RoundedRectangle(cornerRadius: 12)
                                         .stroke(.black, lineWidth: 2))
-                        Text("completed \("20")")
+                        Text("completed \(String(city.getCompletion()))")
                             .fontWeight(.medium)
                             .padding([.leading, .bottom, .top])
                     }else{

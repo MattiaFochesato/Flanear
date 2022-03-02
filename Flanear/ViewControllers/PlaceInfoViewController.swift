@@ -11,6 +11,12 @@ import GRDB
 import Combine
 import SwiftUI
 
+struct PlaceInfoPicture: Identifiable {
+    var id: Int64?
+    var image: UIImage
+    var object: Picture
+}
+
 class PlaceInfoViewController: ObservableObject {
     
     let place: VisitedPlace
@@ -48,10 +54,4 @@ class PlaceInfoViewController: ObservableObject {
         
     }
     
-}
-
-struct PlaceInfoPicture: Identifiable {
-    var id: Int64?
-    var image: UIImage
-    var object: Picture
 }

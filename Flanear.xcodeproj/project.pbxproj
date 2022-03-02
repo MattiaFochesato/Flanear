@@ -16,7 +16,6 @@
 		268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */; };
 		268050BB27BB9DA0004CBC33 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050BA27BB9D9F004CBC33 /* CitiesView.swift */; };
 		268050BE27BBA2C0004CBC33 /* LocationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050BD27BBA2C0004CBC33 /* LocationUtils.swift */; };
-		269790D027B7C7C200B0210B /* ARMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269790CF27B7C7C200B0210B /* ARMapView.swift */; };
 		269790D627B7CC4E00B0210B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269790D527B7CC4E00B0210B /* Assets.xcassets */; };
 		269790DC27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 269790DB27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		269790E127B7CC4E00B0210B /* FlanearApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269790E027B7CC4E00B0210B /* FlanearApp.swift */; };
@@ -125,7 +124,6 @@
 		268050B927BAC5E5004CBC33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		268050BA27BB9D9F004CBC33 /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
 		268050BD27BBA2C0004CBC33 /* LocationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtils.swift; sourceTree = "<group>"; };
-		269790CF27B7C7C200B0210B /* ARMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapView.swift; sourceTree = "<group>"; };
 		269790D327B7CC4B00B0210B /* Flanear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flanear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269790D527B7CC4E00B0210B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		269790DB27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FlanearWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,14 +275,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		269790CD27B7C6D200B0210B /* AR */ = {
-			isa = PBXGroup;
-			children = (
-				269790CF27B7C7C200B0210B /* ARMapView.swift */,
-			);
-			path = AR;
-			sourceTree = "<group>";
-		};
 		269790CE27B7C6D700B0210B /* Diary */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,7 +415,6 @@
 		26BC9CD327B6B09A00CE8BBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				269790CD27B7C6D200B0210B /* AR */,
 				269790CE27B7C6D700B0210B /* Diary */,
 				26BC9CD927B6B73100CE8BBD /* Navigator */,
 			);
@@ -641,7 +630,6 @@
 				26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */,
 				268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */,
 				26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */,
-				269790D027B7C7C200B0210B /* ARMapView.swift in Sources */,
 				26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */,
 				26B3899927CCE6560032154C /* Picture.swift in Sources */,
 				26B3899427CCC2BE0032154C /* MapAnnotationView.swift in Sources */,

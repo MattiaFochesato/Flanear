@@ -18,6 +18,10 @@ struct VisitedCity: Identifiable, Hashable {
     var name: String
     var state: String
     var image: String
+    
+    func getCompletion() -> Int {
+        return 20
+    }
 }
 
 //Set the SQL rows
