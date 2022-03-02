@@ -11,6 +11,7 @@ import CoreLocation
 import Combine
 import WatchConnectivity
 
+/** ViewController for NavigatorView  */
 class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDelegate {
     ///Suggested location that the user can choose (filtered and ordered by distance)
     @Published var suggestedLocations: [PlaceSearchItem]? = nil

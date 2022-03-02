@@ -10,7 +10,7 @@
 		268050A727BA5A84004CBC33 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 268050A627BA5A84004CBC33 /* GRDB */; };
 		268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050A827BA5AE7004CBC33 /* Persistence.swift */; };
 		268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050AB27BA6670004CBC33 /* VisitedPlace.swift */; };
-		268050AE27BA6C35004CBC33 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050AD27BA6C35004CBC33 /* DiaryViewController.swift */; };
+		268050AE27BA6C35004CBC33 /* VisitedPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050AD27BA6C35004CBC33 /* VisitedPlacesViewController.swift */; };
 		268050B027BA6EBD004CBC33 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050AF27BA6EBD004CBC33 /* AppDatabase.swift */; };
 		268050B327BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050B227BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift */; };
 		268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */; };
@@ -115,7 +115,7 @@
 		267CF0FB27CF74A80050F55F /* SanGiovanni Veloce.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SanGiovanni Veloce.gpx"; sourceTree = "<group>"; };
 		268050A827BA5AE7004CBC33 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		268050AB27BA6670004CBC33 /* VisitedPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlace.swift; sourceTree = "<group>"; };
-		268050AD27BA6C35004CBC33 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		268050AD27BA6C35004CBC33 /* VisitedPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlacesViewController.swift; sourceTree = "<group>"; };
 		268050AF27BA6EBD004CBC33 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		268050B227BA70EF004CBC33 /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		268050B427BA7D6E004CBC33 /* PlaceInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoView.swift; sourceTree = "<group>"; };
@@ -425,8 +425,8 @@
 			isa = PBXGroup;
 			children = (
 				26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */,
-				268050AD27BA6C35004CBC33 /* DiaryViewController.swift */,
 				26A0994927BBB2CD00611E79 /* VisitedCitiesViewController.swift */,
+				268050AD27BA6C35004CBC33 /* VisitedPlacesViewController.swift */,
 				26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */,
 				26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */,
 			);
@@ -616,7 +616,7 @@
 				268050BE27BBA2C0004CBC33 /* LocationUtils.swift in Sources */,
 				268050BB27BB9DA0004CBC33 /* CitiesView.swift in Sources */,
 				269A9C7A27BE61CF0075B085 /* PlaceSearchItem.swift in Sources */,
-				268050AE27BA6C35004CBC33 /* DiaryViewController.swift in Sources */,
+				268050AE27BA6C35004CBC33 /* VisitedPlacesViewController.swift in Sources */,
 				26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */,
 				26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */,
 				26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */,
