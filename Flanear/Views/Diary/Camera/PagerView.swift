@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-/*
+/**
  Boilerplate to have a PagerView in SwiftUI
  
  Thanks to: https://gist.github.com/mecid/e0d4d6652ccc8b5737449a01ee8cbc6f

@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-/*
+/**
  View used to show the pictures that you have taken like a photo gallery
  */
 struct PicturePreviewView: View {
-    //Pictures and current picture index
+    /// Pictures and current picture index
     var pictures: [PlaceInfoPicture]
     @Binding var showIndex: Int
     
     
     var body: some View {
-        //Pager view used to a page for every picture
+        /// Pager view used to a page for every picture
         PagerView(pageCount: pictures.count, currentIndex: $showIndex) {
             ForEach(pictures) { picture in
-                //Simple image. Not zoomable
+                /// Simple image. Not zoomable
                 Image(uiImage: picture.image)
                     .resizable()
                     .scaledToFit()

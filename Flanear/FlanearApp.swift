@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct FlanearApp: App {
-    //App Delegate Adaptor
+    /// App Delegate Adaptor
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    //Main Window Scene
+    /// Main Window Scene
     var body: some Scene {
         WindowGroup {
-            //Navigator View with the Map
+            /// Navigator View with the Map
             NavigatorView()
         }
     }
