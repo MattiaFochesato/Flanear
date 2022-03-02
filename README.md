@@ -47,8 +47,8 @@ You can find the Sketch prototype [here TODO](TODO-).
 
 ## Creators
 
-* **Mattia** Fochesato
 * **Matilde** Cotroneo
-* **Marco** Pescosolido
-* **Giovanni** Imparato
 * **Vincenzo** Esposito
+* **Mattia** Fochesato
+* **Giovanni** Imparato
+* **Marco** Pescosolido
