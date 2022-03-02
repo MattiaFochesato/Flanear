@@ -9,6 +9,7 @@ import Foundation
 import CoreLocation
 import MapKit
 
+/** Struct used to show search results */
 struct PlaceSearchItem: Identifiable, Codable {
     var id = UUID()
     var title: String
@@ -19,6 +20,7 @@ struct PlaceSearchItem: Identifiable, Codable {
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
     
+    /// CLLocation calculated to keep the struct Codable
     var location: CLLocation {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
@@ -52,7 +54,6 @@ struct PlaceSearchItem: Identifiable, Codable {
         if let curLoc = LocationUtils.shared.currentLocation {
             self.distance = location.distance(from: curLoc)
         }
-        
 #endif
     }
     
