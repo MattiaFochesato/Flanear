@@ -16,10 +16,12 @@ struct CompassCircleView: View {
 #endif
     
     @Binding var degrees: Double?// = .zero
-    @Binding var near: Double//= 1
+    @Binding var startingDistance: CLLocationDistance//= 1
     @Binding var distance: CLLocationDistance
     @Binding var placeName: String?
     @Binding var arrived: Bool
+    @Binding var openCamera: Bool
+    
     var body: some View {
         ZStack {
             if !arrived {
@@ -65,23 +67,23 @@ struct CompassCircleView: View {
             
             ZStack {
                 Circle()
-                    .stroke(Color.white, lineWidth: !isWatch ? 30 : 12)
+                    .stroke(Color.white, lineWidth: !isWatch ? 21 : 12)
                     .background(Color("PaletteYellow").opacity(0.5))
                     .clipShape(Circle())
                 
                 Circle()
-                    .stroke(.black, lineWidth: !isWatch ? 30 : 12)
+                    .stroke(.black, lineWidth: !isWatch ? 21 : 12)
                     .foregroundColor(.clear)
                 
                 Circle()
-                    .stroke(.white, lineWidth: !isWatch ? 27 : 10)
+                    .stroke(.white, lineWidth: !isWatch ? 18 : 10)
                     .foregroundColor(.clear)
                 
                 
                 
                 Circle()
                     .trim(from: 0, to: getBarWidth())
-                    .stroke(Color("PaletteLightBlue"), lineWidth: !isWatch ? 23 : 8)
+                    .stroke(Color("PaletteLightBlue"), lineWidth: !isWatch ? 18 : 8)
                     .rotationEffect(getRotationBar())
                 //.animation(.linear)
                 
@@ -109,11 +111,12 @@ struct CompassCircleView: View {
                     }
                 }.offset(y: arrived ? -15 : 0)
                 
-                if arrived && !isWatch{
+                if arrived && !isWatch{ //arrived
                     
                     ZStack(alignment: .bottom) {
                         Button {
                             print("open camera and save")
+                            self.openCamera.toggle()
                         } label: {
                             Image(systemName: "camera")
                                 .font(.system(size: 50, weight: .bold))
@@ -141,13 +144,26 @@ struct CompassCircleView: View {
 #endif
         }
 #if os(iOS)
+        .onChange(of: arrived) { arrived in
+            if arrived {
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
+            }
+        }
         .frame(width: 200, height: 200, alignment: .center)
 #endif
     }
     
     func getBarWidth() -> CGFloat {
         if !arrived {
-            return 0.35
+            let val = 1 - (self.distance / self.startingDistance)
+            if val < 0.10 {
+                return 0.10
+            }
+            if self.startingDistance == 0 || self.placeName == nil || val == .nan {
+                return 0.0
+            }
+            return val
         }
         
         return 1.0
@@ -184,12 +200,12 @@ struct Triangle: Shape {
 
 struct CompassCircleView_Previews: PreviewProvider {
     static var previews: some View {
-        CompassCircleView(degrees: .constant(.zero), near: .constant(1), distance: .constant(100), placeName: .constant("San Giorgio a Cremano in prova lunghezza testo"), arrived: .constant(true))
+        CompassCircleView(degrees: .constant(.zero), startingDistance: .constant(200), distance: .constant(100), placeName: .constant("San Giorgio a Cremano in prova lunghezza testo"), arrived: .constant(true), openCamera: .constant(false))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding(60)
             .previewDisplayName("Arrived Preview")
         
-        CompassCircleView(degrees: .constant(.zero), near: .constant(1), distance: .constant(100), placeName: .constant("San Giorgio"), arrived: .constant(false))
+        CompassCircleView(degrees: .constant(.zero), startingDistance: .constant(200), distance: .constant(100), placeName: .constant("San Giorgio"), arrived: .constant(false), openCamera: .constant(false))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding(80)
             .previewDisplayName("Arrived Preview")

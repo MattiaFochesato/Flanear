@@ -233,8 +233,19 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
                     self.updateCamera(mapView, updateHeading: false, forceUpdate: true)
                 }
                 
+                #if DEBUG
+                self.updateCamera(mapView)
+                #endif
+                
             })
         }
+        
+        /*#if targetEnvironment(simulator)
+        if self.initialCenter == false {
+            self.initialCenter = true
+            self.updateCamera(mapView, updateHeading: true, forceUpdate: true)
+        }
+        #endif*/
     }
     
     func updateCamera(_ mapView: MKMapView, updateHeading: Bool = true, forceUpdate: Bool = false) {

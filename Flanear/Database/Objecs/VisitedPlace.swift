@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 import GRDB
 
-//VisitedPlace struct
+/** VisitedPlace struct */
 struct VisitedPlace: Identifiable, Hashable {
     var id: Int64?
     var cityId: Int64?
@@ -20,8 +20,8 @@ struct VisitedPlace: Identifiable, Hashable {
     var coordinate: CLLocationCoordinate2D
 }
 
-//Set the SQL rows
 extension VisitedPlace: FetchableRecord {
+    /// Set the SQL rows
     init(row: Row) {
         id = row["id"]
         cityId = row["cityId"]
@@ -57,15 +57,17 @@ extension VisitedPlace: FetchableRecord {
     }
 }
 
-//Set the table name
 extension VisitedPlace: TableRecord {
+    /// Table name
     static let databaseTableName = "VisitedPlaces"
     
+    /// Set relations
     static let city = belongsTo(VisitedCity.self)
     var city: QueryInterfaceRequest<VisitedCity> {
         request(for: VisitedPlace.city)
     }
     
+    /// Set relations
     static let pictures = hasMany(Picture.self)
     var pictures: QueryInterfaceRequest<Picture> {
         request(for: VisitedPlace.pictures)

@@ -12,6 +12,7 @@ extension UINavigationController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
+        /// Change the font of the large title in the application
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.largeTitleTextAttributes = [.font : UIFont.systemFont(ofSize: 34, weight: .black)]

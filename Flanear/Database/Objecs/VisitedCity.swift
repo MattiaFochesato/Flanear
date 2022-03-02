@@ -12,16 +12,26 @@ import Foundation
 import CoreLocation
 import GRDB
 
-//VisitedPlace struct
+/** VisitedPlace struct */
 struct VisitedCity: Identifiable, Hashable {
     var id: Int64?
     var name: String
     var state: String
     var image: String
+    
+    /**
+     Get the number of visited place in a city
+     
+     - returns: Percentage of visited places
+     - warning: This function is still not implemented!
+     */
+    func getCompletion() -> Int {
+        return 20
+    }
 }
 
-//Set the SQL rows
 extension VisitedCity: FetchableRecord {
+    ///Set the SQL rows
     init(row: Row) {
         id = row["id"]
         name = row["name"]
@@ -35,10 +45,11 @@ extension VisitedCity: FetchableRecord {
     }
 }
 
-//Set the table name
 extension VisitedCity: TableRecord {
+    /// Table Name
     static let databaseTableName = "VisitedCity"
     
+    /// Set relations
     static let places = hasMany(VisitedPlace.self)
     var places: QueryInterfaceRequest<VisitedPlace> {
         request(for: VisitedCity.places)
@@ -54,7 +65,7 @@ extension VisitedCity : MutablePersistableRecord {
         container["image"] = image
     }
     
-    // Update auto-incremented id upon successful insertion
+    /// Update auto-incremented id upon successful insertion
     mutating func didInsert(with rowID: Int64, for column: String?) {
         id = rowID
     }

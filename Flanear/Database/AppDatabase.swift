@@ -143,15 +143,15 @@ extension AppDatabase {
         }
     }
     
-    func isPlacePresent(coordinate: CLLocationCoordinate2D) throws -> Bool{
-        var result = false
+    func isPlacePresent(coordinate: CLLocationCoordinate2D) throws -> VisitedPlace? {
+        var result: VisitedPlace? = nil
         try dbWriter.read { db in
             let places = try VisitedPlace.all()
                 .filter(latitude: coordinate.latitude)
                 .filter(longitude: coordinate.longitude)
                 .fetchAll(db)
             
-            result = !places.isEmpty
+            result = places.first
         }
         
         return result
@@ -174,71 +174,6 @@ extension AppDatabase {
             _ = try Picture.deleteAll(db, ids: [picture.id!])
         }
     }
-    
-    /*/// Saves (inserts or updates) a player. When the method returns, the
-    /// player is present in the database, and its id is not nil.
-    func savePlayer(_ player: inout Player) throws {
-        try dbWriter.write { db in
-            try player.save(db)
-        }
-    }
-    
-    /// Delete the specified players
-    func deletePlayers(ids: [Int64]) throws {
-        try dbWriter.write { db in
-            _ = try Player.deleteAll(db, ids: ids)
-        }
-    }
-    
-    /// Delete all players
-    func deleteAllPlayers() throws {
-        try dbWriter.write { db in
-            _ = try Player.deleteAll(db)
-        }
-    }
-    
-    /// Refresh all players (by performing some random changes, for demo purpose).
-    func refreshPlayers() throws {
-        try dbWriter.write { db in
-            if try Player.all().isEmpty(db) {
-                // When database is empty, insert new random players
-                try createRandomPlayers(db)
-            } else {
-                // Insert a player
-                if Bool.random() {
-                    _ = try Player.makeRandom().inserted(db) // insert but ignore inserted id
-                }
-                
-                // Delete a random player
-                if Bool.random() {
-                    try Player.order(sql: "RANDOM()").limit(1).deleteAll(db)
-                }
-                
-                // Update some players
-                for var player in try Player.fetchAll(db) where Bool.random() {
-                    try player.updateChanges(db) {
-                        $0.score = Player.randomScore()
-                    }
-                }
-            }
-        }
-    }
-    
-    /// Create random players if the database is empty.
-    func createRandomPlayersIfEmpty() throws {
-        try dbWriter.write { db in
-            if try Player.all().isEmpty(db) {
-                try createRandomPlayers(db)
-            }
-        }
-    }
-    
-    /// Support for `createRandomPlayersIfEmpty()` and `refreshPlayers()`.
-    private func createRandomPlayers(_ db: Database) throws {
-        for _ in 0..<8 {
-            _ = try Player.makeRandom().inserted(db) // insert but ignore inserted id
-        }
-    }*/
 }
 
 // MARK: - Database Access: Reads
