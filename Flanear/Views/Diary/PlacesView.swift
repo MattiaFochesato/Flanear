@@ -12,6 +12,7 @@ struct PlacesView: View {
     
     @ObservedObject var viewController: VisitedPlacesViewController
     @State var searchText = ""
+    @State var showPlace: VisitedPlace? = nil
     
     init(city: VisitedCity) {
         self.city = city
@@ -35,6 +36,8 @@ struct PlacesView: View {
                             ForEach(viewController.places) { place in
                                 NavigationLink {
                                     PlaceInfoView(place: place)
+                                    //print("open")
+                                    //self.showPlace = place
                                 } label: {
                                     HStack {
                                         Image(systemName: place.favourite ? "star.fill" : "star")
@@ -42,7 +45,7 @@ struct PlacesView: View {
                                             .foregroundColor(place.favourite ? .yellow : .textBlack)
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text(place.title)
-                                                .font(.title2)
+                                                .font(.title3)
                                             Text(place.description)
                                                 .font(.caption)
                                                 .foregroundColor(.gray)
@@ -73,6 +76,21 @@ struct PlacesView: View {
                 }
             }.navigationTitle(city.name)
             .searchable(text: $searchText)
+            /*.sheet(isPresented: Binding(get: {
+                self.showPlace != nil
+            }, set: {
+                if !$0 {
+                    self.showPlace = nil
+                }
+            })) {
+                NavigationView {
+                    if let showPlace = showPlace {
+                        PlaceInfoView(place: showPlace)
+                    }else{
+                        EmptyView()
+                    }
+                }
+            }*/
     }
 }
 

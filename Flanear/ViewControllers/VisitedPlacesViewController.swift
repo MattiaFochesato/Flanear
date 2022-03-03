@@ -19,8 +19,6 @@ class VisitedPlacesViewController: ObservableObject {
     @Published var places: [VisitedPlace] = []
     /// Cancellable to observe database changes
     var observableCancellable: AnyCancellable?
-    /// Is NavigationLink enabled
-    @Published var isShowingPlace = false
     
     /**
      - parameter city: VisitedCity to show.
@@ -36,9 +34,7 @@ class VisitedPlacesViewController: ObservableObject {
             .sink { error in
                 print(error)
             } receiveValue: { updatedPlaces in
-                if !self.isShowingPlace {
-                    self.places = updatedPlaces
-                }
+                self.places = updatedPlaces
             }
     }
     

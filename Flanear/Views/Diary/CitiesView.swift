@@ -81,17 +81,18 @@ struct CitiesView: View {
                             image.resizable()
                                 .scaledToFill()
                                 .frame(maxWidth: .infinity)
-                                .frame(height: 200)
+                                .frame(height: 150)
                         } placeholder: {
                             ProgressView()
                                 .frame(maxWidth: .infinity)
-                                .frame(height: 200)
+                                .frame(height: 150)
                         }.clipShape(RoundedRectangle(cornerRadius: 12))
                             .overlay(RoundedRectangle(cornerRadius: 12)
-                                        .stroke(.black, lineWidth: 2))
+                                        .stroke(.black, lineWidth: 1))
+                            .shadow(color: .shadow, radius: 6, x: 0, y: 2)
                         Text("completed \(String(city.getCompletion()))")
                             .fontWeight(.medium)
-                            .padding([.leading, .bottom, .top])
+                            .padding([.leading, .bottom, .top], 8)
                     }else{
                         ProgressView()
                     }
@@ -99,7 +100,7 @@ struct CitiesView: View {
                 .background(.yellow)
                 .cornerRadius(12)
                 .overlay(RoundedRectangle(cornerRadius: 12)
-                            .stroke(.black, lineWidth: 2))
+                            .stroke(.black, lineWidth: 1))
                 .shadow(color: .shadow, radius: 6, x: 0, y: 2)
             }.foregroundColor(.black)
         }
