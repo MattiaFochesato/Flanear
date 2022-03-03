@@ -10,23 +10,18 @@ import Combine
 import GRDB
 
 /** ViewController for CitiesView */
-class VisitedCitiesViewController: ObservableObject {
+class VisitedCitiesViewController: /*Pausable*/ObservableObject {
     
     /// Cities to display in the list (filtered if needed)
     @Published var cities: [VisitedCity] = []
-    /// Cancellable used to subscribe to database changes
-    var observableCancellable: AnyCancellable?
     
-    init() {
-        /// Observe database changes
-        self.observableCancellable = ValueObservation
-            .tracking { db in try VisitedCity.fetchAll(db) }
-            .publisher(in: AppDatabase.shared.databaseReader)
-            .sink { error in
-                print(error)
-            } receiveValue: { updatedCities in
-                self.cities = updatedCities
-            }
+    /**
+     Load the list of cities from the database
+     */
+    func loadCities() {
+        try? AppDatabase.shared.databaseReader.read { db in
+            self.cities = try VisitedCity.fetchAll(db)
+        }
     }
     
     /**

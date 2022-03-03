@@ -15,17 +15,27 @@ struct PicturePreviewView: View {
     var pictures: [PlaceInfoPicture]
     @Binding var showIndex: Int
     
-    
     var body: some View {
         /// Pager view used to a page for every picture
         PagerView(pageCount: pictures.count, currentIndex: $showIndex) {
             ForEach(pictures) { picture in
                 /// Simple image. Not zoomable
-                Image(uiImage: picture.image)
-                    .resizable()
-                    .scaledToFit()
+                VStack {
+                    Spacer()
+                    Image(uiImage: picture.image)
+                        .resizable()
+                        .scaledToFit()
+                    Spacer()
+                }
             }
-        }
+        }.navigationBarTitle("", displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: {
+                //Close
+                showIndex = -1
+            }, label: {
+                Image(systemName: "xmark")
+            }))
+            .background(.black)
     }
 }
 

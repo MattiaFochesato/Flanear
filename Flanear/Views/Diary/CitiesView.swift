@@ -18,28 +18,30 @@ struct CitiesView: View {
     @State var citiesToShow: [VisitedCity] = []
     
     var body: some View {
-        //NavigationView {
-            ScrollView {
-                VStack {
-                    ForEach(citiesToShow) { city in
-                        NavigationLink {
-                            PlacesView(city: city)
-                        } label: {
-                            CityRow(city: city)
-                                .padding()
-                        }.contextMenu {
-                            Button(role: .destructive) {
-                                viewController.deleteCity(city: city)
-                            } label: {
-                                Label("delete", systemImage: "trash.fill")
-                            }
-                        }
-                        Divider()
-                            .padding([.leading, .trailing])
+        NavigationView {
+        ScrollView {
+            VStack {
+                ForEach(citiesToShow) { city in
+                    NavigationLink {
+                        PlacesView(city: city)
+                    } label: {
+                        CityRow(city: city)
+                            .padding()
                     }
-                }.navigationTitle("your-cities")
-            }
-        //}
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            viewController.deleteCity(city: city)
+                        } label: {
+                            Label("delete", systemImage: "trash.fill")
+                        }
+                    }
+                    Divider()
+                        .padding([.leading, .trailing])
+                }
+            }.navigationTitle("your-cities")
+        }
+        }
+        //.visibilityAwareObservables(observables: [viewController])
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onChange(of: searchText) { _ in
             filterCities()
@@ -48,7 +50,7 @@ struct CitiesView: View {
             filterCities()
         })
         .onAppear {
-            filterCities()
+            viewController.loadCities()
         }
     }
     
@@ -79,17 +81,18 @@ struct CitiesView: View {
                             image.resizable()
                                 .scaledToFill()
                                 .frame(maxWidth: .infinity)
-                                .frame(height: 200)
+                                .frame(height: 150)
                         } placeholder: {
                             ProgressView()
                                 .frame(maxWidth: .infinity)
-                                .frame(height: 200)
+                                .frame(height: 150)
                         }.clipShape(RoundedRectangle(cornerRadius: 12))
                             .overlay(RoundedRectangle(cornerRadius: 12)
-                                        .stroke(.black, lineWidth: 2))
+                                        .stroke(.black, lineWidth: 1))
+                            .shadow(color: .shadow, radius: 6, x: 0, y: 2)
                         Text("completed \(String(city.getCompletion()))")
                             .fontWeight(.medium)
-                            .padding([.leading, .bottom, .top])
+                            .padding([.leading, .bottom, .top], 8)
                     }else{
                         ProgressView()
                     }
@@ -97,7 +100,7 @@ struct CitiesView: View {
                 .background(.yellow)
                 .cornerRadius(12)
                 .overlay(RoundedRectangle(cornerRadius: 12)
-                            .stroke(.black, lineWidth: 2))
+                            .stroke(.black, lineWidth: 1))
                 .shadow(color: .shadow, radius: 6, x: 0, y: 2)
             }.foregroundColor(.black)
         }
