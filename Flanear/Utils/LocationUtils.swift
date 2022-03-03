@@ -179,7 +179,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
             request.naturalLanguageQuery = text
         }
         /// Set search parameters
-        request.pointOfInterestFilter = .includingAll
+        request.pointOfInterestFilter = .some(MKPointOfInterestFilter(excluding: [MKPointOfInterestCategory.gasStation]))
         request.resultTypes = resultType
         
         guard let currentLocation = currentLocation else {

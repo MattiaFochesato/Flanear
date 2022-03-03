@@ -69,14 +69,14 @@ struct PlaceSearchView: View {
                                         HStack {
                                             VStack(alignment: .leading) {
                                                 HStack {
-                                                    Image("interests")
+                                                    Image(item.image)
                                                         .resizable()
                                                         .foregroundColor(.textBlack)
                                                         .frame(width: 30, height: 30)
                                                     VStack(alignment: .leading) {
                                                         Text(item.title)
                                                             .foregroundColor(.textBlack)
-                                                        Text(item.subtitle)
+                                                        Text(NSLocalizedString(item.subtitle, comment: ""))
                                                             .foregroundColor(.secondary)
                                                     }
                                                     Spacer()
