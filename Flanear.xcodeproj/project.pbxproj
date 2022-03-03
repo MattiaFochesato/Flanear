@@ -66,6 +66,11 @@
 		26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD127B6B08200CE8BBD /* PlacesView.swift */; };
 		26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */; };
 		26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */; };
+		BA24B7E627D0B81400161DB5 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7E527D0B81400161DB5 /* Onboarding.swift */; };
+		BA24B7E827D0BC6A00161DB5 /* FirstOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */; };
+		BA24B7EA27D0C55900161DB5 /* SecondOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */; };
+		BA24B7EE27D0D74200161DB5 /* ThirdOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7ED27D0D74200161DB5 /* ThirdOnboardingView.swift */; };
+		BA24B7F027D0D7D700161DB5 /* FourthOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7EF27D0D7D700161DB5 /* FourthOnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +184,11 @@
 		26BC9CD127B6B08200CE8BBD /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
 		26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassCircleView.swift; sourceTree = "<group>"; };
+		BA24B7E527D0B81400161DB5 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingView.swift; sourceTree = "<group>"; };
+		BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingView.swift; sourceTree = "<group>"; };
+		BA24B7ED27D0D74200161DB5 /* ThirdOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingView.swift; sourceTree = "<group>"; };
+		BA24B7EF27D0D7D700161DB5 /* FourthOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthOnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +418,11 @@
 			children = (
 				269790CE27B7C6D700B0210B /* Diary */,
 				26BC9CD927B6B73100CE8BBD /* Navigator */,
+				BA24B7E527D0B81400161DB5 /* Onboarding.swift */,
+				BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */,
+				BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */,
+				BA24B7ED27D0D74200161DB5 /* ThirdOnboardingView.swift */,
+				BA24B7EF27D0D7D700161DB5 /* FourthOnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -609,11 +624,15 @@
 				268050AE27BA6C35004CBC33 /* VisitedPlacesViewController.swift in Sources */,
 				2663D9E027CFB2BB00F7E61C /* MKMapItem+Extension.swift in Sources */,
 				26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */,
+				BA24B7F027D0D7D700161DB5 /* FourthOnboardingView.swift in Sources */,
 				26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */,
 				26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */,
 				26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */,
+				BA24B7EE27D0D74200161DB5 /* ThirdOnboardingView.swift in Sources */,
+				BA24B7E627D0B81400161DB5 /* Onboarding.swift in Sources */,
 				26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */,
 				268050B027BA6EBD004CBC33 /* AppDatabase.swift in Sources */,
+				BA24B7EA27D0C55900161DB5 /* SecondOnboardingView.swift in Sources */,
 				26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */,
 				26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */,
 				26B3899D27CCEE4B0032154C /* UIImage+Extension.swift in Sources */,
@@ -624,6 +643,7 @@
 				26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */,
 				26B3899927CCE6560032154C /* Picture.swift in Sources */,
 				268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */,
+				BA24B7E827D0BC6A00161DB5 /* FirstOnboardingView.swift in Sources */,
 				26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */,
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,
 				26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */,
