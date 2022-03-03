@@ -22,7 +22,7 @@ struct PlaceInfoPicture: Identifiable {
 class PlaceInfoViewController: ObservableObject {
     
     /// VisitedPlace selected
-    let place: VisitedPlace
+    var place: VisitedPlace!
     /// Pictures to show in the view
     @Published var pictures: [PlaceInfoPicture] = []
     /// Cancellable to subscribe to database changes for pictures table
@@ -31,7 +31,7 @@ class PlaceInfoViewController: ObservableObject {
     /**
      - parameter place: VisitedPlace to show.
      */
-    init(place: VisitedPlace) {
+    func setup(place: VisitedPlace) {
         /// Set local variables
         self.place = place
 
