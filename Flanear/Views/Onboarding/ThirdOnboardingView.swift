@@ -14,14 +14,14 @@ struct ThirdOnboardingView: View {
                 .resizable()
                 .frame(width: 160.0, height: 160.0)
                 .foregroundColor(Color("PaletteYellow"))
-           
-            Text("Reach")
+            
+            Text("reach")
                 .font(.system(size: 40))
                 .fontWeight(.black)
-            Text("wander until you reach the place")
+            Text("wander")
                 .font(.system(size: 20))
                 .fontWeight(.bold)
-            Text("Start navigating and direct yourself with the compass")
+            Text("wander-description")
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
                 .padding(.top)
@@ -30,20 +30,20 @@ struct ThirdOnboardingView: View {
                     .resizable()
                     .frame(width: 20.0, height: 20.0)
                     .foregroundColor(Color("PaletteYellow"))
-                Text("You could get lost")
-                .font(.system(size: 16))
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-            
+                Text("be-careful-lost")
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                
+            }
+            .padding(.top)
         }
-        .padding(.top)
-    }
         .padding(.horizontal, 40.0)
-}
-
-struct ThirdOnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        ThirdOnboardingView()
     }
-}
+    
+    struct ThirdOnboardingView_Previews: PreviewProvider {
+        static var previews: some View {
+            ThirdOnboardingView()
+        }
+    }
 }

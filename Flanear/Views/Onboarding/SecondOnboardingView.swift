@@ -14,15 +14,15 @@ struct SecondOnboardingView: View {
                 .resizable()
                 .frame(width: 160.0, height: 160.0)
                 .foregroundColor(Color("PaletteYellow"))
-           
-            Text("Explore")
+            
+            Text("explore")
                 .font(.system(size: 40))
                 .fontWeight(.black)
-            Text("Choose a place to visit")
+            Text("choose-a-place")
                 .font(.system(size: 20))
                 .fontWeight(.bold)
-                
-            Text("Select a place to explore on the map or search for a location")
+            
+            Text("choose-a-place-description")
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
                 .padding(.top)
@@ -31,23 +31,23 @@ struct SecondOnboardingView: View {
                     .resizable()
                     .frame(width: 20.0, height: 20.0)
                     .foregroundColor(Color("PaletteYellow"))
-                Text("Be careful of the distance")
+                Text("be-careful-distance")
                 
-                .font(.system(size: 16))
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-            
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                
             }
             .padding(.top)
             
-        
-    }
+            
+        }
         .padding(.horizontal, 40.0)
-}
-
-struct SecondOnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        SecondOnboardingView()
     }
-}
+    
+    struct SecondOnboardingView_Previews: PreviewProvider {
+        static var previews: some View {
+            SecondOnboardingView()
+        }
+    }
 }

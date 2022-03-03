@@ -40,7 +40,5 @@ class VisitedCitiesViewController: /*Pausable*/ObservableObject {
         } catch {
             print("Cannot delete city \(city.name)")
         }
-        
-        
     }
 }

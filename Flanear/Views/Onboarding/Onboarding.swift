@@ -44,7 +44,7 @@ struct Onboarding: View{
                         Image(systemName: selectedPage != 3 ? "arrow.right" : "paperplane.fill")
                                 .font(.title2.bold())
                                 .foregroundColor(.textWhite)
-                                .padding(20)
+                                .padding(selectedPage != 3 ? 20 : 17)
                                 .background(Circle())
                             
                         
@@ -56,6 +56,9 @@ struct Onboarding: View{
         }
     }
     
+    /**
+     Change the page indicator color to black
+     */
     func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)

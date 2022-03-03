@@ -15,14 +15,14 @@ struct FourthOnboardingView: View {
                 .padding(.bottom, 20.0)
                 .frame(width: 160.0, height: 160.0)
                 .foregroundColor(Color("PaletteYellow"))
-           
-            Text("Collect")
+            
+            Text("collect")
                 .font(.system(size: 40))
                 .fontWeight(.black)
-            Text("Take photos and save memories")
+            Text("memories")
                 .font(.system(size: 20))
                 .fontWeight(.bold)
-            Text("Once you've reached the place keep the memories in a diary")
+            Text("memories-description")
                 .font(.system(size: 20))
                 .multilineTextAlignment(.center)
                 .padding(.top)
@@ -31,22 +31,22 @@ struct FourthOnboardingView: View {
                     .resizable()
                     .frame(width: 20.0, height: 20.0)
                     .foregroundColor(Color("PaletteYellow"))
-                Text("It could make you fall in love")
+                Text("be-careful-love")
                 
-                .font(.system(size: 16))
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                
+            }
+            .padding(.top)
             
         }
-        .padding(.top)
-        
-    }
         .padding(.horizontal, 40.0)
-}
-
-struct FourthOnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        FourthOnboardingView()
     }
-}
+    
+    struct FourthOnboardingView_Previews: PreviewProvider {
+        static var previews: some View {
+            FourthOnboardingView()
+        }
+    }
 }

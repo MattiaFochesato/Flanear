@@ -10,7 +10,7 @@ import SwiftUI
 struct FirstOnboardingView: View {
     var body: some View {
         VStack{
-            Text("What's Flanear")
+            Text("what-is-flanear")
                 .font(.system(size: 40))
                 .fontWeight(.bold)
                 .padding(.top)
@@ -23,11 +23,11 @@ struct FirstOnboardingView: View {
                         .foregroundColor(Color("PaletteYellow"))
                     
                     VStack{
-                        Text("Visit Places")
+                        Text("visit-places")
                             .font(.system(size: 20))
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("Navigate to a selected list of places")
+                        Text("visit-places-description")
                             .font(.system(size: 20))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -41,11 +41,11 @@ struct FirstOnboardingView: View {
                         .frame(width: 50.0, height: 50.0)
                         .foregroundColor(Color("PaletteYellow"))
                     VStack{
-                        Text("Get lost")
+                        Text("get-lost")
                             .font(.system(size: 20))
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("Follow the compass and choose your route")
+                        Text("get-lost-description")
                             .font(.system(size: 20))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -57,11 +57,11 @@ struct FirstOnboardingView: View {
                         .frame(width: 50.0, height: 50.0)
                         .foregroundColor(Color("PaletteYellow"))
                     VStack{
-                        Text("Keep track")
+                        Text("keep-track")
                             .font(.system(size: 20))
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("Collect your experiences")
+                        Text("keep-track-description")
                             .font(.system(size: 20))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }

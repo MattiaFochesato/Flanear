@@ -75,6 +75,4 @@ class VisitedPlacesViewController: ObservableObject {
             preconditionFailure("Cannot save place")
         }
     }
-    
-    
 }

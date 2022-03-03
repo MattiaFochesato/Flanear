@@ -101,7 +101,7 @@ struct PlaceInfoView: View {
                     .background(Color.textWhite)
                     .cornerRadius(12)
                     .overlay(RoundedRectangle(cornerRadius: 12)
-                                .stroke(.black, lineWidth: 1))
+                                .stroke(Color.textBlack, lineWidth: 1))
                         .shadow(color: .shadow, radius: 6, x: 0, y: 2)
                     .padding([.leading, .trailing])
             }
