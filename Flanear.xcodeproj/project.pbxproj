@@ -217,6 +217,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26195F7027D0F8F800C2FAED /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BA24B7E527D0B81400161DB5 /* Onboarding.swift */,
+				BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */,
+				BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */,
+				BA24B7ED27D0D74200161DB5 /* ThirdOnboardingView.swift */,
+				BA24B7EF27D0D7D700161DB5 /* FourthOnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		268050A127BA57DF004CBC33 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,13 +428,9 @@
 		26BC9CD327B6B09A00CE8BBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				26195F7027D0F8F800C2FAED /* Onboarding */,
 				269790CE27B7C6D700B0210B /* Diary */,
 				26BC9CD927B6B73100CE8BBD /* Navigator */,
-				BA24B7E527D0B81400161DB5 /* Onboarding.swift */,
-				BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */,
-				BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */,
-				BA24B7ED27D0D74200161DB5 /* ThirdOnboardingView.swift */,
-				BA24B7EF27D0D7D700161DB5 /* FourthOnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
