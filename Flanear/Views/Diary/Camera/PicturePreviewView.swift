@@ -17,7 +17,7 @@ struct PicturePreviewView: View {
     
     var body: some View {
         /// Pager view used to a page for every picture
-        PagerView(pageCount: pictures.count, currentIndex: $showIndex) {
+        TabView(/*selection: $showIndex*/) {
             ForEach(pictures) { picture in
                 /// Simple image. Not zoomable
                 VStack {
@@ -26,16 +26,21 @@ struct PicturePreviewView: View {
                         .resizable()
                         .scaledToFit()
                     Spacer()
-                }
+                }.background(.black)
+                    .padding([.leading, .trailing], 1)
+                
             }
-        }.navigationBarTitle("", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {
-                //Close
-                showIndex = -1
-            }, label: {
-                Image(systemName: "xmark")
-            }))
-            .background(.black)
+        }
+        .tabViewStyle(PageTabViewStyle())
+        .background(.black)
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarItems(trailing: Button(action: {
+            /// Close view
+            showIndex = -1
+        }, label: {
+            Image(systemName: "xmark")
+        }))
+        
     }
 }
 
