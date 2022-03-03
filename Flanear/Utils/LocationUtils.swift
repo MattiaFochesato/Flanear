@@ -112,7 +112,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
             
             /// Get the locality name of the placemark
-            guard let locality = placemark.locality else {
+            guard let locality = placemark.subAdministrativeArea/*placemark.locality*/ else {
                 self.startingPosition = nil
                 return
             }
@@ -150,7 +150,7 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         /// Async implementation of reverseGeocodeLocation function
         return await withCheckedContinuation({ continuation in
-            geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            geoCoder.reverseGeocodeLocation(location, preferredLocale: Locale.init(identifier: "en_US"), completionHandler: { (placemarks, error) -> Void in
                 var placeMark: CLPlacemark!
                 placeMark = placemarks?[0]
                 

@@ -117,11 +117,7 @@ struct PlaceInfoView: View {
             if let newValue = newValue {
                 try? AppDatabase.shared.add(image: newValue, to: place)
             }
-        }/*.onChange(of: thoughts, perform: { newThoughts in
-            var placeToSave = place
-            placeToSave.thoughts = newThoughts
-            try? AppDatabase.shared.savePlace(&placeToSave)
-        })*/
+        }
         .onAppear(perform: {
             self.viewController.setup(place: place)
             self.region = MKCoordinateRegion(center: place.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
