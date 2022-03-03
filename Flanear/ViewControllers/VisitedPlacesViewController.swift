@@ -26,7 +26,7 @@ class VisitedPlacesViewController: ObservableObject {
     init(city: VisitedCity) {
         /// Set local variables
         self.city = city
-
+        
         /// Observe database changes
         self.observableCancellable = ValueObservation
             .tracking { db in try city.places.fetchAll(db) }

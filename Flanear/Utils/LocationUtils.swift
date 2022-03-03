@@ -65,7 +65,9 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     /** On location authorization change */
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        self.startLocationManager()
+        if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
+            self.startLocationManager()
+        }
     }
     
     /** On heading change */

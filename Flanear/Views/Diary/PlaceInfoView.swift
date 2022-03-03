@@ -26,11 +26,12 @@ struct PlaceInfoView: View {
         self.place = place
         self.viewController = PlaceInfoViewController(place: place)
         
-        region = MKCoordinateRegion(center: place.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.region = MKCoordinateRegion(center: place.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
-        if place.thoughts != " " {
+        //if place.thoughts != " " {
+        print(place.thoughts)
             self.thoughts = place.thoughts
-        }
+        //}
     }
     
     
@@ -74,8 +75,9 @@ struct PlaceInfoView: View {
                                             }
                                         }
                                         .overlay(RoundedRectangle(cornerRadius: 22)
-                                                    .stroke(Color.textBlack, lineWidth: 2)
+                                                    .stroke(Color.textBlack, lineWidth: 1)
                                                     .padding(1))
+                                        .shadow(color: .shadow, radius: 6, x: 0, y: 2)
                                         .padding(8)
                                 }
 
@@ -91,32 +93,31 @@ struct PlaceInfoView: View {
                                     .background(Color(red: 0.898, green: 0.898, blue: 0.918, opacity: 1.0))
                                     .cornerRadius(22)
                                     .overlay(RoundedRectangle(cornerRadius: 22)
-                                                .stroke(Color.textBlack, lineWidth: 2)
+                                                .stroke(Color.textBlack, lineWidth: 1)
                                                 .padding(1))
+                                    .shadow(color: .shadow, radius: 6, x: 0, y: 2)
                             }.padding(.leading, viewController.pictures.isEmpty ? 8 : 0)
 
-                        }
+                        }.padding([.top, .bottom])
                     }
+                    
                     Section() {
                         TextEditor(text: $thoughts)
-                            .accessibilityHint("hint-write-your-thoughts")
+                            //.accessibilityHint("hint-write-your-thoughts")
                             .cornerRadius(12)
                             .lineSpacing(20)
                             .autocapitalization(.none)
-                            
-                        //.frame(width: 300, height: 250)
-                        //.clipShape(RoundedRectangle(cornerRadius: 16))
                             .padding()
                     }
-                    //.cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
-                    //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 2)
+                    .background(Color.textWhite)
+                    .cornerRadius(12)
                     .overlay(RoundedRectangle(cornerRadius: 12)
-                                .stroke(.black, lineWidth: 3))
-                    
-                
+                                .stroke(.black, lineWidth: 1))
+                        .shadow(color: .shadow, radius: 6, x: 0, y: 2)
+                    .padding([.leading, .trailing])
             }
         }
-        .navigationTitle(Text("place-info"))
+        .navigationTitle(place.title)//Text("place-info"))
         .sheet(isPresented: $showCameraSheet) {
             //dismiss
         } content: {
@@ -127,9 +128,14 @@ struct PlaceInfoView: View {
             if let newValue = newValue {
                 try? AppDatabase.shared.add(image: newValue, to: place)
             }
-        }.onChange(of: thoughts, perform: { newThoughts in
+        }/*.onChange(of: thoughts, perform: { newThoughts in
             var placeToSave = place
             placeToSave.thoughts = newThoughts
+            try? AppDatabase.shared.savePlace(&placeToSave)
+        })*/
+        .onDisappear(perform: {
+            var placeToSave = place
+            placeToSave.thoughts = thoughts
             try? AppDatabase.shared.savePlace(&placeToSave)
         })
         .sheet(isPresented: Binding(get: {
@@ -137,7 +143,9 @@ struct PlaceInfoView: View {
         }, set: {
             self.showPictureSheet = ($0 ? 0 : -1)
         })) {
-            PicturePreviewView(pictures: viewController.pictures, showIndex: $showPictureSheet)
+            NavigationView {
+                PicturePreviewView(pictures: viewController.pictures, showIndex: $showPictureSheet)
+            }
         }
 
     }
