@@ -19,6 +19,8 @@ class VisitedPlacesViewController: ObservableObject {
     @Published var places: [VisitedPlace] = []
     /// Cancellable to observe database changes
     var observableCancellable: AnyCancellable?
+    /// Is NavigationLink enabled
+    @Published var isShowingPlace = false
     
     /**
      - parameter city: VisitedCity to show.
@@ -26,7 +28,7 @@ class VisitedPlacesViewController: ObservableObject {
     init(city: VisitedCity) {
         /// Set local variables
         self.city = city
-
+        
         /// Observe database changes
         self.observableCancellable = ValueObservation
             .tracking { db in try city.places.fetchAll(db) }
@@ -34,7 +36,9 @@ class VisitedPlacesViewController: ObservableObject {
             .sink { error in
                 print(error)
             } receiveValue: { updatedPlaces in
-                self.places = updatedPlaces
+                if !self.isShowingPlace {
+                    self.places = updatedPlaces
+                }
             }
     }
     

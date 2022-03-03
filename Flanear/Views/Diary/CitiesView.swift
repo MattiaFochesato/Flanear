@@ -18,28 +18,30 @@ struct CitiesView: View {
     @State var citiesToShow: [VisitedCity] = []
     
     var body: some View {
-        //NavigationView {
-            ScrollView {
-                VStack {
-                    ForEach(citiesToShow) { city in
-                        NavigationLink {
-                            PlacesView(city: city)
-                        } label: {
-                            CityRow(city: city)
-                                .padding()
-                        }.contextMenu {
-                            Button(role: .destructive) {
-                                viewController.deleteCity(city: city)
-                            } label: {
-                                Label("delete", systemImage: "trash.fill")
-                            }
-                        }
-                        Divider()
-                            .padding([.leading, .trailing])
+        NavigationView {
+        ScrollView {
+            VStack {
+                ForEach(citiesToShow) { city in
+                    NavigationLink {
+                        PlacesView(city: city)
+                    } label: {
+                        CityRow(city: city)
+                            .padding()
                     }
-                }.navigationTitle("your-cities")
-            }
-        //}
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            viewController.deleteCity(city: city)
+                        } label: {
+                            Label("delete", systemImage: "trash.fill")
+                        }
+                    }
+                    Divider()
+                        .padding([.leading, .trailing])
+                }
+            }.navigationTitle("your-cities")
+        }
+        }
+        //.visibilityAwareObservables(observables: [viewController])
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onChange(of: searchText) { _ in
             filterCities()
@@ -48,7 +50,7 @@ struct CitiesView: View {
             filterCities()
         })
         .onAppear {
-            filterCities()
+            viewController.loadCities()
         }
     }
     

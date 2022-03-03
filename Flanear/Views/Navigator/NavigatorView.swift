@@ -9,37 +9,22 @@ import SwiftUI
 import MapKit
 
 struct NavigatorView: View {
-    
     @ObservedObject var viewController = NavigatorViewController()
     @ObservedObject var searchViewController = PlaceSearchViewController()
     
     @State var searchText = ""
-    @State private var showingChildView = false
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                NavigationLink(destination: CitiesView(),
-                               isActive: self.$showingChildView)
-                { EmptyView() }
-                .frame(width: 0, height: 0)
-                .disabled(true)
-                
                 NavigatorSearchableView()
                     .navigationTitle("explore")
                     .searchable(text: $searchViewController.searchText, placement: .navigationBarDrawer(displayMode: .always))
-                    //.ignoresSafeArea(.all, edges: .bottom)
-                    .navigationBarItems(trailing:
-                                            Button(action: {
-                        self.showingChildView.toggle()
-                    }) {
-                        Image(systemName: "book.closed.fill").imageScale(.large)
-                    }
-                    )
+                    
             }
         }.environmentObject(viewController)
             .environmentObject(searchViewController)
-            
+        
     }
 }
 
@@ -62,11 +47,11 @@ struct NavigatorSearchableView: View {
                                     .background(viewController.destinationLocation == nil ? RadialGradient(gradient: Gradient(colors: [.clear]), center: .center, startRadius: 1000, endRadius: 1000) : RadialGradient(gradient: Gradient(colors: [.clear, .textWhite]), center: .center, startRadius: 140, endRadius: 400))
                                     .allowsHitTesting(false) )
                         .disabled(viewController.destinationLocation == nil ? false : true)
-                    .ignoresSafeArea(.all, edges: .bottom)
+                        //.ignoresSafeArea(.all, edges: .bottom)
                     
                     if viewController.destinationLocation != nil {
                         CompassCircleView(degrees: $viewController.degrees, startingDistance: $viewController.startingDistance, distance: $viewController.destinationDistance, placeName: $viewController.destinationName, arrived: $viewController.isArrived, openCamera: $openCamera)
-                        .ignoresSafeArea(.all, edges: .bottom)
+                            .ignoresSafeArea(.all, edges: .bottom)
                         
                     }
                     
