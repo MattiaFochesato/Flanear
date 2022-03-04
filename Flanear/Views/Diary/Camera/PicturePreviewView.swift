@@ -13,11 +13,11 @@ import SwiftUI
 struct PicturePreviewView: View {
     /// Pictures and current picture index
     var pictures: [PlaceInfoPicture]
-    @Binding var showIndex: Int
+    @Binding var showIndex: Int64
     
     var body: some View {
         /// Pager view used to a page for every picture
-        TabView(/*selection: $showIndex*/) {
+        TabView(selection: $showIndex) {
             ForEach(pictures) { picture in
                 /// Simple image. Not zoomable
                 VStack {
@@ -28,6 +28,7 @@ struct PicturePreviewView: View {
                     Spacer()
                 }.background(.black)
                     .padding([.leading, .trailing], 1)
+                    .tag(picture.id ?? 0)
                 
             }
         }
