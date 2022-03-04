@@ -26,3 +26,33 @@
 "no-results" = "Wir können nichts finden. Bitte überprüfen Sie Ihr GPS und Ihre Internetverbindung.";
 "pick-place" = "Ort wählen";
 "no-place-selected" = "Kein Ort ausgewählt";
+
+/* ONBOARDING */
+
+/* First Page */
+"what-is-flanear" = "What's Flanear";
+"visit-places" = "Visit Places";
+"visit-places-description" = "Navigate to a selected list of places";
+
+"get-lost" = "Get lost";
+"get-lost-description" = "Follow the compass and choose your route";
+
+"keep-track" = "Keep track";
+"keep-track-description" = "Collect your experiences";
+
+/* Second Page */
+"choose-a-place" = "Choose a place to visit";
+"choose-a-place-description" = "Select a place to explore on the map or search for a location";
+"be-careful-distance" = "Be careful of the distance";
+
+/* Third page */
+"reach" = "Reach";
+"wander" = "Wander until you reach the place";
+"wander-description" = "Start navigating and direct yourself with the compass";
+"be-careful-lost" = "You could get lost";
+
+/* Fourth page */
+"collect" = "Collect";
+"memories" = "Take photos and save memories";
+"memories-description" = "Once you've reached the place keep the memories in a diary";
+"be-careful-love" = "It could make you fall in love";
