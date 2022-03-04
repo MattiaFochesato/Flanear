@@ -33,7 +33,7 @@ It is an app that helps Causual Walking Traveles who want to visit a new city wi
 
 ## HiFi Prototype
 
-You can find the Sketch prototype [here TODO](TODO-).
+You can find the Sketch prototype [here](assets/Design.sketch).
 
   
 

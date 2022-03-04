@@ -76,7 +76,7 @@ struct PlacesView: View {
                 }
             }.navigationTitle(city.name)
             .searchable(text: $searchText)
-            /*.sheet(isPresented: Binding(get: {
+            .sheet(isPresented: Binding(get: {
                 self.showPlace != nil
             }, set: {
                 if !$0 {
@@ -90,7 +90,7 @@ struct PlacesView: View {
                         EmptyView()
                     }
                 }
-            }*/
+            }
     }
 }
 

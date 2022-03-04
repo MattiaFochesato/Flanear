@@ -69,14 +69,14 @@ struct PlaceSearchView: View {
                                         HStack {
                                             VStack(alignment: .leading) {
                                                 HStack {
-                                                    Image("interests")
+                                                    Image(item.image)
                                                         .resizable()
                                                         .foregroundColor(.textBlack)
                                                         .frame(width: 30, height: 30)
                                                     VStack(alignment: .leading) {
                                                         Text(item.title)
                                                             .foregroundColor(.textBlack)
-                                                        Text(item.subtitle)
+                                                        Text(NSLocalizedString(item.subtitle, comment: ""))
                                                             .foregroundColor(.secondary)
                                                     }
                                                     Spacer()
@@ -88,11 +88,13 @@ struct PlaceSearchView: View {
                                                     HStack {
                                                         Image(systemName: "exclamationmark.triangle.fill")
                                                             .foregroundColor(.orange)
-                                                        Text("warning")
+                                                        (Text("warning")
                                                             .bold()
                                                             .foregroundColor(.orange) +
                                                         Text(" ") +
-                                                        Text("place-too-far-away")
+                                                        Text("place-too-far-away"))
+                                                            .fixedSize(horizontal: false, vertical: true)
+                                                            
                                                     }.padding(.top, 4)
                                                 }
                                             }
