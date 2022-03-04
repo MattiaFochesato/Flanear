@@ -46,7 +46,7 @@ struct PlaceSearchItem: Identifiable, Codable {
 #if os(watchOS)
         self.subtitle = mapItem.placemark.subtitle ?? "UNKNOWN"
         self.image = ""
-        self.distance = 0//TODO
+        self.distance = 0
 #else
         let info = mapItem.getPOIInfo()
         self.subtitle = info.0
