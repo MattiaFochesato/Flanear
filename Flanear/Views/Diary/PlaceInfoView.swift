@@ -13,27 +13,16 @@ struct PlaceInfoView: View {
     var place: VisitedPlace
     
     @State var thoughts: String = "hint-write-your-thoughts"
-    @State private var region: MKCoordinateRegion
+    @State private var region: MKCoordinateRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 40.851799, longitude: 14.268120),
+        span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+    )
     @State var showCameraSheet = false
     @State var showPictureSheet = -1
     
     @State var newImage: UIImage? = nil
     
-    @ObservedObject var viewController: PlaceInfoViewController
-    
-    
-    init(place: VisitedPlace) {
-        self.place = place
-        self.viewController = PlaceInfoViewController(place: place)
-        
-        self.region = MKCoordinateRegion(center: place.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-        //if place.thoughts != " " {
-        print(place.thoughts)
-            self.thoughts = place.thoughts
-        //}
-    }
-    
+    @ObservedObject var viewController = PlaceInfoViewController()
     
     var body: some View {
         ScrollView {
@@ -112,12 +101,12 @@ struct PlaceInfoView: View {
                     .background(Color.textWhite)
                     .cornerRadius(12)
                     .overlay(RoundedRectangle(cornerRadius: 12)
-                                .stroke(.black, lineWidth: 1))
+                                .stroke(Color.textBlack, lineWidth: 1))
                         .shadow(color: .shadow, radius: 6, x: 0, y: 2)
                     .padding([.leading, .trailing])
             }
         }
-        .navigationTitle(place.title)//Text("place-info"))
+        .navigationTitle(Text("place-info"))
         .sheet(isPresented: $showCameraSheet) {
             //dismiss
         } content: {
@@ -128,15 +117,22 @@ struct PlaceInfoView: View {
             if let newValue = newValue {
                 try? AppDatabase.shared.add(image: newValue, to: place)
             }
-        }/*.onChange(of: thoughts, perform: { newThoughts in
-            var placeToSave = place
-            placeToSave.thoughts = newThoughts
-            try? AppDatabase.shared.savePlace(&placeToSave)
-        })*/
+        }
+        .onAppear(perform: {
+            self.viewController.setup(place: place)
+            self.region = MKCoordinateRegion(center: place.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            
+            if place.thoughts != " " {
+                self.thoughts = place.thoughts
+            }
+        })
         .onDisappear(perform: {
             var placeToSave = place
             placeToSave.thoughts = thoughts
             try? AppDatabase.shared.savePlace(&placeToSave)
+            
+            self.viewController.observableCancellable?.cancel()
+            self.viewController.pictures = []
         })
         .sheet(isPresented: Binding(get: {
             self.showPictureSheet != -1

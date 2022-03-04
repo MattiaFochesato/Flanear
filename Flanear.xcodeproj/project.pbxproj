@@ -47,16 +47,13 @@
 		26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */; };
 		26B3899D27CCEE4B0032154C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */; };
 		26B821D427CD23A700E752F7 /* PicturePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B821D327CD23A700E752F7 /* PicturePreviewView.swift */; };
-		26B821D627CD25A700E752F7 /* PagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B821D527CD25A700E752F7 /* PagerView.swift */; };
 		26B8547D27C6362000C37004 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547C27C6362000C37004 /* CoreGraphics.framework */; };
 		26B8547F27C6362500C37004 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8547E27C6362500C37004 /* CoreLocation.framework */; };
 		26B8548127C6362C00C37004 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548027C6362C00C37004 /* libc++.tbd */; };
 		26B8548327C6363200C37004 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548227C6363200C37004 /* libz.tbd */; };
 		26B8548527C6363600C37004 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548427C6363600C37004 /* QuartzCore.framework */; };
 		26B8548727C6363D00C37004 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548627C6363D00C37004 /* UIKit.framework */; };
-		26B8548927C6373600C37004 /* GooglePlaces.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8548827C6373600C37004 /* GooglePlaces.xcframework */; };
 		26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8548C27C637FC00C37004 /* AppDelegate.swift */; };
-		26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26B8548E27C6791900C37004 /* GooglePlaces.bundle */; };
 		26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */; };
 		26B854A727C69F7700C37004 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B854A927C69F7700C37004 /* Localizable.strings */; };
 		26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CC327B6AFBF00CE8BBD /* FlanearApp.swift */; };
@@ -66,6 +63,11 @@
 		26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD127B6B08200CE8BBD /* PlacesView.swift */; };
 		26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */; };
 		26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */; };
+		BA24B7E627D0B81400161DB5 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7E527D0B81400161DB5 /* Onboarding.swift */; };
+		BA24B7E827D0BC6A00161DB5 /* FirstOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */; };
+		BA24B7EA27D0C55900161DB5 /* SecondOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */; };
+		BA24B7EE27D0D74200161DB5 /* ThirdOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7ED27D0D74200161DB5 /* ThirdOnboardingView.swift */; };
+		BA24B7F027D0D7D700161DB5 /* FourthOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7EF27D0D7D700161DB5 /* FourthOnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +158,6 @@
 		26B3899A27CCEA1D0032154C /* PlaceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoViewController.swift; sourceTree = "<group>"; };
 		26B3899C27CCEE4B0032154C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		26B821D327CD23A700E752F7 /* PicturePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePreviewView.swift; sourceTree = "<group>"; };
-		26B821D527CD25A700E752F7 /* PagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerView.swift; sourceTree = "<group>"; };
 		26B821D727CE223F00E752F7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		26B821D827CE224500E752F7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		26B8547C27C6362000C37004 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -165,9 +166,7 @@
 		26B8548227C6363200C37004 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		26B8548427C6363600C37004 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26B8548627C6363D00C37004 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		26B8548827C6373600C37004 /* GooglePlaces.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GooglePlaces.xcframework; sourceTree = "<group>"; };
 		26B8548C27C637FC00C37004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		26B8548E27C6791900C37004 /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = "GooglePlaces.xcframework/ios-arm64/GooglePlaces.framework/Resources/GooglePlaces.bundle"; sourceTree = "<group>"; };
 		26B8549027C6921A00C37004 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		26B854A827C69F7700C37004 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		26B854AA27C69F7800C37004 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -179,6 +178,11 @@
 		26BC9CD127B6B08200CE8BBD /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
 		26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassCircleView.swift; sourceTree = "<group>"; };
+		BA24B7E527D0B81400161DB5 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingView.swift; sourceTree = "<group>"; };
+		BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingView.swift; sourceTree = "<group>"; };
+		BA24B7ED27D0D74200161DB5 /* ThirdOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingView.swift; sourceTree = "<group>"; };
+		BA24B7EF27D0D7D700161DB5 /* FourthOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthOnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,7 +201,6 @@
 				26B8548527C6363600C37004 /* QuartzCore.framework in Frameworks */,
 				26B8548327C6363200C37004 /* libz.tbd in Frameworks */,
 				26B8548127C6362C00C37004 /* libc++.tbd in Frameworks */,
-				26B8548927C6373600C37004 /* GooglePlaces.xcframework in Frameworks */,
 				26B8547F27C6362500C37004 /* CoreLocation.framework in Frameworks */,
 				26B8547D27C6362000C37004 /* CoreGraphics.framework in Frameworks */,
 				268050A727BA5A84004CBC33 /* GRDB in Frameworks */,
@@ -207,6 +210,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26195F7027D0F8F800C2FAED /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BA24B7E527D0B81400161DB5 /* Onboarding.swift */,
+				BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */,
+				BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */,
+				BA24B7ED27D0D74200161DB5 /* ThirdOnboardingView.swift */,
+				BA24B7EF27D0D7D700161DB5 /* FourthOnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		268050A127BA57DF004CBC33 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,7 +346,6 @@
 			children = (
 				26B3898D27C8E6DB0032154C /* CameraView.swift */,
 				26B821D327CD23A700E752F7 /* PicturePreviewView.swift */,
-				26B821D527CD25A700E752F7 /* PagerView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -386,8 +400,6 @@
 				268050B127BA70DE004CBC33 /* Extensions */,
 				268050BC27BBA2A5004CBC33 /* Utils */,
 				26BC9CC727B6AFC000CE8BBD /* Assets.xcassets */,
-				26B8548827C6373600C37004 /* GooglePlaces.xcframework */,
-				26B8548E27C6791900C37004 /* GooglePlaces.bundle */,
 				26BC9CC927B6AFC000CE8BBD /* Preview Content */,
 				269B5F3527C7A22700F520DB /* Settings.bundle */,
 				26B854A927C69F7700C37004 /* Localizable.strings */,
@@ -406,6 +418,7 @@
 		26BC9CD327B6B09A00CE8BBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				26195F7027D0F8F800C2FAED /* Onboarding */,
 				269790CE27B7C6D700B0210B /* Diary */,
 				26BC9CD927B6B73100CE8BBD /* Navigator */,
 			);
@@ -568,7 +581,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B8548F27C6791900C37004 /* GooglePlaces.bundle in Resources */,
 				26B854A727C69F7700C37004 /* Localizable.strings in Resources */,
 				269B5F3627C7A35E00F520DB /* Settings.bundle in Resources */,
 				26BC9CCB27B6AFC000CE8BBD /* Preview Assets.xcassets in Resources */,
@@ -609,11 +621,15 @@
 				268050AE27BA6C35004CBC33 /* VisitedPlacesViewController.swift in Sources */,
 				2663D9E027CFB2BB00F7E61C /* MKMapItem+Extension.swift in Sources */,
 				26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */,
+				BA24B7F027D0D7D700161DB5 /* FourthOnboardingView.swift in Sources */,
 				26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */,
 				26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */,
 				26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */,
+				BA24B7EE27D0D74200161DB5 /* ThirdOnboardingView.swift in Sources */,
+				BA24B7E627D0B81400161DB5 /* Onboarding.swift in Sources */,
 				26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */,
 				268050B027BA6EBD004CBC33 /* AppDatabase.swift in Sources */,
+				BA24B7EA27D0C55900161DB5 /* SecondOnboardingView.swift in Sources */,
 				26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */,
 				26B8549127C6921A00C37004 /* UINavigationController+Extension.swift in Sources */,
 				26B3899D27CCEE4B0032154C /* UIImage+Extension.swift in Sources */,
@@ -624,10 +640,10 @@
 				26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */,
 				26B3899927CCE6560032154C /* Picture.swift in Sources */,
 				268050B527BA7D6E004CBC33 /* PlaceInfoView.swift in Sources */,
+				BA24B7E827D0BC6A00161DB5 /* FirstOnboardingView.swift in Sources */,
 				26B8548D27C637FC00C37004 /* AppDelegate.swift in Sources */,
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,
 				26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */,
-				26B821D627CD25A700E752F7 /* PagerView.swift in Sources */,
 				26B821D427CD23A700E752F7 /* PicturePreviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

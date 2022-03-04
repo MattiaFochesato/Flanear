@@ -36,6 +36,7 @@ struct NavigatorSearchableView: View {
     
     @State private var openCamera = false
     @State private var cameraImage: UIImage? = nil
+    @State private var showOnboarding = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -78,7 +79,6 @@ struct NavigatorSearchableView: View {
                         
                     }
                     .padding([.leading, .trailing])
-                    
                     .frame(maxWidth: .infinity)
                     .padding([.top, .bottom], 6)
                     .background(Color("DestinationSheetColor"))
@@ -97,7 +97,18 @@ struct NavigatorSearchableView: View {
             }
             
             viewController.gotTo(place: nil)
-        }
+        }.sheet(isPresented: $showOnboarding) {
+            Onboarding(showOnboarding: $showOnboarding)
+        }.onAppear {
+            if !UserDefaults.standard.bool(forKey: "onboardingDone") {
+                UserDefaults.standard.set(true, forKey: "onboardingDone")
+                self.showOnboarding = true
+            }
+        }.navigationBarItems(trailing: Button(action: {
+            self.showOnboarding = true
+        }, label: {
+            Image(systemName: "info.circle")
+        }))
     }
     
 }

@@ -18,24 +18,28 @@ extension MKMapItem {
     func getPOIInfo() -> (String, String) {
         
         guard let pointOfInterestCategory = pointOfInterestCategory else {
-            return ("undefined","questionmark.circle.fill")
+            #if DEBUG
+            return ("Undefined!","interests")
+            #else
+            return ("interests","interests")
+            #endif
         }
         
         switch pointOfInterestCategory {
-            case .amusementPark:
-                return ("amusementPark","t.circle")
-            case .aquarium:
-                return ("acquarium","t.circle")
-            case .beach:
-                return ("beach","t.circle")
-            case .cafe:
-                return ("cafe","t.circle")
-            case .restaurant:
-                return ("restourant","t.circle")
-            case .publicTransport:
-                return ("publicTransport", "tram.fill")
+        case .museum:
+            return ("museum", "museum")
+        case .theater:
+            return ("theater", "theater")
+        case .amusementPark:
+            return ("archeology", "archeology")
+        case .park:
+            return ("park", "park")
             default:
-                return ("und: \(pointOfInterestCategory.rawValue)","t.circle")
+            #if DEBUG
+                return ("und: \(pointOfInterestCategory.rawValue)","interests")
+            #else
+                return ("interests", "interests")
+            #endif
         }
     }
     
