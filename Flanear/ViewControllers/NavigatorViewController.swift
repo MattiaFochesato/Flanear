@@ -79,7 +79,11 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
                 let sendableResults = searchResults.map({
                     PlaceSearchItem($0)
                 }).filter({ p in
+                    #if DEBUG
+                    return true
+                    #else
                     return p.distance < 2000
+                    #endif
                 }).sorted(by: { p1, p2 in
                     return p1.distance < p2.distance
                 })
@@ -293,7 +297,7 @@ extension NavigatorViewController: WCSessionDelegate {
             
             /// If the Apple Watch asks for suggestions, load and send the result
             if let _ = loadSuggestions {
-                LocationUtils.shared.search(text: "restaurant", isWatch: true)
+                LocationUtils.shared.search(text: "museum", isWatch: true)
             }
             
             /// If the Apple Watch asks to change the destination place, decode it and call .goTo(place: )

@@ -38,7 +38,7 @@ struct PlaceInfoView: View {
                         .fontWeight(.black)
                         .multilineTextAlignment(.leading)
                         .padding([.leading, .trailing])
-                    Text(place.description)
+                    Text(NSLocalizedString(place.description, comment: ""))
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .fontWeight(.medium)
@@ -140,7 +140,7 @@ struct PlaceInfoView: View {
             self.showPictureSheet = ($0 ? 0 : -1)
         })) {
             NavigationView {
-                PicturePreviewView(pictures: viewController.pictures, showIndex: $showPictureSheet)
+                PicturePreviewView(pictures: viewController.pictures, pictureToShowId: $showPictureSheet)
             }
         }
 

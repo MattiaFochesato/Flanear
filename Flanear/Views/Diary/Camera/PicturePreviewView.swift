@@ -11,13 +11,13 @@ import SwiftUI
  View used to show the pictures that you have taken like a photo gallery
  */
 struct PicturePreviewView: View {
-    /// Pictures and current picture index
+    /// Pictures and current picture to show id
     var pictures: [PlaceInfoPicture]
-    @Binding var showIndex: Int64
+    @Binding var pictureToShowId: Int64
     
     var body: some View {
         /// Pager view used to a page for every picture
-        TabView(selection: $showIndex) {
+        TabView(selection: $pictureToShowId) {
             ForEach(pictures) { picture in
                 /// Simple image. Not zoomable
                 VStack {
@@ -37,7 +37,7 @@ struct PicturePreviewView: View {
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
             /// Close view
-            showIndex = -1
+            pictureToShowId = -1
         }, label: {
             Image(systemName: "xmark")
         }))
@@ -47,6 +47,6 @@ struct PicturePreviewView: View {
 
 struct PicturePreviewView_Previews: PreviewProvider {
     static var previews: some View {
-        PicturePreviewView(pictures: [PlaceInfoPicture(image: UIImage(named: "monastero-santa-chiara-porticato-esterno")!, object: Picture(data: Data()))], showIndex: .constant(0))
+        PicturePreviewView(pictures: [PlaceInfoPicture(image: UIImage(named: "monastero-santa-chiara-porticato-esterno")!, object: Picture(data: Data()))], pictureToShowId: .constant(0))
     }
 }

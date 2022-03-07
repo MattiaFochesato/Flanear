@@ -46,7 +46,7 @@ struct PlacesView: View {
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text(place.title)
                                                 .font(.title3)
-                                            Text(place.description)
+                                            Text(NSLocalizedString(place.description, comment: ""))
                                                 .font(.caption)
                                                 .foregroundColor(.gray)
                                         }
