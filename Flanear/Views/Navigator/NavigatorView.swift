@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct NavigatorView: View {
+    @Environment(\.scenePhase) var scenePhase
+    
     @ObservedObject var viewController = NavigatorViewController()
     @ObservedObject var searchViewController = PlaceSearchViewController()
     
@@ -20,10 +22,15 @@ struct NavigatorView: View {
                 NavigatorSearchableView()
                     .navigationTitle("explore")
                     .searchable(text: $searchViewController.searchText, placement: .navigationBarDrawer(displayMode: .always))
-                    
+                
             }
-        }.environmentObject(viewController)
-            .environmentObject(searchViewController)
+        }
+        .environmentObject(viewController)
+        .environmentObject(searchViewController)
+        .onChange(of: scenePhase) { newPhase in
+            viewController.onChange(of: newPhase)
+        }
+        
         
     }
 }
@@ -48,7 +55,7 @@ struct NavigatorSearchableView: View {
                                     .background(viewController.destinationLocation == nil ? RadialGradient(gradient: Gradient(colors: [.clear]), center: .center, startRadius: 1000, endRadius: 1000) : RadialGradient(gradient: Gradient(colors: [.clear, .textWhite]), center: .center, startRadius: 140, endRadius: 400))
                                     .allowsHitTesting(false) )
                         .disabled(viewController.destinationLocation == nil ? false : true)
-                        //.ignoresSafeArea(.all, edges: .bottom)
+                    //.ignoresSafeArea(.all, edges: .bottom)
                     
                     if viewController.destinationLocation != nil {
                         CompassCircleView(degrees: $viewController.degrees, startingDistance: $viewController.startingDistance, distance: $viewController.destinationDistance, placeName: $viewController.destinationName, arrived: $viewController.isArrived, openCamera: $openCamera)

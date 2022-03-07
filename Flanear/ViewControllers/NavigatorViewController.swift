@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 import CoreLocation
 import Combine
+import SwiftUI
 import WatchConnectivity
 
 /** ViewController for NavigatorView  */
@@ -24,9 +25,9 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     @Published var currentLocation: CLLocation?
     ///Region to show in the map when the app is opened
     @Published var region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 40.851799, longitude: 14.268120),
-            span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
-        )
+        center: CLLocationCoordinate2D(latitude: 40.851799, longitude: 14.268120),
+        span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+    )
     ///Location of the destination place
     @Published var destinationLocation: CLLocation? = nil
     ///Distance from the destination place (always updated)
@@ -79,7 +80,11 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
                 let sendableResults = searchResults.map({
                     PlaceSearchItem($0)
                 }).filter({ p in
+#if DEBUG
+                    return true
+#else
                     return p.distance < 2000
+#endif
                 }).sorted(by: { p1, p2 in
                     return p1.distance < p2.distance
                 })
@@ -88,7 +93,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
                 let encoder = JSONEncoder()
                 if let encoded = try? encoder.encode(sendableResults) {
                     let dataToSend = ["searchResults": encoded]
-
+                    
                     ///Send the data to the Apple Watch app
                     validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
                         print(error)
@@ -103,7 +108,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         self.destinationNameCancellable = $destinationName.sink(receiveValue: { newDestination in
             if let validSession = self.session {
                 let dataToSend = ["destinationName": newDestination]
-
+                
                 validSession.sendMessage(dataToSend as [String : Any], replyHandler: nil, errorHandler: { error in
                     print(error)
                 })
@@ -136,24 +141,24 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
      Get the bearing between two CLLocation poins
      
      - parameters:
-        - point1: First point.
-        - point2: Second point.
+     - point1: First point.
+     - point2: Second point.
      - returns: Bearing in degrees
      */
     func getBearingBetween(point1 : CLLocation, point2 : CLLocation) -> Double {
-
+        
         let lat1 = degreesToRadians(degrees: point1.coordinate.latitude)
         let lon1 = degreesToRadians(degrees: point1.coordinate.longitude)
-
+        
         let lat2 = degreesToRadians(degrees: point2.coordinate.latitude)
         let lon2 = degreesToRadians(degrees: point2.coordinate.longitude)
-
+        
         let dLon = lon2 - lon1
-
+        
         let y = sin(dLon) * cos(lat2)
         let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
         let radiansBearing = atan2(y, x)
-
+        
         return radiansToDegrees(radians: radiansBearing)
     }
     /**
@@ -194,7 +199,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     }
     
     /**
-    Call this function to update the distance from the current position and the destination place.
+     Call this function to update the distance from the current position and the destination place.
      */
     func updateDistance() {
         /// Check if the current location and the destination locations are set
@@ -223,7 +228,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         /// Send distance updates to the Apple Watch app if present
         if let validSession = self.session {
             let dataToSend = ["distance": self.destinationDistance, "degrees": self.bearingDegrees]
-
+            
             validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
                 print(error)
             })
@@ -231,7 +236,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     }
     
     /**
-    Call this function to update the compass degrees.
+     Call this function to update the compass degrees.
      */
     func updateDegrees() {
         /// Check if the destination location is set
@@ -246,7 +251,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         /// Send distance updates to the Apple Watch app if present
         if let validSession = self.session {
             let dataToSend = ["degrees": self.bearingDegrees]
-
+            
             validSession.sendMessage(dataToSend, replyHandler: nil, errorHandler: { error in
                 print(error)
             })
@@ -254,7 +259,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
     }
     
     /**
-    Call this function to update suggested locations based on the current user positions
+     Call this function to update suggested locations based on the current user positions
      */
     func loadSuggestedLocations() {
         /// Check if the current location is set
@@ -271,13 +276,28 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         
         /// Filter and sort the results
         self.suggestedLocations = locs.filter { p in
-            #if DEBUG
+#if DEBUG
             return p.distance < 20000
-            #else
+#else
             return p.distance < 2000
-            #endif
+#endif
         }.sorted { p1, p2 in
             return p1.distance < p2.distance
+        }
+    }
+    
+    /**
+     Call this function when the state of the app is changed. It disables the location update to save battery.
+     
+     - parameter scenePhase: SwiftUI ScenePhase.
+     */
+    public func onChange(of scenePhase: ScenePhase) {
+        if destinationName == nil {
+            if scenePhase == .active {
+                LocationUtils.shared.startUpdatingLocation()
+            }else if scenePhase == .background {
+                LocationUtils.shared.stopUpdatingLocation()
+            }
         }
     }
 }
@@ -293,7 +313,7 @@ extension NavigatorViewController: WCSessionDelegate {
             
             /// If the Apple Watch asks for suggestions, load and send the result
             if let _ = loadSuggestions {
-                LocationUtils.shared.search(text: "restaurant", isWatch: true)
+                LocationUtils.shared.search(text: "museum", isWatch: true)
             }
             
             /// If the Apple Watch asks to change the destination place, decode it and call .goTo(place: )

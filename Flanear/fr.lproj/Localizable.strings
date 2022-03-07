@@ -6,7 +6,7 @@
   
 */
 
-"explore" = " Explore ";
+"explore" = " Explorer ";
 "your-cities" = " Vos villes ";
 "visited-places" = " Lieux visités ";
 "place-info" = " Informations sur les lieux ";
@@ -21,6 +21,15 @@
 "search-no-results" = " Nous ne pouvons pas trouver ce lieu.\nVérifiez le nom ! ";
 
 "completed %@" = " Complété à %@ !";
+
+/* Place type */
+"archeology" = "Archeology";
+"interests" = " Centres d’intérêts ";
+"museum" = " Musées ";
+"park" = " Parc ";
+"theater" = " Théâtre ";
+"castle" = " Castle ";
+"undefined" = " Non défini ";
 
 /* watchOS */
 "no-results" = " Nous ne trouvons rien. Veuillez vérifier votre GPS et votre connexion Internet.";

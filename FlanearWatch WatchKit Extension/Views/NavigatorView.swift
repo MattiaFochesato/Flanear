@@ -18,7 +18,7 @@ struct NavigatorView: View {
             
             Spacer()
             
-            Text(viewController.destinationName ?? "no-place-selected")
+            Text(viewController.destinationName ?? NSLocalizedString("no-place-selected", comment: ""))
                 .font(.title3)
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)

@@ -18,7 +18,7 @@ struct PlaceInfoView: View {
         span: MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
     )
     @State var showCameraSheet = false
-    @State var showPictureSheet = -1
+    @State var showPictureSheet: Int64 = -1
     
     @State var newImage: UIImage? = nil
     
@@ -38,7 +38,7 @@ struct PlaceInfoView: View {
                         .fontWeight(.black)
                         .multilineTextAlignment(.leading)
                         .padding([.leading, .trailing])
-                    Text(place.description)
+                    Text(NSLocalizedString(place.description, comment: ""))
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .fontWeight(.medium)
@@ -49,7 +49,7 @@ struct PlaceInfoView: View {
                             
                             ForEach(viewController.pictures) { picture in
                                 Button {
-                                    showPictureSheet = 0
+                                    showPictureSheet = picture.id ?? 0
                                 } label: {
                                     Image(uiImage: picture.image)
                                         .resizable()
@@ -140,7 +140,7 @@ struct PlaceInfoView: View {
             self.showPictureSheet = ($0 ? 0 : -1)
         })) {
             NavigationView {
-                PicturePreviewView(pictures: viewController.pictures, showIndex: $showPictureSheet)
+                PicturePreviewView(pictures: viewController.pictures, pictureToShowId: $showPictureSheet)
             }
         }
 

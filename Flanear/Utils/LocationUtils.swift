@@ -60,7 +60,17 @@ class LocationUtils: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         
         /// Start updating location if available
+        self.startUpdatingLocation()
+    }
+    
+    /** Start updating location if available */
+    public func startUpdatingLocation() {
         self.locationManager.startUpdatingLocation()
+    }
+    
+    /** Stop updating location */
+    public func stopUpdatingLocation() {
+        self.locationManager.stopUpdatingLocation()
     }
     
     /** On location authorization change */
