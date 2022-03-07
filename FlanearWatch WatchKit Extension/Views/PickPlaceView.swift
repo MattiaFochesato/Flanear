@@ -31,7 +31,7 @@ struct PickPlaceView: View {
                                 HStack {
                                     VStack(alignment: .leading) {
                                         Text(item.title)
-                                        Text(item.subtitle)
+                                        Text(NSLocalizedString(item.subtitle, comment: ""))
                                             .font(.footnote)
                                             .foregroundColor(.gray)
                                     }

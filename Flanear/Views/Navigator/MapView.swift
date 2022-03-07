@@ -13,7 +13,7 @@ struct MapView: UIViewRepresentable {
     @EnvironmentObject var viewController: NavigatorViewController
     
     public static let LANDMARKS = [
-        LandmarkAnnotation(title: "Developer Academy", subtitle: "Description todo", coordinate: CLLocationCoordinate2D(latitude: 40.836210, longitude:  14.306480), type: .interests),
+        LandmarkAnnotation(title: "Developer Academy", subtitle: "", coordinate: CLLocationCoordinate2D(latitude: 40.836210, longitude:  14.306480), type: .interests),
         
         
         LandmarkAnnotation(title: "Anfiteatro Campano", subtitle: "", coordinate: CLLocationCoordinate2D(latitude: 41.0843762, longitude:  14.2457775), type: .archeology),
