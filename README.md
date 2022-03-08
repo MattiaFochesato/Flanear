@@ -13,6 +13,8 @@ It is an app that helps Casual Walking Travelers who want to visit a new city wi
 
 <img src="https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white" />
 
+<img src="https://img.shields.io/badge/swiftui-0348A5?style=for-the-badge&logo=swift&logoColor=white" />
+
 <img src="https://img.shields.io/badge/Sketch-FFB387?style=for-the-badge&logo=sketch&logoColor=black" />
 
 <img src="https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&logo=Xcode&logoColor=white" />
@@ -47,6 +49,6 @@ You can find the Sketch prototype [here](assets/Design.sketch).
 * **Giovanni** Imparato
 * **Marco** Pescosolido
 
-## Design
+## Sketched Design
 
 <img align="center" width="675" height="585" src="assets/Design.png">
