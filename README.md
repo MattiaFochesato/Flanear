@@ -20,6 +20,10 @@ It is an app that helps Casual Walking Travelers who want to visit a new city wi
 <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" />
 
 </p>
+
+<p align="center">
+<a href='https://testflight.apple.com/join/Y9vvJhvz'><img height='50' alt='Join the Beta on TestFlight' src='https://anotherlens.app/testflight-badge.png'/></a>
+</p>
   
   
 
