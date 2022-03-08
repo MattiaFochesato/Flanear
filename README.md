@@ -49,4 +49,4 @@ You can find the Sketch prototype [here](assets/Design.sketch).
 
 ## Design
 
-<img align="center" width="675" height="585" src="assets/Design.jpg">
+<img align="center" width="675" height="585" src="assets/Design.png">
