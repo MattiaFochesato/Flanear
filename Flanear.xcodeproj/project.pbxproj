@@ -115,7 +115,7 @@
 /* Begin PBXFileReference section */
 		2663D9DF27CFB2BB00F7E61C /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
 		2663D9E127CFBD7500F7E61C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		267CF0FB27CF74A80050F55F /* SanGiovanni Veloce.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "SanGiovanni Veloce.gpx"; sourceTree = "<group>"; };
+		267CF0FB27CF74A80050F55F /* WalkingTest.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WalkingTest.gpx; sourceTree = "<group>"; };
 		268050A827BA5AE7004CBC33 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		268050AB27BA6670004CBC33 /* VisitedPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlace.swift; sourceTree = "<group>"; };
 		268050AD27BA6C35004CBC33 /* VisitedPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPlacesViewController.swift; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 		26BC9CB727B6AFBE00CE8BBD = {
 			isa = PBXGroup;
 			children = (
-				267CF0FB27CF74A80050F55F /* SanGiovanni Veloce.gpx */,
+				267CF0FB27CF74A80050F55F /* WalkingTest.gpx */,
 				268050B727BAC296004CBC33 /* .gitignore */,
 				268050B627BAC287004CBC33 /* README.md */,
 				2663D9E127CFBD7500F7E61C /* LICENSE.md */,
