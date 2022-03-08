@@ -25,8 +25,14 @@ struct VisitedCity: Identifiable, Hashable {
      - returns: Percentage of visited places
      - warning: This function is still not implemented!
      */
-    func getCompletion() -> Int {
-        return 20
+    func getCompletion() -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumIntegerDigits = 1
+        formatter.maximumIntegerDigits = 3
+        formatter.maximumFractionDigits = 0
+
+        return formatter.string(from: NSNumber(value: 20 / 100.0)) ?? "-"
     }
 }
 
@@ -41,7 +47,7 @@ extension VisitedCity: FetchableRecord {
     
     /// Creates a new player with random name and random score
     static func makeRandom() -> VisitedCity {
-        VisitedCity(name: "Napoli", state: "Italia", image: "https://siviaggia.it/wp-content/uploads/sites/2/2020/08/innamorarsi-napoli.jpg")
+        VisitedCity(name: "Naples", state: "Italy", image: "https://siviaggia.it/wp-content/uploads/sites/2/2020/08/innamorarsi-napoli.jpg")
     }
 }
 

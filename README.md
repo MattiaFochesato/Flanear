@@ -13,12 +13,18 @@ It is an app that helps Casual Walking Travelers who want to visit a new city wi
 
 <img src="https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white" />
 
+<img src="https://img.shields.io/badge/swiftui-0348A5?style=for-the-badge&logo=swift&logoColor=white" />
+
 <img src="https://img.shields.io/badge/Sketch-FFB387?style=for-the-badge&logo=sketch&logoColor=black" />
 
 <img src="https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&logo=Xcode&logoColor=white" />
 
 <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" />
 
+</p>
+
+<p align="center">
+<a href='https://testflight.apple.com/join/Y9vvJhvz'><img height='50' alt='Join the Beta on TestFlight' src='https://anotherlens.app/testflight-badge.png'/></a>
 </p>
   
   
@@ -35,8 +41,6 @@ It is an app that helps Casual Walking Travelers who want to visit a new city wi
 
 You can find the Sketch prototype [here](assets/Design.sketch).
 
-  
-
 ## Creators
 
 * **Matilde** Cotroneo
@@ -44,3 +48,7 @@ You can find the Sketch prototype [here](assets/Design.sketch).
 * **Mattia** Fochesato
 * **Giovanni** Imparato
 * **Marco** Pescosolido
+
+## Sketched Design
+
+<img align="center" width="675" height="585" src="assets/Design.png">

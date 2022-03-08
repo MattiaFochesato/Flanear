@@ -90,7 +90,7 @@ struct CitiesView: View {
                             .overlay(RoundedRectangle(cornerRadius: 12)
                                         .stroke(.black, lineWidth: 1))
                             .shadow(color: .shadow, radius: 6, x: 0, y: 2)
-                        Text("completed \(String(city.getCompletion()))")
+                        Text("completed \(city.getCompletion())")
                             .fontWeight(.medium)
                             .padding([.leading, .bottom, .top], 8)
                     }else{

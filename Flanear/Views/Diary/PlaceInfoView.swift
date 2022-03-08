@@ -112,6 +112,7 @@ struct PlaceInfoView: View {
         } content: {
             CameraView(isShown: $showCameraSheet, image: $newImage)
                 .background(.black)
+                .edgesIgnoringSafeArea(.all)
         }.onChange(of: newImage) { newValue in
             print("received new image")
             if let newValue = newValue {
