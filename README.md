@@ -39,8 +39,6 @@ It is an app that helps Casual Walking Travelers who want to visit a new city wi
 
 You can find the Sketch prototype [here](assets/Design.sketch).
 
-  
-
 ## Creators
 
 * **Matilde** Cotroneo
@@ -48,3 +46,7 @@ You can find the Sketch prototype [here](assets/Design.sketch).
 * **Mattia** Fochesato
 * **Giovanni** Imparato
 * **Marco** Pescosolido
+
+## Design
+
+<img align="center" width="675" height="585" src="assets/Design.jpg">
