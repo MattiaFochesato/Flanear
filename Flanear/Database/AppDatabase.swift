@@ -87,17 +87,7 @@ extension AppDatabase {
     /// Delete the specified place
     func deleteCity(city: VisitedCity) throws {
         try dbWriter.write { db in
-            //Places will be removed automagically
-            /*var placesId: [Int64] = []
-            let places = try city.places.fetchAll(db)
-            for place in places {
-                if let id = place.id {
-                    placesId.append(id)
-                }
-            }
-            if placesId.count != 0 {
-                _ = try self.deletePlaces(ids: placesId)
-            }*/
+            /// This also deletes all places since there is a relation
             _ = try VisitedCity.deleteAll(db, ids: [city.id!])
         }
     }
@@ -111,7 +101,7 @@ extension AppDatabase {
         }
     }
     
-    /// Support for `createRandomPlayersIfEmpty()` and `refreshPlayers()`.
+    /// Create random places for testing
     private func createRandomPlaces(_ db: Database) throws {
         for _ in 0..<8 {
             _ = try VisitedPlace.makeRandom().inserted(db) // insert but ignore inserted id
@@ -142,7 +132,14 @@ extension AppDatabase {
             try city.save(db)
         }
     }
-    
+    /**
+     Checks if a placemark is present in the database given the `CLLocationCoordinate2D`
+     
+     - parameter coordinate: The coordinate of the placemark to check.
+     - returns: The `VisitedPlace` if present
+     
+     Since we don't have an identifier for placemarks, we are using the coordinate as identifier
+     */
     func isPlacePresent(coordinate: CLLocationCoordinate2D) throws -> VisitedPlace? {
         var result: VisitedPlace? = nil
         try dbWriter.read { db in
@@ -153,10 +150,16 @@ extension AppDatabase {
             
             result = places.first
         }
-        
         return result
     }
     
+    /**
+     Adds an image to a `VisitedPlace` and saves it in the database
+     
+     - parameters:
+        - image: `UIImage` to add
+        - place: `VisitedPlace` of the image
+     */
     func add(image: UIImage, to place: VisitedPlace) throws {
         guard let imageData = image.pngData() else {
             return

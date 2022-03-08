@@ -21,7 +21,7 @@
 
 "search-no-results" = "Non riusciamo a trovare questo posto.\nControlla il nome!";
 
-"completed %@" = "%@ Completato!";
+"completed %@" = "%@ completato";
 
 /* Place type */
 "archeology" = "Archeologia";
