@@ -83,7 +83,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
 #if DEBUG
                     return true
 #else
-                    return p.distance < 2000
+                    return p.distance < 3000
 #endif
                 }).sorted(by: { p1, p2 in
                     return p1.distance < p2.distance
