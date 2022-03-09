@@ -228,14 +228,16 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
         if self.locationCancellable == nil {
             self.locationCancellable = LocationUtils.shared.$currentLocation.sink(receiveValue: { newLoc in
                 
+                if newLoc == nil {
+                    return
+                }
+                
                 if self.initialCenter == false {
-                    self.initialCenter = true
+                    //self.initialCenter = true
                     self.updateCamera(mapView, updateHeading: false, forceUpdate: true)
                 }
                 
-                #if DEBUG
                 self.updateCamera(mapView)
-                #endif
                 
             })
         }
@@ -261,6 +263,7 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
         let camera = MKMapCamera()
         if let currentLocation = LocationUtils.shared.currentLocation {
             camera.centerCoordinate = currentLocation.coordinate
+            self.initialCenter = true
         }
         camera.centerCoordinateDistance = 500
         if updateHeading {

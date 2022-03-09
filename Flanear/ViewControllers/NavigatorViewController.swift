@@ -184,7 +184,7 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
         guard let currentCity = LocationUtils.shared.currentCity else { return }
         
         /// Check if place is already present in the database
-        let isPlacePresent = try! AppDatabase.shared.isPlacePresent(coordinate: place.location.coordinate)
+        let isPlacePresent = try? AppDatabase.shared.isPlacePresent(coordinate: place.location.coordinate)
         
         /// If the place is already present, save it in the sheared variable
         if let place = isPlacePresent {
