@@ -1,4 +1,4 @@
-# Chickpeas 🍗 - Flanear
+# Flanear by Chickpeas 🍗
 
 
 <img align="right" width="180" height="180" src="assets/AppIcon.png">
