@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2608A96D27EC5D2A00F8D58F /* FlanearUIScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2608A96C27EC5D2A00F8D58F /* FlanearUIScreenshots.swift */; };
+		2608A96F27EC5D2A00F8D58F /* FlanearUIScreenshotsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2608A96E27EC5D2A00F8D58F /* FlanearUIScreenshotsLaunchTests.swift */; };
+		2608A97627EC5D9B00F8D58F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2608A97527EC5D9B00F8D58F /* SnapshotHelper.swift */; };
 		2663D9E027CFB2BB00F7E61C /* MKMapItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2663D9DF27CFB2BB00F7E61C /* MKMapItem+Extension.swift */; };
 		268050A727BA5A84004CBC33 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 268050A627BA5A84004CBC33 /* GRDB */; };
 		268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268050A827BA5AE7004CBC33 /* Persistence.swift */; };
@@ -71,6 +74,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2608A97027EC5D2A00F8D58F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26BC9CB827B6AFBE00CE8BBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26BC9CBF27B6AFBF00CE8BBD;
+			remoteInfo = Flanear;
+		};
 		269790DD27B7CC4E00B0210B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 26BC9CB827B6AFBE00CE8BBD /* Project object */;
@@ -113,6 +123,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2608A96A27EC5D2A00F8D58F /* FlanearUIScreenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlanearUIScreenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2608A96C27EC5D2A00F8D58F /* FlanearUIScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlanearUIScreenshots.swift; sourceTree = "<group>"; };
+		2608A96E27EC5D2A00F8D58F /* FlanearUIScreenshotsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlanearUIScreenshotsLaunchTests.swift; sourceTree = "<group>"; };
+		2608A97527EC5D9B00F8D58F /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		2663D9DF27CFB2BB00F7E61C /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
 		2663D9E127CFBD7500F7E61C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		267CF0FB27CF74A80050F55F /* WalkingTest.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WalkingTest.gpx; sourceTree = "<group>"; };
@@ -186,6 +200,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2608A96727EC5D2A00F8D58F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		269790D827B7CC4E00B0210B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,6 +231,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2608A96B27EC5D2A00F8D58F /* FlanearUIScreenshots */ = {
+			isa = PBXGroup;
+			children = (
+				2608A96C27EC5D2A00F8D58F /* FlanearUIScreenshots.swift */,
+				2608A96E27EC5D2A00F8D58F /* FlanearUIScreenshotsLaunchTests.swift */,
+				2608A97527EC5D9B00F8D58F /* SnapshotHelper.swift */,
+			);
+			path = FlanearUIScreenshots;
+			sourceTree = "<group>";
+		};
 		26195F7027D0F8F800C2FAED /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +404,7 @@
 				26BC9CC227B6AFBF00CE8BBD /* Flanear */,
 				269790D427B7CC4B00B0210B /* FlanearWatch */,
 				269790DF27B7CC4E00B0210B /* FlanearWatch WatchKit Extension */,
+				2608A96B27EC5D2A00F8D58F /* FlanearUIScreenshots */,
 				26BC9CC127B6AFBF00CE8BBD /* Products */,
 				26B8547B27C6362000C37004 /* Frameworks */,
 			);
@@ -384,6 +416,7 @@
 				26BC9CC027B6AFBF00CE8BBD /* Flanear.app */,
 				269790D327B7CC4B00B0210B /* Flanear.app */,
 				269790DB27B7CC4E00B0210B /* FlanearWatch WatchKit Extension.appex */,
+				2608A96A27EC5D2A00F8D58F /* FlanearUIScreenshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -451,6 +484,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2608A96927EC5D2A00F8D58F /* FlanearUIScreenshots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2608A97427EC5D2A00F8D58F /* Build configuration list for PBXNativeTarget "FlanearUIScreenshots" */;
+			buildPhases = (
+				2608A96627EC5D2A00F8D58F /* Sources */,
+				2608A96727EC5D2A00F8D58F /* Frameworks */,
+				2608A96827EC5D2A00F8D58F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2608A97127EC5D2A00F8D58F /* PBXTargetDependency */,
+			);
+			name = FlanearUIScreenshots;
+			productName = FlanearUIScreenshots;
+			productReference = 2608A96A27EC5D2A00F8D58F /* FlanearUIScreenshots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		269790D227B7CC4B00B0210B /* FlanearWatch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 269790F827B7CC4F00B0210B /* Build configuration list for PBXNativeTarget "FlanearWatch" */;
@@ -514,9 +565,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					2608A96927EC5D2A00F8D58F = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = 26BC9CBF27B6AFBF00CE8BBD;
+					};
 					269790D227B7CC4B00B0210B = {
 						CreatedOnToolsVersion = 13.2;
 					};
@@ -553,11 +608,19 @@
 				26BC9CBF27B6AFBF00CE8BBD /* Flanear */,
 				269790D227B7CC4B00B0210B /* FlanearWatch */,
 				269790DA27B7CC4E00B0210B /* FlanearWatch WatchKit Extension */,
+				2608A96927EC5D2A00F8D58F /* FlanearUIScreenshots */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2608A96827EC5D2A00F8D58F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		269790D127B7CC4B00B0210B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -591,6 +654,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2608A96627EC5D2A00F8D58F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2608A96F27EC5D2A00F8D58F /* FlanearUIScreenshotsLaunchTests.swift in Sources */,
+				2608A96D27EC5D2A00F8D58F /* FlanearUIScreenshots.swift in Sources */,
+				2608A97627EC5D9B00F8D58F /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		269790D727B7CC4E00B0210B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -651,6 +724,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2608A97127EC5D2A00F8D58F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 26BC9CBF27B6AFBF00CE8BBD /* Flanear */;
+			targetProxy = 2608A97027EC5D2A00F8D58F /* PBXContainerItemProxy */;
+		};
 		269790DE27B7CC4E00B0210B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 269790DA27B7CC4E00B0210B /* FlanearWatch WatchKit Extension */;
@@ -681,12 +759,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2608A97227EC5D2A00F8D58F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RX5W7Q737U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattiafochesato.FlanearUIScreenshots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Flanear;
+			};
+			name = Debug;
+		};
+		2608A97327EC5D2A00F8D58F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RX5W7Q737U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattiafochesato.FlanearUIScreenshots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Flanear;
+			};
+			name = Release;
+		};
 		269790F527B7CC4F00B0210B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"FlanearWatch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
@@ -717,7 +831,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"FlanearWatch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
@@ -750,7 +864,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = FlanearWatch_WatchKit_Extension;
@@ -775,7 +889,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = FlanearWatch_WatchKit_Extension;
@@ -915,7 +1029,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"Flanear/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
@@ -955,7 +1069,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"Flanear/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
@@ -992,6 +1106,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2608A97427EC5D2A00F8D58F /* Build configuration list for PBXNativeTarget "FlanearUIScreenshots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2608A97227EC5D2A00F8D58F /* Debug */,
+				2608A97327EC5D2A00F8D58F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		269790F427B7CC4F00B0210B /* Build configuration list for PBXNativeTarget "FlanearWatch WatchKit Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

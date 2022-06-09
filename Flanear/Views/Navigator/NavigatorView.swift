@@ -109,7 +109,9 @@ struct NavigatorSearchableView: View {
         }.onAppear {
             if !UserDefaults.standard.bool(forKey: "onboardingDone") {
                 UserDefaults.standard.set(true, forKey: "onboardingDone")
-                self.showOnboarding = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.showOnboarding = true
+                }
             }
         }.navigationBarItems(trailing: Button(action: {
             self.showOnboarding = true
