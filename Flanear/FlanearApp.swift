@@ -15,7 +15,9 @@ struct FlanearApp: App {
     /// Main Window Scene
     var body: some Scene {
         WindowGroup {
-            TabView {
+            /// Navigator View with the Map
+            NavigatorView()
+            /*TabView {
                 /// Navigator View with the Map
                 NavigatorView()
                     .tabItem {
@@ -26,7 +28,7 @@ struct FlanearApp: App {
                     .tabItem {
                         Label("your-cities", systemImage: "book.closed.fill")
                     }
-            }
+            }*/
         }
     }
 }

@@ -17,21 +17,19 @@ struct NavigatorView: View {
     @State var searchText = ""
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             VStack(spacing: 0) {
-                NavigatorSearchableView()
+                NavigatorViewNew()
                     .navigationTitle("explore")
-                    .searchable(text: $searchViewController.searchText, placement: .navigationBarDrawer(displayMode: .always))
+                //.searchable(text: $searchViewController.searchText, placement: .navigationBarDrawer(displayMode: .always))
                 
             }
-        }
+        //}
         .environmentObject(viewController)
         .environmentObject(searchViewController)
         .onChange(of: scenePhase) { newPhase in
             viewController.onChange(of: newPhase)
         }
-        
-        
     }
 }
 

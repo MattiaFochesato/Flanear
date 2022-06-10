@@ -203,18 +203,21 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
         super.init()
     }
     
-    /*func mapView(_ mapView: MKMapView, viewFor
+    func mapView(_ mapView: MKMapView, viewFor
                  annotation: MKAnnotation) -> MKAnnotationView?{
         //Custom View for Annotation
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotationView")//MapAnnotationView(annotation: annotation, reuseIdentifier: "customView")
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotationView")
+        annotationView.annotation = annotation
         //annotationView.canShowCallout = true
         //annotationView.rightCalloutAccessoryView =
         //Your custom image icon
-        /*if let annotation = annotation as? LandmarkAnnotation {
-         annotationView.image = UIImage(named: annotation.type.rawValue)
-        }*/
+        if let _ = annotation as? LandmarkAnnotation {
+            let image = UIImage(named: "Pin")
+            annotationView.image = image
+            annotationView.centerOffset = CGPoint(x: 0, y: -image!.size.height / 2)
+        }
         return annotationView
-    }*/
+    }
     
     func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
         /*if self.mapView == nil {

@@ -31,6 +31,8 @@
 		269790EE27B7CC4F00B0210B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269790ED27B7CC4F00B0210B /* Preview Assets.xcassets */; };
 		269790F327B7CC4F00B0210B /* Flanear.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 269790D327B7CC4B00B0210B /* Flanear.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		269790FF27B7D13900B0210B /* PickPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269790FE27B7D13800B0210B /* PickPlaceView.swift */; };
+		2699EB77285242CD0034BB42 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2699EB76285242CD0034BB42 /* BottomSheetView.swift */; };
+		2699EB7928525D250034BB42 /* NewCompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2699EB7828525D250034BB42 /* NewCompassCircleView.swift */; };
 		269A9C7327BE484F0075B085 /* CompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */; };
 		269A9C7527BE48820075B085 /* CCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7427BE48820075B085 /* CCircleView.swift */; };
 		269A9C7827BE511B0075B085 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A9C7727BE511B0075B085 /* NavigatorViewController.swift */; };
@@ -66,6 +68,7 @@
 		26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD127B6B08200CE8BBD /* PlacesView.swift */; };
 		26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */; };
 		26BC9CD827B6B72A00CE8BBD /* CompassCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */; };
+		26DEEBCD28523C8E000220C9 /* NavigatorViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DEEBCC28523C8E000220C9 /* NavigatorViewNew.swift */; };
 		BA24B7E627D0B81400161DB5 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7E527D0B81400161DB5 /* Onboarding.swift */; };
 		BA24B7E827D0BC6A00161DB5 /* FirstOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */; };
 		BA24B7EA27D0C55900161DB5 /* SecondOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */; };
@@ -154,6 +157,8 @@
 		269790EF27B7CC4F00B0210B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		269790F027B7CC4F00B0210B /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		269790FE27B7D13800B0210B /* PickPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPlaceView.swift; sourceTree = "<group>"; };
+		2699EB76285242CD0034BB42 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		2699EB7828525D250034BB42 /* NewCompassCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCompassCircleView.swift; sourceTree = "<group>"; };
 		269A9C7427BE48820075B085 /* CCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCircleView.swift; sourceTree = "<group>"; };
 		269A9C7727BE511B0075B085 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		269A9C7927BE61CF0075B085 /* PlaceSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchItem.swift; sourceTree = "<group>"; };
@@ -192,6 +197,7 @@
 		26BC9CD127B6B08200CE8BBD /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
 		26BC9CD527B6B12800CE8BBD /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassCircleView.swift; sourceTree = "<group>"; };
+		26DEEBCC28523C8E000220C9 /* NavigatorViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewNew.swift; sourceTree = "<group>"; };
 		BA24B7E527D0B81400161DB5 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		BA24B7E727D0BC6A00161DB5 /* FirstOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingView.swift; sourceTree = "<group>"; };
 		BA24B7E927D0C55900161DB5 /* SecondOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingView.swift; sourceTree = "<group>"; };
@@ -474,9 +480,12 @@
 			isa = PBXGroup;
 			children = (
 				26BC9CC527B6AFBF00CE8BBD /* NavigatorView.swift */,
+				26DEEBCC28523C8E000220C9 /* NavigatorViewNew.swift */,
 				26B3898F27CCB6C60032154C /* MapView.swift */,
 				26BC9CD727B6B72A00CE8BBD /* CompassCircleView.swift */,
 				26A0994B27BBC54300611E79 /* PlaceSearchView.swift */,
+				2699EB76285242CD0034BB42 /* BottomSheetView.swift */,
+				2699EB7828525D250034BB42 /* NewCompassCircleView.swift */,
 			);
 			path = Navigator;
 			sourceTree = "<group>";
@@ -696,8 +705,10 @@
 				26BC9CC427B6AFBF00CE8BBD /* FlanearApp.swift in Sources */,
 				BA24B7F027D0D7D700161DB5 /* FourthOnboardingView.swift in Sources */,
 				26B3899B27CCEA1D0032154C /* PlaceInfoViewController.swift in Sources */,
+				2699EB77285242CD0034BB42 /* BottomSheetView.swift in Sources */,
 				26BC9CD627B6B12800CE8BBD /* NavigatorViewController.swift in Sources */,
 				26A0994827BBAF9B00611E79 /* VisitedCity.swift in Sources */,
+				26DEEBCD28523C8E000220C9 /* NavigatorViewNew.swift in Sources */,
 				BA24B7EE27D0D74200161DB5 /* ThirdOnboardingView.swift in Sources */,
 				BA24B7E627D0B81400161DB5 /* Onboarding.swift in Sources */,
 				26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */,
@@ -709,6 +720,7 @@
 				26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */,
 				26BC9CD227B6B08200CE8BBD /* PlacesView.swift in Sources */,
 				268050AC27BA6670004CBC33 /* VisitedPlace.swift in Sources */,
+				2699EB7928525D250034BB42 /* NewCompassCircleView.swift in Sources */,
 				26A0994A27BBB2CD00611E79 /* VisitedCitiesViewController.swift in Sources */,
 				26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */,
 				26B3899927CCE6560032154C /* Picture.swift in Sources */,
@@ -800,7 +812,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_ASSET_PATHS = "\"FlanearWatch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
@@ -831,7 +843,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_ASSET_PATHS = "\"FlanearWatch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
@@ -864,7 +876,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = FlanearWatch_WatchKit_Extension;
@@ -889,7 +901,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = FlanearWatch_WatchKit_Extension;
@@ -1029,7 +1041,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_ASSET_PATHS = "\"Flanear/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
@@ -1069,7 +1081,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_ASSET_PATHS = "\"Flanear/Preview Content\"";
 				DEVELOPMENT_TEAM = RX5W7Q737U;
 				ENABLE_PREVIEWS = YES;
