@@ -300,6 +300,16 @@ class NavigatorViewController: NSObject, ObservableObject, CLLocationManagerDele
             }
         }
     }
+
+    public func getSuggestions(max: Int) -> [PlaceSearchItem]? {
+        guard let suggestedLocations = suggestedLocations else {
+            return nil
+        }
+        if suggestedLocations.count >= max {
+            return Array(suggestedLocations[...5])
+        }
+        return suggestedLocations
+    }
 }
 
 extension NavigatorViewController: WCSessionDelegate {

@@ -20,40 +20,54 @@ struct PlaceSearchView: View {
                 let itemWidth = geometry.size.width * 0.85
                 if viewController.searchText.count == 0 {
                     if let suggestedLocations = navVC.suggestedLocations {
-                        ScrollView {
-                            VStack {
+                        if !suggestedLocations.isEmpty {
+                            ScrollView {
+                                VStack {
+                                    ForEach(suggestedLocations) { item in
+                                        Button {
+                                            let generator = UISelectionFeedbackGenerator()
+                                            generator.selectionChanged()
 
-                                ForEach(suggestedLocations) { item in
-                                    Button {
-                                        let generator = UISelectionFeedbackGenerator()
-                                        generator.selectionChanged()
-
-                                        navVC.gotTo(place: item)
-                                        dismissSearch()
-                                    } label: {
-                                        /*HStack {
-                                         Image(item.image)
-                                         .resizable()
-                                         .foregroundColor(.textBlack)
-                                         .frame(width: 30, height: 30)
-                                         VStack(alignment: .leading) {
-                                         Text(item.title)
-                                         .foregroundColor(.textBlack)
-                                         Text(NSLocalizedString(item.subtitle, comment: ""))
-                                         .foregroundColor(.secondary)
-                                         }
-                                         Spacer()
-                                         Text("\(Int(item.distance)) m")
-                                         .foregroundColor(.textBlack)
-                                         Image(systemName: "chevron.right")
-                                         .foregroundColor(.textBlack)
-                                         }*/
-                                        PlaceRowView(place: item, whiteBackground: false, width: itemWidth)
-                                    }.padding([.top, .bottom], 4)
-                                        .padding(.horizontal)
+                                            navVC.gotTo(place: item)
+                                            dismissSearch()
+                                        } label: {
+                                            /*HStack {
+                                             Image(item.image)
+                                             .resizable()
+                                             .foregroundColor(.textBlack)
+                                             .frame(width: 30, height: 30)
+                                             VStack(alignment: .leading) {
+                                             Text(item.title)
+                                             .foregroundColor(.textBlack)
+                                             Text(NSLocalizedString(item.subtitle, comment: ""))
+                                             .foregroundColor(.secondary)
+                                             }
+                                             Spacer()
+                                             Text("\(Int(item.distance)) m")
+                                             .foregroundColor(.textBlack)
+                                             Image(systemName: "chevron.right")
+                                             .foregroundColor(.textBlack)
+                                             }*/
+                                            PlaceRowView(place: item, whiteBackground: false, width: itemWidth)
+                                        }.padding([.top, .bottom], 4)
+                                            .padding(.horizontal)
+                                    }
                                 }
+                                //}
                             }
-                            //}
+                        }else{
+                            VStack(alignment: .center) {
+                                Image(systemName: "map.fill")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.white)
+                                    .padding(10)
+                                    .background(.primary)
+                                    .clipShape(Circle())
+                                    .padding(.bottom)
+                                Text("no-suggestions")
+                                    .bold()
+                                    .multilineTextAlignment(.center)
+                            }
                         }
                     }else{
                         ProgressView("loading-suggestions")

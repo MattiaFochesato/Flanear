@@ -53,7 +53,7 @@ struct NavigatorViewNew: View {
                         let maxSheetHeight = geometry.size.height * 0.8
                         let bottomPadding = 0.3 * maxSheetHeight
                         let itemWidth = geometry.size.width * 0.7
-                        if let suggestedLocations = viewController.suggestedLocations, let suggestionsToShow = suggestedLocations[...5] {
+                        if let suggestionsToShow = viewController.getSuggestions(max: 5) {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 0) {
                                     ForEach(suggestionsToShow) { suggestion in
@@ -220,9 +220,60 @@ struct PlaceRowView: View {
     }
 }
 
+struct MapPlaceInfoView: View {
+    var place: PlaceSearchItem
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text(place.title)
+                    .bold()
+                    .font(.title2)
+                Spacer()
+                Button {
+                    //TODO
+                } label: {
+                    Image(systemName: "star")
+                        .font(.title2)
+                        .foregroundColor(.yellow)
+                        .padding(4)
+                }
+            }
+            HStack {
+                Image(systemName: "location.fill")
+                Text("\(Int(place.distance)) m")
+                    .fontWeight(.medium)
+            }
+            Text(place.subtitle)
+                .foregroundColor(.gray)
+                .fontWeight(.light)
+            Button {
+                //TODO
+            } label: {
+                HStack {
+                    Image(systemName: "location.circle.fill")
+                        .font(.title2)
+                    Text("Get me there!")
+                        .fontWeight(.semibold)
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.appOrange))
+                .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 4)
+            }.foregroundColor(.white)
+                .padding(.top, 8)
+
+            Spacer()
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
 struct NavigatorViewNew_Previews: PreviewProvider {
     static var previews: some View {
         NavigatorView()
+        MapPlaceInfoView(place: PlaceSearchItem(title: "Spiaggia di San Giovanni", description: "Demo Description", latitude: 0, longitude: 0))
         //    .background(Color.blue)
     }
 }

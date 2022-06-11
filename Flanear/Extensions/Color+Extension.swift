@@ -13,4 +13,5 @@ extension Color {
     static let textBlack = Color("TextBlack")
     static let textWhite = Color("TextWhite")
     static let shadow = Color("Shadow")
+    static let appOrange = Color("PaletteYellow")
 }
