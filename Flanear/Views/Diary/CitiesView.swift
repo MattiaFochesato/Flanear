@@ -14,11 +14,11 @@ struct CitiesView: View {
     @ObservedObject var viewController = VisitedCitiesViewController()
     
     //Filter variables
-    @State var searchText = ""
+    //@State var searchText = ""
     @State var citiesToShow: [VisitedCity] = []
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
         ScrollView {
             VStack {
                 ForEach(citiesToShow) { city in
@@ -40,12 +40,12 @@ struct CitiesView: View {
                 }
             }.navigationTitle("your-cities")
         }
-        }
+        //}
         //.visibilityAwareObservables(observables: [viewController])
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-        .onChange(of: searchText) { _ in
-            filterCities()
-        }
+        /*.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+         .onChange(of: searchText) { _ in
+         filterCities()
+         }*/
         .onChange(of: viewController.cities, perform: { _ in
             filterCities()
         })
@@ -58,59 +58,59 @@ struct CitiesView: View {
      Function to call when you need to update the list of cities to show.
      */
     func filterCities() {
-        if !searchText.isEmpty {
-            citiesToShow = viewController.cities.filter { $0.name.contains(searchText) }
-        } else {
-            citiesToShow = viewController.cities
-        }
+        //if !searchText.isEmpty {
+        //    citiesToShow = viewController.cities.filter { $0.name.contains(searchText) }
+        //} else {
+        citiesToShow = viewController.cities
+        //}
     }
-    
-    struct CityRow: View {
-        let city: VisitedCity
-        
-        var body: some View {
-            
-            VStack(alignment: .leading) {
-                Text(city.name)
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.textBlack)
-                VStack (alignment: .leading){
-                    if let url = URL(string: city.image) {
-                        AsyncImage(url: url) { image in
-                            image.resizable()
-                                .scaledToFill()
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 150)
-                        } placeholder: {
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 150)
-                        }.clipShape(RoundedRectangle(cornerRadius: 12))
-                            .overlay(RoundedRectangle(cornerRadius: 12)
-                                        .stroke(.black, lineWidth: 1))
-                            .shadow(color: .shadow, radius: 6, x: 0, y: 2)
-                        Text("completed \(city.getCompletion())")
-                            .fontWeight(.medium)
-                            .padding([.leading, .bottom, .top], 8)
-                    }else{
+}
+
+struct CityRow: View {
+    let city: VisitedCity
+
+    var body: some View {
+
+        VStack(alignment: .leading) {
+            Text(city.name)
+                .font(.title)
+                .bold()
+                .foregroundColor(.textBlack)
+            VStack (alignment: .leading){
+                if let url = URL(string: city.image) {
+                    AsyncImage(url: url) { image in
+                        image.resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 150)
+                    } placeholder: {
                         ProgressView()
-                    }
-                }
-                .background(.yellow)
-                .cornerRadius(12)
-                .overlay(RoundedRectangle(cornerRadius: 12)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 150)
+                    }.clipShape(RoundedRectangle(cornerRadius: 12))
+                        .overlay(RoundedRectangle(cornerRadius: 12)
                             .stroke(.black, lineWidth: 1))
-                .shadow(color: .shadow, radius: 6, x: 0, y: 2)
-            }.foregroundColor(.black)
-        }
-        
-        struct CitiesView_Previews: PreviewProvider {
-            static var previews: some View {
-                CityRow(city: VisitedCity.makeRandom())
-                    .frame(width: 300, height: 300)
-                CitiesView()
+                        .shadow(color: .shadow, radius: 6, x: 0, y: 2)
+                    Text("completed \(city.getCompletion())")
+                        .fontWeight(.medium)
+                        .padding([.leading, .bottom, .top], 8)
+                }else{
+                    ProgressView()
+                }
             }
+            .background(.yellow)
+            .cornerRadius(12)
+            .overlay(RoundedRectangle(cornerRadius: 12)
+                .stroke(.black, lineWidth: 1))
+            .shadow(color: .shadow, radius: 6, x: 0, y: 2)
+        }.foregroundColor(.black)
+    }
+
+    struct CitiesView_Previews: PreviewProvider {
+        static var previews: some View {
+            CityRow(city: VisitedCity.makeRandom())
+                .frame(width: 300, height: 300)
+            CitiesView()
         }
     }
 }

@@ -47,6 +47,7 @@
 		26A0994E27BBC7AA00611E79 /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */; };
 		26A8CC3F285F66C000C9885D /* DistanceProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8CC3E285F66C000C9885D /* DistanceProgressBar.swift */; };
 		26A8CC41285F66FD00C9885D /* LocationOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8CC40285F66FD00C9885D /* LocationOverviewView.swift */; };
+		26A8CC43285F69B600C9885D /* NavigationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8CC42285F69B600C9885D /* NavigationDetailsView.swift */; };
 		26B3898B27C8CBA20032154C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898A27C8CBA20032154C /* Color+Extension.swift */; };
 		26B3898E27C8E6DB0032154C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898D27C8E6DB0032154C /* CameraView.swift */; };
 		26B3899027CCB6C60032154C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B3898F27CCB6C60032154C /* MapView.swift */; };
@@ -172,6 +173,7 @@
 		26A0994D27BBC7AA00611E79 /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
 		26A8CC3E285F66C000C9885D /* DistanceProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceProgressBar.swift; sourceTree = "<group>"; };
 		26A8CC40285F66FD00C9885D /* LocationOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationOverviewView.swift; sourceTree = "<group>"; };
+		26A8CC42285F69B600C9885D /* NavigationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDetailsView.swift; sourceTree = "<group>"; };
 		26B3898A27C8CBA20032154C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		26B3898D27C8E6DB0032154C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		26B3898F27CCB6C60032154C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 			children = (
 				26A8CC3E285F66C000C9885D /* DistanceProgressBar.swift */,
 				26A8CC40285F66FD00C9885D /* LocationOverviewView.swift */,
+				26A8CC42285F69B600C9885D /* NavigationDetailsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -750,6 +753,7 @@
 				268050A927BA5AE7004CBC33 /* Persistence.swift in Sources */,
 				26A0994C27BBC54300611E79 /* PlaceSearchView.swift in Sources */,
 				26B821D427CD23A700E752F7 /* PicturePreviewView.swift in Sources */,
+				26A8CC43285F69B600C9885D /* NavigationDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
