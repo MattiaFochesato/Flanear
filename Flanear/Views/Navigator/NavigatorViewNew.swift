@@ -45,7 +45,7 @@ struct NavigatorViewNew: View {
                     if viewController.destinationLocation != nil {
                         ZStack(alignment: .center) {
                             Color.clear
-                            NewCompassCircleView(degrees: $viewController.degrees, startingDistance: $viewController.startingDistance, distance: $viewController.destinationDistance, placeName: $viewController.destinationName, arrived: $viewController.isArrived, openCamera: .constant(false))
+                            NewCompassCircleView(degrees: $viewController.degrees, arrived: $viewController.isArrived, openCamera: .constant(false))
                                 .frame(alignment: .center)
                                 .ignoresSafeArea(.all, edges: .bottom)
                         }
@@ -155,7 +155,7 @@ struct NavigatorViewNew: View {
                                     .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 0)
                                     .frame(height: 60)
                                 //Spacer()
-                                ProgressBarr(value: .constant(0.4))
+                                ProgressBarr(startingDistance: $viewController.startingDistance, distance: $viewController.destinationDistance, arrived: $viewController.isArrived)
                                     //.padding()
                                     .frame(height: 55)
                                     .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 0)
@@ -203,7 +203,11 @@ struct NavigatorViewNew: View {
 }
 
 struct ProgressBarr: View {
-    @Binding var value: Float
+    @Binding var startingDistance: CLLocationDistance//= 1
+    @Binding var distance: CLLocationDistance
+    @Binding var arrived: Bool
+
+    //@Binding var value: Float
 
     var body: some View {
         GeometryReader { geometry in
@@ -212,11 +216,26 @@ struct ProgressBarr: View {
                     .foregroundColor(Color.textWhite)
 
                 Rectangle()
-                    .frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
+                    .frame(width: min(getProgress() * geometry.size.width, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(Color.appOrange)
                     .animation(.linear)
             }.cornerRadius(16)
         }
+    }
+
+    func getProgress() -> CGFloat {
+        if !arrived {
+            let val = 1 - (self.distance / self.startingDistance)
+            if val < 0.03 {
+                return 0.03
+            }
+            if self.startingDistance == 0 || val == .nan {
+                return 0.0
+            }
+            return val
+        }
+
+        return 1.0
     }
 }
 
