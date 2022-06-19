@@ -28,7 +28,8 @@ struct PlaceSearchView: View {
                                             let generator = UISelectionFeedbackGenerator()
                                             generator.selectionChanged()
 
-                                            navVC.gotTo(place: item)
+                                            //navVC.gotTo(place: item)
+                                            viewController.showPlaceInfo = item
                                             dismissSearch()
                                         } label: {
                                             /*HStack {
@@ -67,7 +68,7 @@ struct PlaceSearchView: View {
                                 Text("no-suggestions")
                                     .bold()
                                     .multilineTextAlignment(.center)
-                            }
+                            }.frame(maxWidth: .infinity)
                         }
                     }else{
                         ProgressView("loading-suggestions")
@@ -82,7 +83,8 @@ struct PlaceSearchView: View {
                                             let generator = UISelectionFeedbackGenerator()
                                             generator.selectionChanged()
 
-                                            navVC.gotTo(place: item)
+                                            //navVC.gotTo(place: item)
+                                            viewController.showPlaceInfo = item
                                             dismissSearch()
                                         } label: {
                                             /*HStack {

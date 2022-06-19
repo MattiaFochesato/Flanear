@@ -19,6 +19,8 @@ class PlaceSearchViewController: ObservableObject {
     @Published var searchText: String = ""
     /// Cancellable used to subscribe to results
     private var cancellable: AnyCancellable?
+    /// Selected place. Show informations about this place
+    @Published var showPlaceInfo: PlaceSearchItem? = nil
     
     init() {
         /// Listen for results to search actions

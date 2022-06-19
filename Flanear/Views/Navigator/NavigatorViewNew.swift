@@ -24,6 +24,7 @@ struct NavigatorViewNew: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
+                if viewController.destinationName == nil {
                 VStack {
                     Text("explore")
                         .bold()
@@ -35,6 +36,7 @@ struct NavigatorViewNew: View {
                 .zIndex(2)
                 //.ignoresSafeArea(.all, edges: [.top])
                 //Spacer()
+                }
                 
                 ZStack(alignment: .bottom) {
                     MapView()
@@ -60,7 +62,9 @@ struct NavigatorViewNew: View {
                                         Button {
                                             let generator = UISelectionFeedbackGenerator()
                                             generator.selectionChanged()
-                                            self.viewController.gotTo(place: suggestion)
+                                            //self.viewController.gotTo(place: suggestion)
+                                            searchController.showPlaceInfo = suggestion
+                                            self.bottomSheetShown = true
                                         } label: {
                                             PlaceRowView(place: suggestion, whiteBackground: true, width: itemWidth, shadows: true)
                                                 .padding(.vertical)
@@ -77,6 +81,15 @@ struct NavigatorViewNew: View {
                             isOpen: self.$bottomSheetShown,
                             maxHeight: maxSheetHeight
                         ) {
+                            if let showPlaceInfo = searchController.showPlaceInfo {
+                                MapPlaceInfoView(place: showPlaceInfo)
+                                    .environmentObject(viewController)
+                                    .onChange(of: self.bottomSheetShown) { newValue in
+                                        if !newValue {
+                                            searchController.showPlaceInfo = nil
+                                        }
+                                    }
+                            }else{
                             VStack {
                                 HStack(spacing: 0) {
                                     Image(systemName: "magnifyingglass")
@@ -123,26 +136,30 @@ struct NavigatorViewNew: View {
                                     }
                                 }
                             }
+                            }
                         }
                     }else{
                         VStack {
-                            HStack {
+                            LazyVGrid(columns: [
+                                GridItem(.fixed(150)),
+                                GridItem(.flexible()),
+                            ], spacing: 0) {
                                 HStack {
                                     Image(systemName: "location.fill")
                                     Text("\(Int(viewController.destinationDistance))m")
-                                }.padding()
-                                    .background(RoundedRectangle(cornerRadius: 16)
-                                        .foregroundColor(.textWhite))
-                                    .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 0)
-                                Spacer()
-                                HStack {
-                                    Text(" ")
+                                        .minimumScaleFactor(0.7)
                                         .frame(maxWidth: .infinity)
                                 }.padding()
                                     .background(RoundedRectangle(cornerRadius: 16)
                                         .foregroundColor(.textWhite))
                                     .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 0)
-                            }
+                                    .frame(height: 60)
+                                //Spacer()
+                                ProgressBarr(value: .constant(0.4))
+                                    //.padding()
+                                    .frame(height: 55)
+                                    .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 0)
+                            }.frame(height: 60)
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text("Road to...")
@@ -185,6 +202,24 @@ struct NavigatorViewNew: View {
     }
 }
 
+struct ProgressBarr: View {
+    @Binding var value: Float
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                Rectangle().frame(width: geometry.size.width , height: geometry.size.height)
+                    .foregroundColor(Color.textWhite)
+
+                Rectangle()
+                    .frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
+                    .foregroundColor(Color.appOrange)
+                    .animation(.linear)
+            }.cornerRadius(16)
+        }
+    }
+}
+
 struct PlaceRowView: View {
     var place: PlaceSearchItem
     var whiteBackground: Bool
@@ -221,6 +256,8 @@ struct PlaceRowView: View {
 }
 
 struct MapPlaceInfoView: View {
+    @EnvironmentObject var viewController: NavigatorViewController
+
     var place: PlaceSearchItem
 
     var body: some View {
@@ -248,7 +285,7 @@ struct MapPlaceInfoView: View {
                 .foregroundColor(.gray)
                 .fontWeight(.light)
             Button {
-                //TODO
+                viewController.gotTo(place: place)
             } label: {
                 HStack {
                     Image(systemName: "location.circle.fill")
