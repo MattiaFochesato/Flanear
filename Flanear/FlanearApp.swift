@@ -15,20 +15,24 @@ struct FlanearApp: App {
     /// Main Window Scene
     var body: some Scene {
         WindowGroup {
-            /// Navigator View with the Map
-            NavigatorView()
-            /*TabView {
-                /// Navigator View with the Map
-                NavigatorView()
-                    .tabItem {
-                        Label("explore", systemImage: "map.fill")
-                    }
-                /// Cities View with the list of visited cities
-                CitiesView()
-                    .tabItem {
-                        Label("your-cities", systemImage: "book.closed.fill")
-                    }
-            }*/
+            /// Flanear View Holder
+            FlanearViewHolder()
         }
+    }
+}
+
+struct FlanearViewHolder: View {
+    @Environment(\.scenePhase) var scenePhase
+
+    @ObservedObject var viewController = NavigatorViewController()
+    @ObservedObject var searchViewController = PlaceSearchViewController()
+
+    var body: some View {
+        NavigatorView()
+            .environmentObject(viewController)
+            .environmentObject(searchViewController)
+            .onChange(of: scenePhase) { newPhase in
+                viewController.onChange(of: newPhase)
+            }
     }
 }

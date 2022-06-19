@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreLocation
 
-struct NewCompassCircleView: View {
+struct CompassView: View {
 #if os(watchOS)
     let isWatch = true
 #else
@@ -120,14 +120,14 @@ struct NewCompassCircleView: View {
 }
 
 
-struct NewCompassCircleView_Previews: PreviewProvider {
+struct CompassView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCompassCircleView(degrees: .constant(.zero), arrived: .constant(true), openCamera: .constant(false))
+        CompassView(degrees: .constant(.zero), arrived: .constant(true), openCamera: .constant(false))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding(60)
             .previewDisplayName("Arrived Preview")
 
-        NewCompassCircleView(degrees: .constant(.zero), arrived: .constant(false), openCamera: .constant(false))
+        CompassView(degrees: .constant(.zero), arrived: .constant(false), openCamera: .constant(false))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding(80)
             .previewDisplayName("Arrived Preview")
